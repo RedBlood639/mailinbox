@@ -57,3 +57,12 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: ".next"
           target: "/root/mdreply"
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: "deploy"
+          description: "Build and deploy to GitHub Pages"
+          color: 0x0000ff
+          username: GitHub Actions
+          avatar_url: ${{ secrets.AVATAR_URL }}
