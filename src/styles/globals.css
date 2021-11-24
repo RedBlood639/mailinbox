@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+* {
+  font-family: Geneva, sans-serif;
+}
+
+.bg-layout {
+  background-color: rgb(147, 0, 0);
+  color: white;
+}
