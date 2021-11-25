@@ -9,13 +9,22 @@ interface Props {
   placeholder?: string;
   error?: string;
   onChange?: any;
+  icon?: any;
+  label?: string;
 }
 
 const InputDiv = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
+  span {
+    display: block;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
   input {
-    width: 100%;
     background: transparent;
     outline: none;
     border: 1.5px solid #fff;
@@ -34,6 +43,7 @@ const InputDiv = styled.div`
 const Input = (props: Props) => {
   return (
     <InputDiv>
+      <span>{props.label}</span>
       <input
         type={props.type}
         onChange={props.onChange}

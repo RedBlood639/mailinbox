@@ -6,6 +6,7 @@ interface Props {
   right?: number;
   left?: number;
   bottom?: number;
+  mg?: string;
 }
 
 export const PageContainer = styled.div`
@@ -16,6 +17,13 @@ export const PageContainer = styled.div`
 
 export const HoDivider = styled.div`
   width: 2px;
+  background-color: white;
+  border-radius: 2px;
+`;
+
+export const VeDivider = styled.div<Props>`
+  margin: ${({ mg }) => (mg ? mg : 0)};
+  height: 2px;
   background-color: white;
   border-radius: 2px;
 `;

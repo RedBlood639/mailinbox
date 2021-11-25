@@ -7,9 +7,12 @@ import {
   AuthTitle,
   AuthFormGroup,
   AuthActionGroup,
+  AuthAction,
 } from "./signin.style";
-import { OverLayout } from "layouts/layout.style";
+import { OverLayout, VeDivider } from "layouts/layout.style";
 import { Button } from "components/Button";
+import { isEmail } from "utils/validation";
+import { MdAccountCircle } from "react-icons/md";
 
 const SignIn = () => {
   const [state, setState] = useState<any>({ email: "", password: "" });
@@ -19,21 +22,28 @@ const SignIn = () => {
   };
 
   const handleSignIn = () => {
-    const re =
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (state.email === "" || state.password === "") {
-      toast.error("Incorrect Email or Password!");
+      toast.error("Incorrect email or password!", {
+        theme: "colored",
+      });
+    } else {
+      if (!isEmail(state.email)) {
+        toast.error("Incorrect email or password!", {
+          theme: "colored",
+        });
+      }
     }
   };
 
   return (
     <AuthPage>
-      <ToastContainer />
+      <ToastContainer autoClose={3000} />
       <OverLayout>
         <AuthDiv>
           <AuthTitle>Sign In</AuthTitle>
           <AuthFormGroup>
             <Input
+              label="Email"
               type="email"
               value={state.email}
               onChange={handleInputChange}
@@ -41,16 +51,22 @@ const SignIn = () => {
               name="email"
             />
             <Input
+              label="Password"
               type="password"
               value={state.password}
               onChange={handleInputChange}
-              placeholder="password"
+              placeholder="Password"
               name="password"
             />
           </AuthFormGroup>
+          <VeDivider mg="20px 0 0 0" />
+          <AuthActionGroup>
+            <AuthAction>Forgot password?</AuthAction>
+            <AuthAction>Create new account</AuthAction>
+          </AuthActionGroup>
+          <VeDivider mg="20px 0 0 0" />
           <AuthActionGroup>
             <Button onClick={handleSignIn} label="Sign In" />
-            <Button onClick={() => {}} label="Sign Up" />
           </AuthActionGroup>
         </AuthDiv>
       </OverLayout>

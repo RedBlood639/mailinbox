@@ -15,7 +15,7 @@ export const AuthPage = styled.div`
 `;
 
 export const AuthDiv = styled.div`
-  max-width: 600px;
+  max-width: 500px;
   width: 90%;
   background-color: rgba(166, 0, 0, 0.7);
   box-shadow: 0 0 1em #222;
@@ -46,7 +46,30 @@ export const AuthFormGroup = styled.div`
 
 export const AuthActionGroup = styled.div`
   margin-top: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 10px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const AuthAction = styled.div`
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  position: relative;
+  ::after {
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    content: "";
+    height: 2px;
+    background-color: white;
+    width: 100%;
+    left: 0;
+    bottom: -5px;
+    transform: scaleX(0);
+  }
+  :hover {
+    color: #c0c0c0;
+    ::after {
+      transform: scaleX(1);
+    }
+  }
 `;
