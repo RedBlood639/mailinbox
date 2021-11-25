@@ -37,4 +37,15 @@ export const AppLayoutWrapper = styled.div`
 export const AppContent = styled.div`
   min-height: calc(100vh - 122px - 149px);
   margin: 122px 0 0 0;
+  display: flex;
+`;
+
+export const OverLayout = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(58, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

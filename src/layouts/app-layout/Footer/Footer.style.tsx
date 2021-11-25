@@ -9,7 +9,13 @@ export const FooterContainer = styled.div`
 `;
 
 export const FooterPartDiv = styled.div`
+  :hover {
+    & > svg {
+      transform: rotate(-30deg) scale(1.2);
+    }
+  }
   svg {
+    transition: all 0.2s;
     font-size: 40px;
     margin-right: 10px;
   }

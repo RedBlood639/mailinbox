@@ -1,11 +1,7 @@
 import React from "react";
 
 const WelcomePart = () => {
-  return (
-    <div id="welcome">
-      <h1>Welcome</h1>
-    </div>
-  );
+  return <div id="welcome"></div>;
 };
 
 export default WelcomePart;
