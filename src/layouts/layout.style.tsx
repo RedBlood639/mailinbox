@@ -35,5 +35,6 @@ export const AppLayoutWrapper = styled.div`
 `;
 
 export const AppContent = styled.div`
-  margin: 122px 0 50px 0;
+  min-height: calc(100vh - 122px - 149px);
+  margin: 122px 0 0 0;
 `;

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import router, { useRouter } from "next/router";
 import {
   HoDivider,
   LayoutContainer,
@@ -11,18 +12,32 @@ const Header = () => {
     document.addEventListener("scroll", scrollEvent);
   }, []);
 
+  const handleMenuClick = (to: any) => {
+    router.push(to);
+  };
+
   return (
     <LayoutContainer className="bg-layout" fixed top={0}>
       <PageContainer>
         <HeaderBar id="header">
           <Mark />
           <MenuBar>
-            <MenuItem>Welcome</MenuItem>
-            <MenuItem>About</MenuItem>
-            <MenuItem>How To</MenuItem>
+            <MenuItem onClick={() => handleMenuClick("/#welcome")}>
+              Welcome
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuClick("/#about")}>
+              About
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuClick("/#howto")}>
+              How To
+            </MenuItem>
             <HoDivider />
-            <MenuItem>Sign in</MenuItem>
-            <MenuItem>Sign up</MenuItem>
+            <MenuItem onClick={() => handleMenuClick("/signin")}>
+              Sign in
+            </MenuItem>
+            <MenuItem onClick={() => handleMenuClick("/signup")}>
+              Sign up
+            </MenuItem>
           </MenuBar>
         </HeaderBar>
       </PageContainer>

@@ -27,7 +27,7 @@ export const MenuBar = styled.div`
   }
 `;
 
-export const MenuItem = styled.a`
+export const MenuItem = styled.div`
   font-weight: 600;
   text-transform: uppercase;
   font-size: 16px;
