@@ -36,6 +36,7 @@ export const LayoutContainer = styled.div<Props>`
   right: ${({ right }) => right};
   left: ${({ left }) => left};
   bottom: ${({ bottom }) => bottom};
+  z-index: 1;
 `;
 
 export const AppLayoutWrapper = styled.div`

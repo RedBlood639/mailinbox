@@ -55,9 +55,10 @@ export const AuthActionGroup = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  color: white;
 `;
 
-export const AuthAction = styled.div`
+export const AuthAction = styled.a`
   color: white;
   cursor: pointer;
   font-weight: 700;

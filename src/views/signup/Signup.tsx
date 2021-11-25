@@ -1,8 +1,12 @@
 import { Button } from "components/Button";
 import Input from "components/Input/Input";
 import { OverLayout, VeDivider } from "layouts/layout.style";
-import React from "react";
+import router from "next/router";
+import React, { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { validationSignUp } from "utils/validation";
 import {
+  AuthAction,
   AuthActionGroup,
   AuthDiv,
   AuthFormGroup,
@@ -12,8 +16,33 @@ import {
 } from "views/signin/signin.style";
 
 const Signup = () => {
+  const [state, setState] = useState<any>({
+    fName: "",
+    lName: "",
+    email: "",
+    pass1: "",
+    pass2: "",
+  });
+
+  const handleInputChange = (e: any) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+
+  const handleSignUpClick = () => {
+    if (validationSignUp(state) !== "success") {
+      toast.error(validationSignUp(state), {
+        theme: "colored",
+      });
+    } else {
+      toast.success("Success", {
+        theme: "colored",
+      });
+    }
+  };
+
   return (
     <AuthPage>
+      <ToastContainer autoClose={3000} />
       <OverLayout>
         <AuthDiv>
           <AuthTitle>Sign Up</AuthTitle>
@@ -22,50 +51,63 @@ const Signup = () => {
               <Input
                 label={"First Name"}
                 type="text"
-                value="Name"
-                onChange={() => {}}
-                placeholder="name"
-                name="name"
+                value={state.fName}
+                onChange={handleInputChange}
+                placeholder="First Name"
+                name="fName"
               />
               <Input
                 label={"Last Name"}
                 type="text"
-                value="Name"
-                onChange={() => {}}
-                placeholder="name"
-                name="name"
+                value={state.lName}
+                onChange={handleInputChange}
+                placeholder="Last name"
+                name="lName"
               />
             </FormGroup>
             <Input
               label={"Email"}
               type="email"
-              value="Email"
-              onChange={() => {}}
-              placeholder="name"
-              name="name"
+              value={state.email}
+              onChange={handleInputChange}
+              placeholder="Email"
+              name="email"
             />
             <FormGroup>
               <Input
                 label={"Password"}
-                type="text"
-                value="Name"
-                onChange={() => {}}
-                placeholder="name"
-                name="name"
+                type="password"
+                value={state.pass1}
+                onChange={handleInputChange}
+                placeholder="Password"
+                name="pass1"
               />
               <Input
                 label={"Confirm Password"}
-                type="text"
-                value="Name"
-                onChange={() => {}}
-                placeholder="name"
-                name="name"
+                type="password"
+                value={state.pass2}
+                onChange={handleInputChange}
+                placeholder="Confirm Password"
+                name="pass2"
               />
             </FormGroup>
           </AuthFormGroup>
           <VeDivider mg="20px 0 0 0" />
+          <AuthActionGroup style={{ justifyContent: "flex-end" }}>
+            <div>
+              Already had an account?&nbsp;
+              <AuthAction
+                onClick={() => {
+                  router.push("/signin");
+                }}
+              >
+                Go to sign in
+              </AuthAction>
+            </div>
+          </AuthActionGroup>
+          <VeDivider mg="20px 0 0 0" />
           <AuthActionGroup>
-            <Button onClick={() => {}} label="Sign Up" />
+            <Button onClick={handleSignUpClick} label="Sign Up" />
           </AuthActionGroup>
         </AuthDiv>
       </OverLayout>

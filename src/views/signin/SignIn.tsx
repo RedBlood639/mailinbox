@@ -11,27 +11,25 @@ import {
 } from "./signin.style";
 import { OverLayout, VeDivider } from "layouts/layout.style";
 import { Button } from "components/Button";
-import { isEmail } from "utils/validation";
-import { MdAccountCircle } from "react-icons/md";
+import { isEmail, validationSignIn } from "utils/validation";
+import router from "next/router";
 
 const SignIn = () => {
   const [state, setState] = useState<any>({ email: "", password: "" });
 
   const handleInputChange = (e: any) => {
-    setState({ [e.target.name]: e.target.value });
+    setState({ ...state, [e.target.name]: e.target.value });
   };
 
   const handleSignIn = () => {
-    if (state.email === "" || state.password === "") {
-      toast.error("Incorrect email or password!", {
+    if (validationSignIn(state) !== "success") {
+      toast.error(validationSignIn(state), {
         theme: "colored",
       });
     } else {
-      if (!isEmail(state.email)) {
-        toast.error("Incorrect email or password!", {
-          theme: "colored",
-        });
-      }
+      toast.success(validationSignIn(state), {
+        theme: "colored",
+      });
     }
   };
 
@@ -62,7 +60,13 @@ const SignIn = () => {
           <VeDivider mg="20px 0 0 0" />
           <AuthActionGroup>
             <AuthAction>Forgot password?</AuthAction>
-            <AuthAction>Create new account</AuthAction>
+            <AuthAction
+              onClick={() => {
+                router.push("/signup");
+              }}
+            >
+              Create new account
+            </AuthAction>
           </AuthActionGroup>
           <VeDivider mg="20px 0 0 0" />
           <AuthActionGroup>
