@@ -58,6 +58,16 @@ jobs:
           source: ".next"
           target: "/home/ubuntu/madreply"
 
+      - name: Run SSH command on target
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            PATH=$PATH:/home/ubuntu/.nvm/versions/node/v14.17.3/bin
+            pm2 restart madreply
+
       - uses: sarisia/actions-status-discord@v1
         if: always()
         with:
