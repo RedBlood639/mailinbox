@@ -15,7 +15,6 @@ interface Props {
 }
 
 const FooterPart = ({ partIcon, title, links, subicon }: Props) => {
-  console.log(links);
   return (
     <FooterPartDiv>
       {partIcon}

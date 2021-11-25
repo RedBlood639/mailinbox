@@ -11,3 +11,26 @@ body {
   background-color: rgb(147, 0, 0);
   color: white;
 }
+
+/* ------ Custom Scroll ------ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: rgb(194, 185, 185);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #ddd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 10px;
+}
+
+/* #__next {
+  min-height: 100vh;
+  background: rgb(188, 0, 0);
+} */

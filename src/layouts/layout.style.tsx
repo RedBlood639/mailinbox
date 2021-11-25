@@ -10,7 +10,7 @@ interface Props {
 
 export const PageContainer = styled.div`
   max-width: 1280px;
-  width: 100%;
+  width: 80%;
   margin: auto;
 `;
 
@@ -28,4 +28,12 @@ export const LayoutContainer = styled.div<Props>`
   right: ${({ right }) => right};
   left: ${({ left }) => left};
   bottom: ${({ bottom }) => bottom};
+`;
+
+export const AppLayoutWrapper = styled.div`
+  position: relative;
+`;
+
+export const AppContent = styled.div`
+  margin: 122px 0 50px 0;
 `;

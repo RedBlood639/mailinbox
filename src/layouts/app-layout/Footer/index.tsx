@@ -1,21 +1,16 @@
-import { LayoutContainer, PageContainer } from "layouts/layout.style";
 import React from "react";
-import {
-  FooterContainer,
-  FooterLink,
-  FooterPartDiv,
-  FooterPartContent,
-  FooterTitle,
-} from "./Footer.style";
 import { ImLocation2, ImFacebook, ImTwitter } from "react-icons/im";
 import { MdPhoneInTalk } from "react-icons/md";
 import { IoMdMail } from "react-icons/io";
 import { FaCopyright } from "react-icons/fa";
 import FooterPart from "./FooterPart";
 
+import { FooterContainer } from "./Footer.style";
+import { LayoutContainer, PageContainer } from "layouts/layout.style";
+
 const Footer = () => {
   return (
-    <LayoutContainer className="bg-layout" fixed bottom={0}>
+    <LayoutContainer className="bg-layout">
       <PageContainer>
         <FooterContainer>
           <FooterPart

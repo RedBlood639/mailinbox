@@ -1,15 +1,15 @@
 import type { NextPage } from "next";
+import { PageContainer } from "layouts/layout.style";
 
-// layouts
-import { Header, Footer } from "layouts/app-layout";
+import { WelcomePart, AboutPart, HowToPart } from "views/landing";
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <Header />
-      <div>asdfasdf</div>
-      <Footer />
-    </div>
+    <PageContainer>
+      <WelcomePart />
+      <AboutPart />
+      <HowToPart />
+    </PageContainer>
   );
 };
 
