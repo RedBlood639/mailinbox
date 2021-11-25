@@ -18,7 +18,7 @@ const InputDiv = styled.div`
     width: 100%;
     background: transparent;
     outline: none;
-    border: 1.5px solid #888;
+    border: 1.5px solid #fff;
     border-radius: 10px;
     padding: 15px 20px;
     color: white;
@@ -26,7 +26,7 @@ const InputDiv = styled.div`
     :focus {
       transition: all 0.5s;
       border-color: white;
-      box-shadow: 0 0 5px #fff;
+      box-shadow: 0 0 10px #fff;
     }
   }
 `;

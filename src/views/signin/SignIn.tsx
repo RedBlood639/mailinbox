@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import Input from "components/Input/Input";
 import {
   AuthPage,
@@ -11,29 +12,44 @@ import { OverLayout } from "layouts/layout.style";
 import { Button } from "components/Button";
 
 const SignIn = () => {
+  const [state, setState] = useState<any>({ email: "", password: "" });
+
+  const handleInputChange = (e: any) => {
+    setState({ [e.target.name]: e.target.value });
+  };
+
+  const handleSignIn = () => {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (state.email === "" || state.password === "") {
+      toast.error("Incorrect Email or Password!");
+    }
+  };
+
   return (
     <AuthPage>
+      <ToastContainer />
       <OverLayout>
         <AuthDiv>
           <AuthTitle>Sign In</AuthTitle>
           <AuthFormGroup>
             <Input
-              type="text"
-              value="Name"
-              onChange={() => {}}
-              placeholder="name"
-              name="name"
+              type="email"
+              value={state.email}
+              onChange={handleInputChange}
+              placeholder="Email"
+              name="email"
             />
             <Input
-              type="email"
-              value="Email"
-              onChange={() => {}}
-              placeholder="name"
-              name="name"
+              type="password"
+              value={state.password}
+              onChange={handleInputChange}
+              placeholder="password"
+              name="password"
             />
           </AuthFormGroup>
           <AuthActionGroup>
-            <Button onClick={() => {}} label="Sign In" />
+            <Button onClick={handleSignIn} label="Sign In" />
             <Button onClick={() => {}} label="Sign Up" />
           </AuthActionGroup>
         </AuthDiv>
