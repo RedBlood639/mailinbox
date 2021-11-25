@@ -17,6 +17,7 @@ export const AuthPage = styled.div`
 export const AuthDiv = styled.div`
   max-width: 500px;
   width: 90%;
+  margin: 10px 0;
   background-color: rgba(166, 0, 0, 0.7);
   box-shadow: 0 0 1em #222;
   border-radius: 20px;
@@ -42,6 +43,12 @@ export const AuthFormGroup = styled.div`
   & > *:not(:last-child) {
     margin-bottom: 20px;
   }
+`;
+
+export const FormGroup = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
 `;
 
 export const AuthActionGroup = styled.div`
