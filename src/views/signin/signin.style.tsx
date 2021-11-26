@@ -1,13 +1,6 @@
 import styled from "styled-components";
 
-// import BG from "assets/images/bg/bg.png";
-
 export const AuthPage = styled.div`
-  /* background-color: rgb(188, 0, 0); */
-  /* background-attachment: fixed;
-  background-image: url(${BG.src});
-  background-size: cover;
-  background-repeat: no-repeat; */
   height: inherit;
   width: 100%;
   display: flex;

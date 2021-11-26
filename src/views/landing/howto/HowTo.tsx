@@ -78,7 +78,6 @@ const HowToPart = () => {
 
   return (
     <HowToPartDiv id="howto">
-      {/* <Image src={bg} alt="bg" objectFit="cover" layout="fill" /> */}
       <OverLayout>
         <PageContainer>
           <PageTitle pd="50px 0 30px 0">How To</PageTitle>

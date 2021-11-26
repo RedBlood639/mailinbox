@@ -21,7 +21,7 @@ import aboutImg1 from "assets/images/AboutUs/aboutus-1.webp";
 import aboutImg2 from "assets/images/AboutUs/aboutus-2.webp";
 import mem1 from "assets/images/members/1.png";
 import mem2 from "assets/images/members/2.png";
-import mem3 from "assets/images/members/3.png";
+import mem3 from "assets/images/members/3.jpg";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
