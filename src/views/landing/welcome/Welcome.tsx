@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+
 import { HiArrowRight } from "react-icons/hi";
 import { FiSend } from "react-icons/fi";
 import {
@@ -10,7 +10,6 @@ import {
   WelcomeTextDiv,
 } from "./welcome.style";
 import { OverLayout } from "layouts/layout.style";
-import { AuthActionGroup } from "views/signin/signin.style";
 import { Button } from "components/Button";
 import { MenuItem } from "layouts/app-layout/Header/Header.style";
 import Input, { TextArea } from "components/Input/Input";

@@ -1288,6 +1288,13 @@
   dependencies:
     "esutils" "^2.0.2"
 
+"dom7@^4.0.1":
+  "integrity" "sha512-y/RWjw3gK3qQnZz6IqDaIoqH6+xBhcB3Wsh5HFwl0abwuO/NAgbSB31ZbxtBDcuDe8jAX5NYUNDLTx4Ul48sIw=="
+  "resolved" "https://registry.npmjs.org/dom7/-/dom7-4.0.1.tgz"
+  "version" "4.0.1"
+  dependencies:
+    "ssr-window" "^4.0.0"
+
 "domain-browser@4.19.0":
   "integrity" "sha512-fRA+BaAWOR/yr/t7T9E9GJztHPeFjj8U35ajyAjCDtAAnTn1Rc1f6W6VGPJrO1tkQv9zWu+JRof7z6oQtiYVFQ=="
   "resolved" "https://registry.npmjs.org/domain-browser/-/domain-browser-4.19.0.tgz"
@@ -3093,6 +3100,11 @@
   "resolved" "https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz"
   "version" "1.0.3"
 
+"ssr-window@^4.0.0", "ssr-window@^4.0.1":
+  "integrity" "sha512-5q936lkCk5Lg5hM6tG8Nutdym4vNiuFSWorslTzOn71PWb3Wnx44q/k2Ryn1LWA1G4FtxMzjywUFOiOxPkVGrA=="
+  "resolved" "https://registry.npmjs.org/ssr-window/-/ssr-window-4.0.1.tgz"
+  "version" "4.0.1"
+
 "stacktrace-parser@0.1.10":
   "integrity" "sha512-KJP1OCML99+8fhOHxwwzyWrlUuVX5GQ0ZpJTd1DFXhdkrvg1szxfHhawXUZ3g9TkXORQd4/WG68jMlQZ2p8wlg=="
   "resolved" "https://registry.npmjs.org/stacktrace-parser/-/stacktrace-parser-0.1.10.tgz"
@@ -3284,6 +3296,14 @@
   "version" "8.1.1"
   dependencies:
     "has-flag" "^4.0.0"
+
+"swiper@^7.3.1":
+  "integrity" "sha512-YHa8uI22UwF9Q6F9tCDSai7/BJo8uVHKampKYAIShlFrWoHfM+sCCn24Yeq3oqIKZv2bfSULzXKsXmh0VpCNeQ=="
+  "resolved" "https://registry.npmjs.org/swiper/-/swiper-7.3.1.tgz"
+  "version" "7.3.1"
+  dependencies:
+    "dom7" "^4.0.1"
+    "ssr-window" "^4.0.1"
 
 "table@^6.0.9":
   "integrity" "sha512-5DkIxeA7XERBqMwJq0aHZOdMadBx4e6eDoFRuyT5VR82J0Ycg2DwM6GfA/EQAhJ+toRTaS1lIdSQCqgrmhPnlw=="

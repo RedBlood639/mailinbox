@@ -67,7 +67,7 @@ export const ContactForm = styled.div`
   margin: 50px 0;
   width: 100%;
   max-width: 500px;
-  background-color: rgba(153, 36, 36, 0.4);
+  background-color: rgba(185, 0, 0, 0.7);
   padding: 30px 40px;
   box-shadow: 0 0 1em rgba(40, 0, 0, 0.4);
 `;

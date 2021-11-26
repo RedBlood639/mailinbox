@@ -63,3 +63,10 @@ export const PageDiv = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+export const PageTitle = styled.div`
+  font-size: 40px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+`;

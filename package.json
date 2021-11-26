@@ -17,6 +17,7 @@
     "react-toastify": "^8.1.0",
     "styled-components": "^5.3.3",
     "styled-system": "^5.1.5",
+    "swiper": "^7.3.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
