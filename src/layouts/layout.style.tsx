@@ -7,6 +7,7 @@ interface Props {
   left?: number;
   bottom?: number;
   mg?: string;
+  pd?: string;
 }
 
 export const PageContainer = styled.div`
@@ -64,9 +65,10 @@ export const PageDiv = styled.div`
   height: 100%;
 `;
 
-export const PageTitle = styled.div`
+export const PageTitle = styled.div<Props>`
   font-size: 40px;
   font-weight: 900;
   text-transform: uppercase;
   color: #fff;
+  padding: ${({ pd }) => (pd ? pd : "0")};
 `;

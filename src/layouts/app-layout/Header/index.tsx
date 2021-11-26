@@ -25,11 +25,14 @@ const Header = () => {
             <MenuItem onClick={() => handleMenuClick("/#welcome")}>
               Welcome
             </MenuItem>
+            <MenuItem onClick={() => handleMenuClick("/#howto")}>
+              How To
+            </MenuItem>
             <MenuItem onClick={() => handleMenuClick("/#about")}>
               About
             </MenuItem>
-            <MenuItem onClick={() => handleMenuClick("/#howto")}>
-              How To
+            <MenuItem onClick={() => handleMenuClick("/#contact")}>
+              Contact
             </MenuItem>
             <HoDivider />
             <MenuItem onClick={() => handleMenuClick("/signin")}>

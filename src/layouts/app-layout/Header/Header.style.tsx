@@ -14,7 +14,7 @@ export const HeaderBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.1s;
+  transition: all 0.2s;
 
   :hover {
     padding: 40px 0 !important;

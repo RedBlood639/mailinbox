@@ -1,16 +1,11 @@
 import styled from "styled-components";
 
-import welcomeBG from "assets/images/bg/bg-1.jpg";
-
-export const WelcomePartDiv = styled.div`
-  background-image: url(${welcomeBG.src});
-  background-repeat: no-repeat;
-  background-size: 100%;
+export const ContactPartDiv = styled.div`
   width: 100%;
   position: relative;
 `;
 
-export const WelcomeDiv = styled.div`
+export const ContactDiv = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
@@ -18,7 +13,7 @@ export const WelcomeDiv = styled.div`
   align-items: center;
 `;
 
-export const WelcomeTextDiv = styled.div`
+export const ContactTextDiv = styled.div`
   margin: auto;
   margin-right: 0;
   width: 80%;
@@ -70,4 +65,19 @@ export const ContactForm = styled.div`
   background-color: rgba(185, 0, 0, 0.7);
   padding: 30px 40px;
   box-shadow: 0 0 1em rgba(40, 0, 0, 0.4);
+`;
+
+export const SocialIconGroup = styled.div`
+  display: flex;
+  font-size: 20px;
+  svg {
+    cursor: pointer;
+    transition: all 0.2s;
+    :hover {
+      transform: scale(1.2);
+    }
+  }
+  & > *:not(:last-child) {
+    margin-right: 20px;
+  }
 `;

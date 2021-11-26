@@ -1,25 +1,38 @@
 import React from "react";
+import Image from "next/image";
 
 import { HiArrowRight } from "react-icons/hi";
 import { FiSend } from "react-icons/fi";
 import {
+  BsLinkedin,
+  BsTwitter,
+  BsInstagram,
+  BsFacebook,
+  BsDiscord,
+} from "react-icons/bs";
+import Input, { TextArea } from "components/Input/Input";
+import { Button } from "components/Button";
+
+import {
   ContactForm,
   WelcomeContactPart,
-  WelcomeDiv,
-  WelcomePartDiv,
-  WelcomeTextDiv,
-} from "./welcome.style";
+  ContactDiv,
+  ContactPartDiv,
+  ContactTextDiv,
+  SocialIconGroup,
+} from "./contact.style";
 import { OverLayout } from "layouts/layout.style";
-import { Button } from "components/Button";
 import { MenuItem } from "layouts/app-layout/Header/Header.style";
-import Input, { TextArea } from "components/Input/Input";
 
-const WelcomePart = () => {
+import contactBG from "assets/images/bg/bg-1.jpg";
+
+const ContactPart = () => {
   return (
-    <WelcomePartDiv>
+    <ContactPartDiv id="contact">
+      <Image src={contactBG} alt="bg" objectFit="cover" layout="fill" />
       <OverLayout>
-        <WelcomeDiv>
-          <WelcomeTextDiv>
+        <ContactDiv>
+          <ContactTextDiv>
             <div className="w_title">
               Things you want to say in that e-mail but couldn't.
             </div>
@@ -31,10 +44,17 @@ const WelcomePart = () => {
                 Go to Sign in <HiArrowRight />
               </div>
             </MenuItem>
-          </WelcomeTextDiv>
+            <SocialIconGroup>
+              <BsLinkedin />
+              <BsFacebook />
+              <BsInstagram />
+              <BsTwitter />
+              <BsDiscord />
+            </SocialIconGroup>
+          </ContactTextDiv>
           <WelcomeContactPart>
             <ContactForm>
-              <div className="form_title">Contact us</div>
+              <div className="form_title">Send us a message</div>
               <Input
                 label="Your Name"
                 type="text"
@@ -69,10 +89,10 @@ const WelcomePart = () => {
               />
             </ContactForm>
           </WelcomeContactPart>
-        </WelcomeDiv>
+        </ContactDiv>
       </OverLayout>
-    </WelcomePartDiv>
+    </ContactPartDiv>
   );
 };
 
-export default WelcomePart;
+export default ContactPart;

@@ -4,18 +4,25 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import {
   AboutPartDiv,
   AboutSliderDiv,
+  AvatarDiv,
+  GroupTitleDiv,
+  MemberGroup,
+  MemberGroupDiv,
+  MemberItemDiv,
   Slider,
   SliderText,
   TextContent,
   TextHeader,
 } from "./about.style";
 import { PageContainer, PageTitle } from "layouts/layout.style";
-import SwiperCore, { Pagination, Navigation } from "swiper";
+import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 
 import aboutImg1 from "assets/images/AboutUs/aboutus-1.webp";
 import aboutImg2 from "assets/images/AboutUs/aboutus-2.webp";
+import mem1 from "assets/images/members/1.jpg";
+import mem2 from "assets/images/members/2.jpg";
 
-SwiperCore.use([Pagination, Navigation]);
+SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const AboutPart = () => {
   return (
@@ -31,29 +38,34 @@ const AboutPart = () => {
                 clickable: true,
               }}
               autoplay={{
-                delay: 100,
+                delay: 5000,
+                disableOnInteraction: true,
               }}
               // navigation={true}
               className="mySwiper"
             >
               <SwiperSlide>
-                <Image
-                  src={aboutImg1}
-                  alt="slider1"
-                  objectFit="cover"
-                  // width="100%"
-                  // height="100%"
-                  layout="responsive"
-                />
+                <div className="poster">
+                  <Image
+                    src={aboutImg1}
+                    alt="slider1"
+                    objectFit="cover"
+                    // width="100%"
+                    // height="100%"
+                    layout="responsive"
+                  />
+                </div>
               </SwiperSlide>
               <SwiperSlide>
-                <Image
-                  src={aboutImg2}
-                  alt="slider1"
-                  objectFit="cover"
-                  layout="responsive"
-                  // width="500px"
-                />
+                <div className="poster">
+                  <Image
+                    src={aboutImg2}
+                    alt="slider1"
+                    objectFit="cover"
+                    layout="responsive"
+                    // width="500px"
+                  />
+                </div>
               </SwiperSlide>
             </Swiper>
           </Slider>
@@ -71,9 +83,41 @@ const AboutPart = () => {
             </TextContent>
           </SliderText>
         </AboutSliderDiv>
+
+        <MemberGroupDiv>
+          <GroupTitleDiv>
+            <div className="main_title">Our Members</div>
+            <div className="sub_title">
+              Contrary to popular belief, Lorem Ipsum is not simply random text
+            </div>
+          </GroupTitleDiv>
+          <MemberGroup>
+            <MemberItem img={mem1.src} name="Kim Tan" />
+            <MemberItem img={mem2.src} name="Kim Tan" />
+            <MemberItem img={mem1.src} name="Kim Tan" />
+            <MemberItem img={mem2.src} name="Kim Tan" />
+          </MemberGroup>
+        </MemberGroupDiv>
       </PageContainer>
     </AboutPartDiv>
   );
 };
 
 export default AboutPart;
+
+interface MemberItemProps {
+  img: any;
+  name: string;
+}
+
+const MemberItem = (props: MemberItemProps) => {
+  return (
+    <MemberItemDiv>
+      <AvatarDiv>
+        <img src={props.img} alt="member" />
+      </AvatarDiv>
+
+      <span>{props.name}</span>
+    </MemberItemDiv>
+  );
+};
