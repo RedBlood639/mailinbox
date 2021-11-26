@@ -10,7 +10,7 @@ const CustomLoadingWrapper = styled.div`
   justify-content: center;
   position: fixed;
   z-index: 99999;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(188, 0, 0, 0.7);
   flex-direction: column;
 `;
 const CustomLoadingContent = styled.div`
