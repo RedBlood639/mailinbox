@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface Props {
+export interface Props {
   fixed?: boolean;
   top?: number;
   right?: number;
@@ -9,6 +9,7 @@ interface Props {
   mg?: string;
   pd?: string;
   fColor?: string;
+  fSize?: number;
 }
 
 export const PageContainer = styled.div`

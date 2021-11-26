@@ -13,6 +13,7 @@ const Header = () => {
   }, []);
 
   const handleMenuClick = (to: any) => {
+    console.log(window.scrollY);
     router.push(to);
   };
 
@@ -22,9 +23,7 @@ const Header = () => {
         <HeaderBar id="header">
           <Mark />
           <MenuBar>
-            <MenuItem onClick={() => handleMenuClick("/#welcome")}>
-              Welcome
-            </MenuItem>
+            <MenuItem onClick={() => handleMenuClick("/")}>Welcome</MenuItem>
             <MenuItem onClick={() => handleMenuClick("/#howto")}>
               How To
             </MenuItem>

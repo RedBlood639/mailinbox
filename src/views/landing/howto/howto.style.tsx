@@ -1,7 +1,11 @@
 import styled from "styled-components";
+import bg from "assets/images/bg/bg-2.jpg";
 
 export const HowToPartDiv = styled.div`
-  position: relative;
+  background-attachment: fixed;
+  background-image: url(${bg.src});
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export const QuestionPart = styled.div`
@@ -90,13 +94,11 @@ export const AnswerTitle = styled.div`
   display: flex;
   align-items: center;
   img {
-    width: 50px;
-    height: 50px;
     object-fit: cover;
     border-radius: 50%;
-    margin-right: 20px;
   }
   span {
+    margin-left: 20px;
     width: calc(100% - 70px);
   }
   font-size: 20px;

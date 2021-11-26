@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { Props } from "layouts/layout.style";
+
 export const scrollEvent = () => {
   const scrollmove: any = document.getElementById("header");
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
@@ -28,11 +30,11 @@ export const MenuBar = styled.div`
   }
 `;
 
-export const MenuItem = styled.div`
+export const MenuItem = styled.div<Props>`
   display: inline-block;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: ${({ fSize }) => (fSize ? fSize + "px" : "16px")};
   position: relative;
   cursor: pointer;
   transition: all 0.2s ease-in-out;

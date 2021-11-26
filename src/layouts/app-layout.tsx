@@ -2,6 +2,7 @@ import React from "react";
 // component
 // import { ScrollTop } from "components/Button";
 // layout
+import { ScrollTop } from "components/Button";
 import { Header, Footer } from "layouts/app-layout/index";
 // styled component
 import { AppContent, AppLayoutWrapper } from "./layout.style";
@@ -14,7 +15,7 @@ const Layout = ({ children }: any) => {
       <Header />
       <AppContent>{children}</AppContent>
       <Footer />
-      {/* <ScrollTop /> */}
+      <ScrollTop />
     </AppLayoutWrapper>
   );
 };

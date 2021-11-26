@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 
 export const AboutPartDiv = styled.div`
-  background-color: rgb(188, 0, 0);
+  /* background-color: rgb(188, 0, 0); */
   padding: 50px 0;
 `;
 

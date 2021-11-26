@@ -16,7 +16,6 @@ import {
 } from "./howto.style";
 import { OverLayout, PageContainer, PageTitle } from "layouts/layout.style";
 
-import bg from "assets/images/bg/bg-2.jpg";
 import avatar from "assets/images/members/2.png";
 
 const howtoData = [
@@ -79,7 +78,7 @@ const HowToPart = () => {
 
   return (
     <HowToPartDiv id="howto">
-      <Image src={bg} alt="bg" objectFit="cover" layout="fill" />
+      {/* <Image src={bg} alt="bg" objectFit="cover" layout="fill" /> */}
       <OverLayout>
         <PageContainer>
           <PageTitle pd="50px 0 30px 0">How To</PageTitle>
@@ -103,7 +102,7 @@ const HowToPart = () => {
             </QuestionPart>
             <AnswerPart>
               <AnswerTitle>
-                <img src={avatar.src} alt="avatar" />
+                <Image src={avatar} alt="avatar" width="50px" height="50px" />
                 <span>{qaData.q}</span>
               </AnswerTitle>
               <Answer>{qaData.a}</Answer>

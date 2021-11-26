@@ -1,8 +1,12 @@
 import styled from "styled-components";
+import contactBG from "assets/images/bg/bg-1.jpg";
 
 export const ContactPartDiv = styled.div`
-  width: 100%;
   position: relative;
+  background-image: url(${contactBG.src});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 `;
 
 export const ContactDiv = styled.div`
@@ -16,7 +20,7 @@ export const ContactDiv = styled.div`
 export const ContactTextDiv = styled.div`
   margin: auto;
   margin-right: 0;
-  width: 80%;
+  width: 100%;
   color: white;
   & > *:not(:last-child) {
     margin-bottom: 30px;
@@ -39,10 +43,10 @@ export const ContactTextDiv = styled.div`
 `;
 
 export const WelcomeContactPart = styled.div`
-  width: 65%;
+  width: 80%;
   display: flex;
-  justify-content: center;
   margin: auto;
+  margin-right: 0;
 `;
 
 export const ContactForm = styled.div`
