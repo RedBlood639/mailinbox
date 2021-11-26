@@ -1,4 +1,5 @@
 import { Button } from "components/Button";
+import Image from "next/image";
 import Input from "components/Input/Input";
 import { OverLayout, VeDivider } from "layouts/layout.style";
 import router from "next/router";
@@ -14,6 +15,7 @@ import {
   AuthTitle,
   FormGroup,
 } from "views/signin/signin.style";
+import BG from "assets/images/bg/bg.png";
 
 const Signup = () => {
   const [state, setState] = useState<any>({
@@ -42,6 +44,7 @@ const Signup = () => {
 
   return (
     <AuthPage>
+      <Image src={BG} layout="fill" objectFit="cover" />
       <ToastContainer autoClose={3000} />
       <OverLayout>
         <AuthDiv>

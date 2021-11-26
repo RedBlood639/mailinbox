@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import Input from "components/Input/Input";
 import {
@@ -11,8 +12,9 @@ import {
 } from "./signin.style";
 import { OverLayout, VeDivider } from "layouts/layout.style";
 import { Button } from "components/Button";
-import { isEmail, validationSignIn } from "utils/validation";
+import { validationSignIn } from "utils/validation";
 import router from "next/router";
+import BG from "assets/images/bg/bg.png";
 
 const SignIn = () => {
   const [state, setState] = useState<any>({ email: "", password: "" });
@@ -35,6 +37,7 @@ const SignIn = () => {
 
   return (
     <AuthPage>
+      <Image src={BG} layout="fill" objectFit="cover" />
       <ToastContainer autoClose={3000} />
       <OverLayout>
         <AuthDiv>
