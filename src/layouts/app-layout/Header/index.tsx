@@ -13,7 +13,10 @@ const Header = () => {
   }, []);
 
   const handleMenuClick = (to: any) => {
-    console.log(window.scrollY);
+    if (to === "/") {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
     router.push(to);
   };
 
