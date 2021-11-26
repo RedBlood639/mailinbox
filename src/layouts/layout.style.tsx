@@ -8,6 +8,7 @@ interface Props {
   bottom?: number;
   mg?: string;
   pd?: string;
+  fColor?: string;
 }
 
 export const PageContainer = styled.div`
@@ -69,6 +70,6 @@ export const PageTitle = styled.div<Props>`
   font-size: 40px;
   font-weight: 900;
   text-transform: uppercase;
-  color: #fff;
+  color: ${({ fColor }) => (fColor ? fColor : "#fff")};
   padding: ${({ pd }) => (pd ? pd : "0")};
 `;

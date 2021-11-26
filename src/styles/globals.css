@@ -24,9 +24,10 @@ html {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #fff;
-  box-shadow: inset 1px 1px 2px #e0e0e0;
-  border: 1px solid #d8d8d8;
+  background: #ffffff30;
+  box-shadow: inset 1px 1px 2px transparent;
+  border: 0.1px solid #ffffff30;
+  border-radius: 10px;
 }
 
 /* Handle */
