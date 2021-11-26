@@ -19,8 +19,9 @@ import SwiperCore, { Autoplay, Pagination, Navigation } from "swiper";
 
 import aboutImg1 from "assets/images/AboutUs/aboutus-1.webp";
 import aboutImg2 from "assets/images/AboutUs/aboutus-2.webp";
-import mem1 from "assets/images/members/1.jpg";
-import mem2 from "assets/images/members/2.jpg";
+import mem1 from "assets/images/members/1.png";
+import mem2 from "assets/images/members/2.png";
+import mem3 from "assets/images/members/3.png";
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
@@ -92,10 +93,9 @@ const AboutPart = () => {
             </div>
           </GroupTitleDiv>
           <MemberGroup>
-            <MemberItem img={mem1.src} name="Kim Tan" />
+            <MemberItem img={mem1.src} name="Jamison" />
             <MemberItem img={mem2.src} name="Kim Tan" />
-            <MemberItem img={mem1.src} name="Kim Tan" />
-            <MemberItem img={mem2.src} name="Kim Tan" />
+            <MemberItem img={mem3.src} name="Haoming" />
           </MemberGroup>
         </MemberGroupDiv>
       </PageContainer>
