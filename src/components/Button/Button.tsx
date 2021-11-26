@@ -2,11 +2,18 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props {
-  label: string;
+  label: any;
   onClick: any;
 }
 
-const ButtonDiv = styled.button`
+const ButtonDiv = styled.div`
+  width: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+  svg {
+    margin-left: 10px;
+    color: white;
+  }
   padding: 15px 20px;
   outline: none;
   border: 1.5px solid white;
@@ -15,7 +22,6 @@ const ButtonDiv = styled.button`
   font-weight: 700;
   color: white;
   font-size: 16px;
-  width: 100%;
   :hover {
     transition: all 0.2s;
     box-shadow: 0 0 10px #fff;

@@ -17,7 +17,7 @@ export const AuthPage = styled.div`
 export const AuthDiv = styled.div`
   max-width: 500px;
   width: 90%;
-  margin: 10px 0;
+  margin: 50px 0;
   background-color: rgba(166, 0, 0, 0.7);
   box-shadow: 0 0 1em #222;
   border-radius: 20px;

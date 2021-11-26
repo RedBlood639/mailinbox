@@ -10,8 +10,8 @@ interface Props {
 }
 
 export const PageContainer = styled.div`
-  max-width: 1280px;
-  width: 80%;
+  max-width: 1240px;
+  width: 90%;
   margin: auto;
 `;
 
@@ -52,9 +52,14 @@ export const AppContent = styled.div`
 export const OverLayout = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgba(58, 0, 0, 0.2);
+  background-color: rgba(58, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const PageDiv = styled.div`
+  width: 100%;
+  height: 100%;
 `;

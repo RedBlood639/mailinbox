@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props {
-  type: string;
+  type?: string;
   value: string;
   name?: string;
   id?: string;
@@ -38,6 +38,22 @@ const InputDiv = styled.div`
       box-shadow: 0 0 10px #fff;
     }
   }
+  textarea {
+    background: transparent;
+    outline: none;
+    border: 1.5px solid #fff;
+    border-radius: 10px;
+    padding: 15px 20px;
+    color: white;
+    font-size: 16px;
+    :focus {
+      transition: all 0.5s;
+      border-color: white;
+      box-shadow: 0 0 10px #fff;
+    }
+    resize: none;
+    min-height: 100px;
+  }
 `;
 
 const Input = (props: Props) => {
@@ -57,3 +73,18 @@ const Input = (props: Props) => {
 };
 
 export default Input;
+
+export const TextArea = (props: Props) => {
+  return (
+    <InputDiv>
+      <span>{props.label}</span>
+      <textarea
+        onChange={props.onChange}
+        placeholder={props.placeholder}
+        value={props.value}
+        name={props.name}
+        id={props.id}
+      />
+    </InputDiv>
+  );
+};

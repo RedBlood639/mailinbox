@@ -1,15 +1,16 @@
 import type { NextPage } from "next";
-import { PageContainer } from "layouts/layout.style";
+import { PageDiv } from "layouts/layout.style";
 
 import { WelcomePart, AboutPart, HowToPart } from "views/landing";
+import React from "react";
 
 const Home: NextPage = () => {
   return (
-    <PageContainer>
+    <PageDiv>
       <WelcomePart />
       <AboutPart />
       <HowToPart />
-    </PageContainer>
+    </PageDiv>
   );
 };
 
