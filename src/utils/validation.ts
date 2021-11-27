@@ -34,3 +34,7 @@ export const validationSignIn = (state: any) => {
     return "success";
   }
 };
+
+export const isMobileView = (w: number) => {
+  return window.innerWidth <= w ? true : false;
+};

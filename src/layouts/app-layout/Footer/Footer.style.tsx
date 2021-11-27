@@ -6,6 +6,14 @@ export const FooterContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 5%;
   justify-content: space-between;
+  @media screen and (max-width: 850px) {
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 20px;
+  }
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 40px;
+  }
 `;
 
 export const FooterPartDiv = styled.div`
@@ -17,9 +25,17 @@ export const FooterPartDiv = styled.div`
   svg {
     transition: all 0.2s;
     font-size: 40px;
-    margin-right: 10px;
   }
   display: flex;
+  max-width: 350px;
+  width: 100%;
+  margin: auto;
+`;
+
+export const FooterIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
 `;
 
 export const FooterPartContent = styled.div`

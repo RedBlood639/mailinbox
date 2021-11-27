@@ -25,6 +25,7 @@ export const HeaderBar = styled.div`
 
 export const MenuBar = styled.div`
   display: flex;
+  align-items: center;
   & > *:not(:last-child) {
     margin-right: 25px;
   }
@@ -53,6 +54,51 @@ export const MenuItem = styled.div<Props>`
     color: #c0c0c0;
     ::after {
       transform: scaleX(1);
+    }
+  }
+`;
+
+interface SidebarProps {
+  flag: boolean;
+}
+
+export const SideBarSection = styled.div<SidebarProps>`
+  ${({ flag }) => (!flag ? "left: -325px" : "left: 0")};
+  transition: all 0.2s;
+  max-width: 320px;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  backdrop-filter: blur(20px);
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 10px rgba(90, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const SideBarMark = styled.div`
+  margin: 50px auto;
+`;
+
+export const SideBarMenuSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: inherit;
+  width: 60%;
+`;
+
+export const SideBarAction = styled.div`
+  & > *:not(:last-child) {
+    margin-bottom: 30px;
+  }
+  padding-bottom: 50px;
+  div {
+    div {
+      font-size: 20px !important;
     }
   }
 `;

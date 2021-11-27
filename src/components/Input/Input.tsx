@@ -25,6 +25,7 @@ const InputDiv = styled.div`
     font-size: 16px;
   }
   input {
+    width: calc(100% - 40px);
     background: transparent;
     outline: none;
     border: 1.5px solid #fff;

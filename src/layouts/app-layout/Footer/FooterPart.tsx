@@ -6,6 +6,7 @@ import {
   FooterPartDiv,
   FooterPartContent,
   FooterTitle,
+  FooterIcon,
 } from "./Footer.style";
 interface Props {
   partIcon?: any;
@@ -17,7 +18,7 @@ interface Props {
 const FooterPart = ({ partIcon, title, links, subicon }: Props) => {
   return (
     <FooterPartDiv>
-      {partIcon}
+      <FooterIcon>{partIcon}</FooterIcon>
       <FooterPartContent>
         <FooterTitle>{title}</FooterTitle>
         {links?.map((item: any, key: any) => (

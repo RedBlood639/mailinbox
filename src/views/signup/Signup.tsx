@@ -96,17 +96,17 @@ const Signup = () => {
             </FormGroup>
           </AuthFormGroup>
           <VeDivider mg="20px 0 0 0" />
-          <AuthActionGroup style={{ justifyContent: "flex-end" }}>
-            <div>
-              Already had an account?&nbsp;
-              <AuthAction
-                onClick={() => {
-                  router.push("/signin");
-                }}
-              >
-                Go to sign in
-              </AuthAction>
-            </div>
+          <AuthActionGroup
+            style={{ justifyContent: "flex-end", alignItems: "flex-end" }}
+          >
+            <span>Already had an account?&nbsp;</span>
+            <AuthAction
+              onClick={() => {
+                router.push("/signin");
+              }}
+            >
+              Go to sign in
+            </AuthAction>
           </AuthActionGroup>
           <VeDivider mg="20px 0 0 0" />
           <AuthActionGroup>

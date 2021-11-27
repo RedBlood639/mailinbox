@@ -24,12 +24,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
   Router.events.on("routeChangeError", () => NProgress.done());
   return !loading ? (
-    // <Suspense fallback={<Loading />}>
     <AppLayout>
       <Component {...pageProps} />
     </AppLayout>
   ) : (
-    // </Suspense>
     <Loading />
   );
 }

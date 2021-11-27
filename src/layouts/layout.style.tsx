@@ -10,6 +10,7 @@ export interface Props {
   pd?: string;
   fColor?: string;
   fSize?: number;
+  height?: number;
 }
 
 export const PageContainer = styled.div`
@@ -18,10 +19,11 @@ export const PageContainer = styled.div`
   margin: auto;
 `;
 
-export const HoDivider = styled.div`
+export const HoDivider = styled.div<Props>`
   width: 2px;
   background-color: white;
   border-radius: 2px;
+  height: ${({ height }) => (height ? height + "px" : "auto")};
 `;
 
 export const VeDivider = styled.div<Props>`
