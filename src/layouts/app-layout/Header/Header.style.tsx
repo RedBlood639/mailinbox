@@ -5,21 +5,21 @@ import { Props } from "layouts/layout.style";
 export const scrollEvent = () => {
   const scrollmove: any = document.getElementById("header");
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    scrollmove.style.padding = "20px 0";
+    scrollmove.style.padding = "15px 0";
   } else {
-    scrollmove.style.padding = "40px 0";
+    scrollmove.style.padding = "25px 0";
   }
 };
 
 export const HeaderBar = styled.div`
-  padding: 40px 0;
+  padding: 25px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.2s;
 
   :hover {
-    padding: 40px 0 !important;
+    padding: 25px 0 !important;
   }
 `;
 

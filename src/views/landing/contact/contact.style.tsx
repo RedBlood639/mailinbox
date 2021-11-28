@@ -15,6 +15,9 @@ export const ContactDiv = styled.div`
   display: grid;
   grid-template-columns: 55% 45%;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ContactTextDiv = styled.div`
@@ -40,13 +43,37 @@ export const ContactTextDiv = styled.div`
     display: flex;
     align-items: center;
   }
+  @media screen and (max-width: 768px) {
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+  }
+  @media screen and (max-width: 425px) {
+    .w_title {
+      font-size: 36px;
+    }
+    .w_subtitle {
+      font-size: 16px;
+    }
+    .link_item {
+      svg {
+        margin-left: 5px;
+      }
+      display: flex;
+      align-items: center;
+    }
+  }
 `;
 
 export const WelcomeContactPart = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
   margin: auto;
   margin-right: 0;
+  @media screen and (max-width: 768px) {
+    margin-right: auto;
+    justify-content: center;
+  }
 `;
 
 export const ContactForm = styled.div`
@@ -63,12 +90,17 @@ export const ContactForm = styled.div`
   .btn_div {
     width: auto;
   }
+
   margin: 50px 0;
   width: 100%;
   max-width: 500px;
   background-color: rgba(185, 0, 0, 0.7);
   padding: 30px 40px;
   box-shadow: 0 0 1em rgba(40, 0, 0, 0.4);
+  transition: all 0.2s;
+  @media screen and (max-width: 425px) {
+    padding: 30px 20px;
+  }
 `;
 
 export const SocialIconGroup = styled.div`
@@ -83,5 +115,8 @@ export const SocialIconGroup = styled.div`
   }
   & > *:not(:last-child) {
     margin-right: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    justify-content: center;
   }
 `;

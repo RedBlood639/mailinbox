@@ -10,7 +10,6 @@ export const HowToPartDiv = styled.div`
 
 export const QuestionPart = styled.div`
   height: 300px;
-
   position: relative;
   backdrop-filter: blur(50px);
   background-color: rgb(255, 255, 255, 0.2);
@@ -45,12 +44,15 @@ export const QandAPart = styled.div`
   grid-gap: 20px;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 50px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Question = styled.div`
   display: flex;
   align-items: center;
-  svg {
+  div {
     margin-right: 10px;
   }
   cursor: pointer;
@@ -59,6 +61,9 @@ export const Question = styled.div`
   transition: 0.2s all;
   :hover {
     transform: scale(1.02);
+  }
+  @media screen and (max-width: 425px) {
+    font-size: 16px;
   }
 `;
 
@@ -88,6 +93,9 @@ export const AnswerPart = styled.div`
     box-shadow: 0 0 10px rgb(60, 0, 0);
     background-color: rgb(255, 255, 255, 0.1);
   }
+  @media screen and (max-width: 768px) {
+    height: fit-content;
+  }
 `;
 
 export const AnswerTitle = styled.div`
@@ -99,11 +107,16 @@ export const AnswerTitle = styled.div`
   }
   span {
     margin-left: 20px;
-    width: calc(100% - 70px);
+    width: calc(100% - 90px);
   }
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
+  & svg {
+    position: absolute;
+    right: 5%;
+    cursor: pointer;
+  }
 `;
 
 export const Answer = styled.div`
@@ -113,4 +126,9 @@ export const Answer = styled.div`
   font-weight: 700;
   height: 220px;
   overflow: auto;
+  ul {
+    & > *:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
 `;

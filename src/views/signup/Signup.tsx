@@ -43,78 +43,81 @@ const Signup = () => {
   };
 
   return (
-    <AuthPage>
-      <Image src={BG} layout="fill" objectFit="cover" />
+    // <AuthPage>
+    //   <Image src={BG} layout="fill" objectFit="cover" />
+    //   <ToastContainer autoClose={3000} />
+    //   <OverLayout>
+    <>
       <ToastContainer autoClose={3000} />
-      <OverLayout>
-        <AuthDiv>
-          <AuthTitle>Sign Up</AuthTitle>
-          <AuthFormGroup>
-            <FormGroup>
-              <Input
-                label={"First Name"}
-                type="text"
-                value={state.fName}
-                onChange={handleInputChange}
-                placeholder="First Name"
-                name="fName"
-              />
-              <Input
-                label={"Last Name"}
-                type="text"
-                value={state.lName}
-                onChange={handleInputChange}
-                placeholder="Last name"
-                name="lName"
-              />
-            </FormGroup>
+      <AuthDiv>
+        <AuthTitle>Sign Up</AuthTitle>
+        <AuthFormGroup>
+          <FormGroup>
             <Input
-              label={"Email"}
-              type="email"
-              value={state.email}
+              label={"First Name"}
+              type="text"
+              value={state.fName}
               onChange={handleInputChange}
-              placeholder="Email"
-              name="email"
+              placeholder="First Name"
+              name="fName"
             />
-            <FormGroup>
-              <Input
-                label={"Password"}
-                type="password"
-                value={state.pass1}
-                onChange={handleInputChange}
-                placeholder="Password"
-                name="pass1"
-              />
-              <Input
-                label={"Confirm Password"}
-                type="password"
-                value={state.pass2}
-                onChange={handleInputChange}
-                placeholder="Confirm Password"
-                name="pass2"
-              />
-            </FormGroup>
-          </AuthFormGroup>
-          <VeDivider mg="20px 0 0 0" />
-          <AuthActionGroup
-            style={{ justifyContent: "flex-end", alignItems: "flex-end" }}
+            <Input
+              label={"Last Name"}
+              type="text"
+              value={state.lName}
+              onChange={handleInputChange}
+              placeholder="Last name"
+              name="lName"
+            />
+          </FormGroup>
+          <Input
+            label={"Email"}
+            type="email"
+            value={state.email}
+            onChange={handleInputChange}
+            placeholder="Email"
+            name="email"
+          />
+          <FormGroup>
+            <Input
+              label={"Password"}
+              type="password"
+              value={state.pass1}
+              onChange={handleInputChange}
+              placeholder="Password"
+              name="pass1"
+            />
+            <Input
+              label={"Confirm Password"}
+              type="password"
+              value={state.pass2}
+              onChange={handleInputChange}
+              placeholder="Confirm Password"
+              name="pass2"
+            />
+          </FormGroup>
+        </AuthFormGroup>
+        <VeDivider mg="20px 0 0 0" />
+        <AuthActionGroup
+          style={{ justifyContent: "flex-end", alignItems: "flex-end" }}
+        >
+          <span>Already had an account?&nbsp;</span>
+          <AuthAction
+            onClick={() => {
+              router.push("/signin");
+            }}
           >
-            <span>Already had an account?&nbsp;</span>
-            <AuthAction
-              onClick={() => {
-                router.push("/signin");
-              }}
-            >
-              Go to sign in
-            </AuthAction>
-          </AuthActionGroup>
-          <VeDivider mg="20px 0 0 0" />
-          <AuthActionGroup>
-            <Button onClick={handleSignUpClick} label="Sign Up" />
-          </AuthActionGroup>
-        </AuthDiv>
-      </OverLayout>
-    </AuthPage>
+            Go to sign in
+          </AuthAction>
+        </AuthActionGroup>
+        <VeDivider mg="20px 0 0 0" />
+        <AuthActionGroup>
+          <Button onClick={handleSignUpClick} label="Sign Up" />
+        </AuthActionGroup>
+      </AuthDiv>
+    </>
+    //   </OverLayout>
+    // </AuthPage>
   );
 };
 

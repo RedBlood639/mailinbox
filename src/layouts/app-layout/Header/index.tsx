@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import router from "next/router";
+import { Backdrop, Fade, Modal, Box, Typography } from "@mui/material";
 import {
   HoDivider,
   LayoutContainer,
@@ -10,11 +11,21 @@ import Mark from "components/mark/Mark";
 import MenuButton from "components/Button/MenuButton";
 import SideBar from "./SideBar";
 import { isMobileView } from "utils/validation";
+import SignIn from "views/signin/SignIn";
+import Signup from "views/signup/Signup";
+
 const Header = () => {
+  const [open, setOpen] = useState(false);
+  const [modalcontent, setModalcontent] = useState("signin");
+
   const [state, setState] = useState({ mobileView: false, menuShow: false });
   const menuRef = useRef<any>(null);
   const { mobileView, menuShow } = state;
-
+  const handleOpen = (key: string) => {
+    setModalcontent(key);
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
   useEffect(() => {
     const stateSetting = () => {
       setState((prev) => ({ ...prev, mobileView: isMobileView(850) }));
@@ -56,46 +67,71 @@ const Header = () => {
     }
   };
 
+  const style = {
+    width: "100%",
+  };
+
   return (
-    <LayoutContainer className="bg-layout" fixed top={0}>
-      <PageContainer>
-        <HeaderBar id="header">
-          <Mark />
-          {!mobileView ? (
-            <MenuBar>
-              <MenuItem onClick={() => handleMenuClick("/")}>Welcome</MenuItem>
-              <MenuItem onClick={() => handleMenuClick("/#howto")}>
-                How To
-              </MenuItem>
-              <MenuItem onClick={() => handleMenuClick("/#about")}>
-                About
-              </MenuItem>
-              <MenuItem onClick={() => handleMenuClick("/#contact")}>
-                Contact
-              </MenuItem>
-              <HoDivider height={18} />
-              <MenuItem onClick={() => handleMenuClick("/signin")}>
-                Sign in
-              </MenuItem>
-              <MenuItem onClick={() => handleMenuClick("/signup")}>
-                Sign up
-              </MenuItem>
-            </MenuBar>
-          ) : (
-            <MenuBar>
-              <MenuButton onClick={handleToggleMenu} flag={menuShow} />
-            </MenuBar>
-          )}
-        </HeaderBar>
-      </PageContainer>
-      {mobileView && (
-        <SideBar
-          menuRef={menuRef}
-          flag={menuShow}
-          onMenuClick={handleMenuClick}
-        />
-      )}
-    </LayoutContainer>
+    <>
+      <LayoutContainer className="bg-layout" fixed top={0}>
+        <PageContainer>
+          <HeaderBar id="header">
+            <Mark />
+            {!mobileView ? (
+              <MenuBar>
+                <MenuItem onClick={() => handleMenuClick("/")}>
+                  Welcome
+                </MenuItem>
+                <MenuItem onClick={() => handleMenuClick("/#howto")}>
+                  How To
+                </MenuItem>
+                <MenuItem onClick={() => handleMenuClick("/#about")}>
+                  About
+                </MenuItem>
+                <MenuItem onClick={() => handleMenuClick("/#contact")}>
+                  Contact
+                </MenuItem>
+                <HoDivider height={18} />
+                <MenuItem onClick={() => handleOpen("signin")}>
+                  Sign in
+                </MenuItem>
+                <MenuItem onClick={() => handleOpen("signup")}>
+                  Sign up
+                </MenuItem>
+              </MenuBar>
+            ) : (
+              <MenuBar>
+                <MenuButton onClick={handleToggleMenu} flag={menuShow} />
+              </MenuBar>
+            )}
+          </HeaderBar>
+        </PageContainer>
+        {mobileView && (
+          <SideBar
+            menuRef={menuRef}
+            flag={menuShow}
+            onMenuClick={handleMenuClick}
+          />
+        )}
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <Box sx={style}>
+              {modalcontent === "signin" ? <SignIn /> : <Signup />}
+            </Box>
+          </Fade>
+        </Modal>
+      </LayoutContainer>
+    </>
   );
 };
 

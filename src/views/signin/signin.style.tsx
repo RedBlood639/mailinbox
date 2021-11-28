@@ -11,10 +11,11 @@ export const AuthPage = styled.div`
 
 export const AuthDiv = styled.div`
   max-width: 500px;
+  height: fit-content;
   width: calc(90% - 80px);
-  margin: 50px 0;
-  background-color: rgba(166, 0, 0, 0.7);
-  box-shadow: 0 0 1em #222;
+  margin: 50px auto;
+  background-color: rgba(166, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   border-radius: 20px;
   padding: 30px 40px;
   display: flex;
@@ -25,6 +26,9 @@ export const AuthDiv = styled.div`
   @media screen and (max-width: 320px) {
     padding: 30px 20px;
     width: calc(95% - 40px);
+  }
+  .Toastify {
+    position: absolute;
   }
 `;
 

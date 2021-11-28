@@ -36,48 +36,51 @@ const SignIn = () => {
   };
 
   return (
-    <AuthPage>
-      <Image src={BG} layout="fill" objectFit="cover" />
+    // <AuthPage>
+    //   <Image src={BG} layout="fill" objectFit="cover" />
+    //   <ToastContainer autoClose={3000} />
+    //   <OverLayout>
+    <>
       <ToastContainer autoClose={3000} />
-      <OverLayout>
-        <AuthDiv>
-          <AuthTitle>Sign In</AuthTitle>
-          <AuthFormGroup>
-            <Input
-              label="Email"
-              type="email"
-              value={state.email}
-              onChange={handleInputChange}
-              placeholder="Email"
-              name="email"
-            />
-            <Input
-              label="Password"
-              type="password"
-              value={state.password}
-              onChange={handleInputChange}
-              placeholder="Password"
-              name="password"
-            />
-          </AuthFormGroup>
-          <VeDivider mg="20px 0 0 0" />
-          <AuthActionGroup>
-            <AuthAction>Forgot password?</AuthAction>
-            <AuthAction
-              onClick={() => {
-                router.push("/signup");
-              }}
-            >
-              Create new account
-            </AuthAction>
-          </AuthActionGroup>
-          <VeDivider mg="20px 0 0 0" />
-          <AuthActionGroup>
-            <Button onClick={handleSignIn} label="Sign In" />
-          </AuthActionGroup>
-        </AuthDiv>
-      </OverLayout>
-    </AuthPage>
+      <AuthDiv>
+        <AuthTitle>Sign In</AuthTitle>
+        <AuthFormGroup>
+          <Input
+            label="Email"
+            type="email"
+            value={state.email}
+            onChange={handleInputChange}
+            placeholder="Email"
+            name="email"
+          />
+          <Input
+            label="Password"
+            type="password"
+            value={state.password}
+            onChange={handleInputChange}
+            placeholder="Password"
+            name="password"
+          />
+        </AuthFormGroup>
+        <VeDivider mg="20px 0 0 0" />
+        <AuthActionGroup>
+          <AuthAction>Forgot password?</AuthAction>
+          <AuthAction
+            onClick={() => {
+              router.push("/signup");
+            }}
+          >
+            Create new account
+          </AuthAction>
+        </AuthActionGroup>
+        <VeDivider mg="20px 0 0 0" />
+        <AuthActionGroup>
+          <Button onClick={handleSignIn} label="Sign In" />
+        </AuthActionGroup>
+      </AuthDiv>
+    </>
+    //   </OverLayout>
+    // </AuthPage>
   );
 };
 

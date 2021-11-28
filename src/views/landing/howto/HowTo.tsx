@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import { FaHandPointRight } from "react-icons/fa";
+import { IoArrowUndo } from "react-icons/io5";
 
 import {
   HowToPartDiv,
@@ -72,8 +73,13 @@ const howtoData = [
 const HowToPart = () => {
   const [qaData, setQaData] = useState({
     id: -1,
-    q: "Welcome",
-    a: "Welcome to our site",
+    q: "Welcome to our site",
+    a: [
+      "Write a letter to someone without sending it.",
+      "Reply to that e-mail without sending it.",
+      "Create an album on how you feel.",
+      "Speak your mind without worrying.",
+    ],
   });
 
   return (
@@ -93,7 +99,11 @@ const HowToPart = () => {
                     }}
                     className={qaData.id === key ? "selected_question" : ""}
                   >
-                    {qaData.id === key && <FaHandPointRight />}
+                    {qaData.id === key && (
+                      <div>
+                        <FaHandPointRight />
+                      </div>
+                    )}
                     {item.q}
                   </Question>
                 ))}
@@ -103,8 +113,34 @@ const HowToPart = () => {
               <AnswerTitle>
                 <Image src={avatar} alt="avatar" width="50px" height="50px" />
                 <span>{qaData.q}</span>
+                {qaData.id !== -1 && (
+                  <IoArrowUndo
+                    onClick={() => {
+                      setQaData({
+                        id: -1,
+                        q: "Welcome to our site",
+                        a: [
+                          "Write a letter to someone without sending it.",
+                          "Reply to that e-mail without sending it.",
+                          "Create an album on how you feel.",
+                          "Speak your mind without worrying.",
+                        ],
+                      });
+                    }}
+                  />
+                )}
               </AnswerTitle>
-              <Answer>{qaData.a}</Answer>
+              <Answer>
+                {typeof qaData.a !== "string" ? (
+                  <ul>
+                    {qaData.a.map((item: any, key: any) => (
+                      <li key={key}>{item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  qaData.a
+                )}
+              </Answer>
             </AnswerPart>
           </QandAPart>
         </PageContainer>

@@ -1,13 +1,66 @@
 import styled from "styled-components";
-import bg from "assets/images/bg/bg.jpg";
+import bg from "assets/images/bg/bg.png";
 import { Props } from "layouts/layout.style";
 
 export const WelcomePartDiv = styled.div`
   position: relative;
-  background: url(${bg.src}) no-repeat;
+  /* background: url(${bg.src}) no-repeat; */
   background-attachment: fixed;
   background-size: cover;
-  height: calc(100vh - 122px);
+  min-height: calc(100vh - 72px);
+  height: 100%;
+  /* height: calc(100vh - 72px); */
+  .mySwiper {
+    min-height: calc(100vh - 72px);
+    --swiper-navigation-color: #fff;
+    --swiper-pagination-color: "#fff";
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    font-size: 18px;
+    color: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 40px 60px;
+  }
+
+  .parallax-bg {
+    background: url(${bg.src}) no-repeat;
+    /* background-attachment: fixed;
+    background-size: 200%; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 130%;
+    height: 100%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .swiper-slide .title {
+    font-size: 41px;
+    font-weight: 300;
+  }
+
+  .swiper-slide .subtitle {
+    font-size: 21px;
+  }
+
+  .swiper-slide {
+    padding: 0 !important;
+    /* background-color: rgb(0, 0, 0, 0.5); */
+  }
+
+  .swiper-slide .text {
+    font-size: 14px;
+    max-width: 400px;
+    line-height: 1.3;
+  }
 `;
 
 export const HandImg = styled.div`
@@ -17,17 +70,65 @@ export const HandImg = styled.div`
 `;
 
 export const WelcomeText = styled.div`
-  position: absolute;
-  top: 10vh;
-  text-align: center;
   color: white;
+  width: 100%;
+
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   h1 {
-    font-size: 60px;
+    text-align: center;
+    font-size: 5vw;
     font-weight: 900;
+    transition: all 0.2s;
+    margin-top: 20px;
   }
   h2 {
-    font-size: 40px;
+    font-size: 2vw;
     font-weight: 900;
+    transition: all 0.2s;
+  }
+  ul {
+    font-size: 1.5vw;
+    font-weight: 700;
+    & > *:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    h1 {
+      font-size: 50px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    ul {
+      font-size: 18px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 45px;
+    }
+    h2 {
+      font-size: 18px;
+    }
+    ul {
+      font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    h1 {
+      font-size: 35px;
+    }
+    h2 {
+      font-size: 16px;
+    }
+    ul {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -38,6 +139,11 @@ export const Actions = styled.div`
     margin-right: 50px;
   }
   padding-top: 30px;
+  @media screen and (max-width: 425px) {
+    div {
+      font-size: 16px;
+    }
+  }
 `;
 
 export const WelcomeDescPart = styled.div`
@@ -49,7 +155,16 @@ export const WelcomeDescription = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 50px;
+  grid-gap: 5%;
+  padding: 70px 0;
+  transition: all 0.2s;
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 90px;
+  }
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const WelcomeCardDiv = styled.div<Props>`
@@ -58,9 +173,9 @@ export const WelcomeCardDiv = styled.div<Props>`
   align-items: center;
   position: relative;
   color: white;
-  background-color: ${({ fColor }) => fColor};
-  box-shadow: 0 0 10px ${({ fColor }) => fColor};
-  border-radius: 10px 10px 50px 50px;
+  background-color: ${({ fColor }) => fColor + "30"};
+  box-shadow: 0 0 10px ${({ fColor }) => fColor + "30"};
+  border-radius: 100px 100px 50px 50px;
   .card_icon {
     width: 90px;
     height: 90px;
@@ -69,8 +184,8 @@ export const WelcomeCardDiv = styled.div<Props>`
     align-items: center;
     font-size: 45px;
     border-radius: 50%;
-    background-color: ${({ fColor }) => fColor};
-    margin-top: -50px;
+    background-color: ${({ fColor }) => fColor + "aa"};
+    margin-top: -40px;
     box-shadow: 0 0 10px #eee;
   }
   .card_title {
@@ -85,4 +200,17 @@ export const WelcomeCardDiv = styled.div<Props>`
     padding: 25px 20px;
     line-height: 30px;
   }
+`;
+
+export const WelcomePreviewPart = styled.div`
+  color: white;
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const WelcomePreview = styled.div`
+  font-size: 50px;
 `;

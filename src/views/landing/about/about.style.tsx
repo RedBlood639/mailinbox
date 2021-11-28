@@ -9,21 +9,30 @@ export const AboutPartDiv = styled.div`
 export const AboutSliderDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Slider = styled.div`
   margin: 30px 0;
   max-width: 500px;
   width: 100%;
+  height: fit-content;
+  transition: all 0.2s;
+  @media screen and (max-width: 600px) {
+    max-width: 400px;
+  }
+  @media screen and (max-width: 450px) {
+    max-width: 270px;
+  }
   .swiper-button-next {
     color: rgb(147, 0, 0) !important;
   }
   .swiper-button-prev {
     color: rgb(147, 0, 0) !important;
   }
-  .swiper-pagination-bullet-active {
-    background: rgb(147, 0, 0);
-  }
+
   box-shadow: 0 0 10px rgb(60, 0, 0);
   .poster {
     position: relative;
@@ -94,6 +103,11 @@ export const Slider = styled.div`
 export const SliderText = styled.div`
   color: white;
   padding: 30px 0;
+  width: 90%;
+  margin: auto;
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 export const TextHeader = styled.div`
@@ -103,6 +117,13 @@ export const TextHeader = styled.div`
   padding: 20px 0;
   font-size: 26px;
   font-weight: 700;
+  transition: all 0.2s;
+  @media screen and (max-width: 600px) {
+    font-size: 22px;
+  }
+  @media screen and (max-width: 450px) {
+    font-size: 20px;
+  }
 `;
 
 export const TextContent = styled.div`
@@ -110,6 +131,12 @@ export const TextContent = styled.div`
   font-weight: 500;
   margin-top: 30px;
   line-height: 35px;
+  @media screen and (max-width: 600px) {
+    font-size: 21px;
+  }
+  @media screen and (max-width: 450px) {
+    font-size: 19px;
+  }
 `;
 
 export const MemberGroupDiv = styled.div`
@@ -134,6 +161,12 @@ export const MemberGroup = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    & > *:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 export const AvatarDiv = styled.div`
@@ -144,6 +177,22 @@ export const AvatarDiv = styled.div`
   contain: content;
   width: 200px;
   height: 200px;
+  @media screen and (max-width: 850px) {
+    width: 180px;
+    height: 180px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 150px;
+    height: 150px;
+  }
+  @media screen and (max-width: 650px) {
+    width: 100px;
+    height: 100px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 200px;
+    height: 200px;
+  }
   transition: all 0.2s;
   :hover {
     background-color: #000;

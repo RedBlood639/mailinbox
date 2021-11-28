@@ -50,8 +50,7 @@ export const AppLayoutWrapper = styled.div`
 
 export const AppContent = styled.div`
   min-height: calc(100vh - 122px - 149px);
-  margin: 122px 0 0 0;
-  display: flex;
+  margin: 72px 0 0 0;
 `;
 
 export const OverLayout = styled.div`
