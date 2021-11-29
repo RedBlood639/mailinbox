@@ -41,10 +41,15 @@ export default class CustomDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
+
           <link
             href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600&family=Exo:wght@500;600;700&family=Noto+Serif:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap"
             rel="stylesheet"
-          ></link>
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Damion&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

@@ -98,7 +98,7 @@ const Signup = () => {
           </FormGroup>
         </AuthFormGroup>
         <VeDivider mg="20px 0 0 0" />
-        <AuthActionGroup
+        {/* <AuthActionGroup
           style={{ justifyContent: "flex-end", alignItems: "flex-end" }}
         >
           <span>Already had an account?&nbsp;</span>
@@ -110,7 +110,7 @@ const Signup = () => {
             Go to sign in
           </AuthAction>
         </AuthActionGroup>
-        <VeDivider mg="20px 0 0 0" />
+        <VeDivider mg="20px 0 0 0" /> */}
         <AuthActionGroup>
           <Button onClick={handleSignUpClick} label="Sign Up" />
         </AuthActionGroup>

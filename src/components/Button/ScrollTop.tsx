@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+/**
+ * @import
+ */
 
-// styled system
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
-// icons
 import { IoIosArrowUp } from "react-icons/io";
+import { ScrollButtonProps } from "types/types";
 
-// type
-interface ScrollButtonProps {
-  showButton: boolean;
-  [key: string]: unknown;
-}
-// styeld component
+/**
+ * @define Styled-components
+ */
+
 const ScrollButtonWrapper = styled.div<ScrollButtonProps>`
   position: fixed;
   width: 74px;
@@ -47,7 +47,9 @@ const ButtonDiv = styled.div`
   color: white;
 `;
 
-// --------------------------------------------------------
+/**
+ * @define Main component
+ */
 
 const ScrollTop = () => {
   const [enable, setEnable] = useState(false);

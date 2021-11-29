@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import { ToastContainer, toast } from "react-toastify";
 import Input from "components/Input/Input";
 import {
-  AuthPage,
+  // AuthPage,
   AuthDiv,
   AuthTitle,
   AuthFormGroup,
   AuthActionGroup,
   AuthAction,
 } from "./signin.style";
-import { OverLayout, VeDivider } from "layouts/layout.style";
+import { VeDivider } from "layouts/layout.style";
 import { Button } from "components/Button";
 import { validationSignIn } from "utils/validation";
 import router from "next/router";
-import BG from "assets/images/bg/bg.png";
+// import router from "next/router";
+// import BG from "assets/images/bg/bg.png";
 
 const SignIn = () => {
   const [state, setState] = useState<any>({ email: "", password: "" });
@@ -29,9 +30,11 @@ const SignIn = () => {
         theme: "colored",
       });
     } else {
-      toast.success(validationSignIn(state), {
-        theme: "colored",
-      });
+      localStorage.setItem("isAuthenticated", "true");
+      router.push("/home");
+      // toast.success(validationSignIn(state), {
+      //   theme: "colored",
+      // });
     }
   };
 
@@ -65,13 +68,13 @@ const SignIn = () => {
         <VeDivider mg="20px 0 0 0" />
         <AuthActionGroup>
           <AuthAction>Forgot password?</AuthAction>
-          <AuthAction
+          {/* <AuthAction
             onClick={() => {
               router.push("/signup");
             }}
           >
             Create new account
-          </AuthAction>
+          </AuthAction> */}
         </AuthActionGroup>
         <VeDivider mg="20px 0 0 0" />
         <AuthActionGroup>

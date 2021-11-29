@@ -23,11 +23,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     NProgress.done();
   });
   Router.events.on("routeChangeError", () => NProgress.done());
+
   return !loading ? (
     <AppLayout>
       <Component {...pageProps} />
     </AppLayout>
   ) : (
+    // <AppLayout>
+
+    // </AppLayout>
     <Loading />
   );
 }

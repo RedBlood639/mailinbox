@@ -7,11 +7,11 @@ export const WelcomePartDiv = styled.div`
   /* background: url(${bg.src}) no-repeat; */
   background-attachment: fixed;
   background-size: cover;
-  min-height: calc(100vh - 72px);
+  min-height: calc(100vh - 91px);
   height: 100%;
   /* height: calc(100vh - 72px); */
   .mySwiper {
-    min-height: calc(100vh - 72px);
+    min-height: calc(100vh - 91px);
     --swiper-navigation-color: #fff;
     --swiper-pagination-color: "#fff";
   }
@@ -73,7 +73,7 @@ export const WelcomeText = styled.div`
   color: white;
   width: 100%;
 
-  min-height: calc(100vh - 72px);
+  min-height: calc(100vh - 91px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -205,12 +205,79 @@ export const WelcomeCardDiv = styled.div<Props>`
 export const WelcomePreviewPart = styled.div`
   color: white;
   width: 100%;
-  min-height: calc(100vh - 72px);
+  min-height: calc(100vh - 91px);
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
 
 export const WelcomePreview = styled.div`
-  font-size: 50px;
+  min-height: calc(100vh - 91px);
+  width: 100%;
+  display: flex;
+
+  align-items: center;
+  #previewpart {
+    display: flex;
+    justify-content: space-between;
+    & > *:not(:last-child) {
+      margin-right: 5%;
+    }
+  }
+`;
+
+export const PreviewDiv = styled.div`
+  background-color: rgba(165, 99, 99, 0.3);
+  padding: 20px 30px;
+  border-radius: 20px;
+  /* box-shadow: 0 0 20px rgba(65, 46, 46, 0.5); */
+  color: white;
+  min-width: 280px;
+  max-width: 340px;
+  width: 100%;
+  transition: all 0.2s;
+
+  h1 {
+    margin: 10px 0;
+    font-weight: 900;
+    font-family: Damion;
+    border-bottom: 2px solid white;
+    font-size: 40px;
+  }
+  :hover {
+    transform: scale(1.02);
+    background-color: rgba(117, 16, 16, 0.3);
+    box-shadow: 0 0 30px rgba(54, 17, 17, 1);
+  }
+  .preview_desc {
+    font-size: 20px;
+    line-height: 30px;
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+  }
+  span {
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    float: right;
+    padding-top: 20px;
+    position: relative;
+    ::after {
+      transition: all 0.2s ease-in-out;
+      position: absolute;
+      content: "";
+      height: 2px;
+      background-color: white;
+      width: 100%;
+      left: 0;
+      bottom: -5px;
+      transform: scaleX(0);
+    }
+    :hover {
+      color: #c0c0c0;
+      ::after {
+        transform: scaleX(1);
+      }
+    }
+  }
 `;

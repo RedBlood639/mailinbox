@@ -13,4 +13,5 @@ export const MarkDiv = styled.div`
     margin-left: 2px;
   }
   cursor: pointer;
+  font-family: Damion;
 `;

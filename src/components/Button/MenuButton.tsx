@@ -1,23 +1,14 @@
+/**
+ * @import
+ */
+
 import React from "react";
 import styled from "styled-components";
+import { MenuButtonProps } from "types/types";
 
-const MenuButton = ({ onClick, flag }: any) => {
-  return (
-    <MenuIcon>
-      <div
-        className={`container ${flag ? "change" : ""}`}
-        id="menu-icon"
-        onClick={onClick}
-      >
-        <div className="bar1"></div>
-        <div className="bar2"></div>
-        <div className="bar3"></div>
-      </div>
-    </MenuIcon>
-  );
-};
-
-export default MenuButton;
+/**
+ * @define Styled-components
+ */
 
 const MenuIcon = styled.div`
   .container {
@@ -49,3 +40,25 @@ const MenuIcon = styled.div`
     transform: rotate(45deg) translate(-8px, -8px);
   }
 `;
+
+/**
+ * @define Main component
+ */
+
+const MenuButton = ({ onClick, flag }: MenuButtonProps) => {
+  return (
+    <MenuIcon>
+      <div
+        className={`container ${flag ? "change" : ""}`}
+        id="menu-icon"
+        onClick={onClick}
+      >
+        <div className="bar1"></div>
+        <div className="bar2"></div>
+        <div className="bar3"></div>
+      </div>
+    </MenuIcon>
+  );
+};
+
+export default MenuButton;

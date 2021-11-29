@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import router from "next/router";
-import { Backdrop, Fade, Modal, Box, Typography } from "@mui/material";
+import { Backdrop, Fade, Modal, Box } from "@mui/material";
 import {
   HoDivider,
   LayoutContainer,
@@ -14,9 +14,49 @@ import { isMobileView } from "utils/validation";
 import SignIn from "views/signin/SignIn";
 import Signup from "views/signup/Signup";
 
+const unauthedMenu = [
+  {
+    title: "Welcome",
+    path: "/",
+  },
+  {
+    title: "How To",
+    path: "/#howto",
+  },
+  {
+    title: "About",
+    path: "/#about",
+  },
+  {
+    title: "Contact",
+    path: "/#contact",
+  },
+];
+
+const authedMenu = [
+  {
+    title: "Home",
+    path: "/home",
+  },
+  {
+    title: "Letter",
+    path: "/letter",
+  },
+  {
+    title: "Email",
+    path: "/email",
+  },
+  {
+    title: "Burnbook",
+    path: "/burnbook",
+  },
+];
+
 const Header = () => {
+  const [isAuth, setIsAuth] = useState(false);
   const [open, setOpen] = useState(false);
   const [modalcontent, setModalcontent] = useState("signin");
+  const [menudata, setMenudata] = useState<any>([]);
 
   const [state, setState] = useState({ mobileView: false, menuShow: false });
   const menuRef = useRef<any>(null);
@@ -39,6 +79,17 @@ const Header = () => {
       document.removeEventListener("scroll", scrollEvent);
       document.removeEventListener("mousedown", handleClickOutside);
     };
+  }, []);
+
+  useEffect(() => {
+    setMenudata(
+      localStorage.getItem("isAuthenticated") === "true"
+        ? authedMenu
+        : unauthedMenu
+    );
+    setIsAuth(
+      localStorage.getItem("isAuthenticated") === "true" ? true : false
+    );
   }, []);
 
   const handleMenuClick = (to: any) => {
@@ -67,6 +118,10 @@ const Header = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.setItem("isAuthenticated", "false");
+  };
+
   const style = {
     width: "100%",
   };
@@ -79,25 +134,27 @@ const Header = () => {
             <Mark />
             {!mobileView ? (
               <MenuBar>
-                <MenuItem onClick={() => handleMenuClick("/")}>
-                  Welcome
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick("/#howto")}>
-                  How To
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick("/#about")}>
-                  About
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuClick("/#contact")}>
-                  Contact
-                </MenuItem>
+                {menudata.map((item: any, key: any) => (
+                  <MenuItem
+                    key={key}
+                    onClick={() => handleMenuClick(item.path)}
+                  >
+                    {item.title}
+                  </MenuItem>
+                ))}
                 <HoDivider height={18} />
-                <MenuItem onClick={() => handleOpen("signin")}>
-                  Sign in
-                </MenuItem>
-                <MenuItem onClick={() => handleOpen("signup")}>
-                  Sign up
-                </MenuItem>
+                {isAuth ? (
+                  <MenuItem onClick={handleLogout}>Log out</MenuItem>
+                ) : (
+                  <>
+                    <MenuItem onClick={() => handleOpen("signin")}>
+                      Sign in
+                    </MenuItem>
+                    <MenuItem onClick={() => handleOpen("signup")}>
+                      Sign up
+                    </MenuItem>
+                  </>
+                )}
               </MenuBar>
             ) : (
               <MenuBar>

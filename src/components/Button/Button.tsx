@@ -1,10 +1,14 @@
+/**
+ * @import
+ */
+
 import React from "react";
 import styled from "styled-components";
+import { ButtonProps } from "types/types";
 
-interface Props {
-  label: any;
-  onClick: any;
-}
+/**
+ * @define Styled-components
+ */
 
 const ButtonDiv = styled.div`
   width: -webkit-fill-available;
@@ -29,7 +33,11 @@ const ButtonDiv = styled.div`
   }
 `;
 
-const Button = (props: Props) => {
+/**
+ * @define Main component
+ */
+
+const Button = (props: ButtonProps) => {
   return <ButtonDiv onClick={props.onClick}>{props.label}</ButtonDiv>;
 };
 

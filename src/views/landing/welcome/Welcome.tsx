@@ -1,27 +1,21 @@
 import React from "react";
-import Image from "next/image";
 import { HiLightBulb } from "react-icons/hi";
 import { GoMegaphone } from "react-icons/go";
 import { AiTwotoneEdit, AiFillWechat } from "react-icons/ai";
 
 import { OverLayout, PageContainer } from "layouts/layout.style";
 import {
-  // Actions,
-  // HandImg,
+  WelcomePreview,
+  PreviewDiv,
   WelcomeCardDiv,
-  // WelcomeDescPart,
   WelcomeDescription,
   WelcomePartDiv,
-  WelcomePreview,
-  WelcomePreviewPart,
   WelcomeText,
 } from "./welcome.style";
-// import { MenuItem } from "layouts/app-layout/Header/Header.style";
 
-// import img from "assets/images/bg/handwriting.png";
-// import router from "next/router";
 import SwiperCore, { Autoplay, Parallax, Pagination, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import router from "next/router";
 // install Swiper modules
 SwiperCore.use([Autoplay, Parallax, Pagination, Navigation]);
 const WelcomePart = () => {
@@ -49,10 +43,6 @@ const WelcomePart = () => {
           </div>
 
           <SwiperSlide>
-            {/* <HandImg>
-              <Image src={img} layout="intrinsic" className="image" />
-            </HandImg> */}
-
             <WelcomeText>
               <PageContainer>
                 <h1>Welcome to our site</h1>
@@ -80,11 +70,34 @@ const WelcomePart = () => {
           </SwiperSlide>
           <SwiperSlide>
             <PageContainer>
-              <WelcomePreviewPart>
-                <WelcomePreview>Letter</WelcomePreview>
-                <WelcomePreview>E-mail</WelcomePreview>
-                <WelcomePreview>Burnbook</WelcomePreview>
-              </WelcomePreviewPart>
+              <WelcomePreview>
+                <div id="previewpart">
+                  <PreviewDiv>
+                    <h1>Letter</h1>
+                    <div className="preview_desc">
+                      We know sometimes how much you would like to send a letter
+                      to someone or reply to that e-mail but:
+                    </div>
+                    <span onClick={() => router.push("/letter")}>Go to</span>
+                  </PreviewDiv>
+                  <PreviewDiv>
+                    <h1>Email</h1>
+                    <div className="preview_desc">
+                      We know sometimes how much you would like to send a letter
+                      to someone or reply to that e-mail but:
+                    </div>
+                    <span onClick={() => router.push("/email")}>Go to</span>
+                  </PreviewDiv>
+                  <PreviewDiv>
+                    <h1>Burnbook</h1>
+                    <div className="preview_desc">
+                      We know sometimes how much you would like to send a letter
+                      to someone or reply to that e-mail but:
+                    </div>
+                    <span onClick={() => router.push("/burnbook")}>Go to</span>
+                  </PreviewDiv>
+                </div>
+              </WelcomePreview>
             </PageContainer>
           </SwiperSlide>
         </Swiper>

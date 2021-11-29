@@ -49,8 +49,8 @@ export const AppLayoutWrapper = styled.div`
 `;
 
 export const AppContent = styled.div`
-  min-height: calc(100vh - 122px - 149px);
-  margin: 72px 0 0 0;
+  min-height: calc(100vh - 91px - 149px);
+  margin: 91px 0 0 0;
 `;
 
 export const OverLayout = styled.div`
@@ -74,4 +74,27 @@ export const PageTitle = styled.div<Props>`
   text-transform: uppercase;
   color: ${({ fColor }) => (fColor ? fColor : "#fff")};
   padding: ${({ pd }) => (pd ? pd : "0")};
+`;
+
+export const WhitePageSection = styled.div`
+  background: #d1d1d1;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+`;
+
+export const HomeContentSection = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: calc(100vw - 170px);
+`;
+
+export const HomeContent = styled.div`
+  padding-top: 72px;
+  height: calc(100vh - 72px);
+`;
+
+export const HomeMainContent = styled.div`
+  width: 100%;
+  min-height: calc(100vh - 72px - 58px);
 `;

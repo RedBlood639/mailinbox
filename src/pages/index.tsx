@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-
 import { PageDiv } from "layouts/layout.style";
 
 import { ContactPart, AboutPart, HowToPart, WelcomePart } from "views/landing";

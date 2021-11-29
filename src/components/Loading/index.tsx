@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import React from "react";
+import theme from "theme/colors";
+
 const CustomLoadingWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -10,7 +12,7 @@ const CustomLoadingWrapper = styled.div`
   justify-content: center;
   position: fixed;
   z-index: 99999;
-  background: rgba(188, 0, 0, 0.7);
+  background: ${theme.blue.dark};
   flex-direction: column;
 `;
 const CustomLoadingContent = styled.div`
