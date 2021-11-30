@@ -38,10 +38,8 @@ const Layout = ({ children }: any) => {
           <HomeContentSection>
             <HomeHeader />
             <HomeContent>
-              <Scrollbar>
-                <HomeMainContent>{children}</HomeMainContent>
-                <HomeFooter />
-              </Scrollbar>
+              <HomeMainContent>{children}</HomeMainContent>
+              <HomeFooter />
             </HomeContent>
           </HomeContentSection>
         </WhitePageSection>

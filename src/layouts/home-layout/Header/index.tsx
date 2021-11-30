@@ -7,20 +7,76 @@ import {
   AvatarAction,
   AvatarDropDownSection,
   HeaderAvatar,
+  HeaderMenu,
   HeaderMenuItem,
   HomeHeaderSection,
   Info,
   UserInfo,
 } from "./header.style";
 
-import { HoDivider, VeDivider } from "layouts/layout.style";
+import { VeDivider } from "layouts/layout.style";
 
 import avatar from "assets/images/members/3.jpg";
 import router from "next/router";
 
+const letterHeader = [
+  {
+    title: "My Letters",
+    path: "/letter",
+  },
+  {
+    title: "Read Public Letters",
+    path: "/letter/public",
+  },
+  // {
+  //   title: "Draft",
+  //   path: "/letter/draft",
+  // },
+];
+
+const emailHeader = [
+  {
+    title: "New",
+    path: "/email/new",
+  },
+  {
+    title: "Inbox",
+    path: "/email/inbox",
+  },
+  {
+    title: "Sent",
+    path: "/email/sent",
+  },
+  {
+    title: "Draft",
+    path: "/email/draft",
+  },
+];
+
+const burnbookHeader = [
+  {
+    title: "New",
+    path: "/burnbook/new",
+  },
+];
+
 const index = () => {
   const [dropdownFlag, setDropdownflag] = useState(false);
   const dropdownRef = useRef<any>(null);
+
+  const [headerData, setHeaderData] = useState<any>([]);
+
+  useEffect(() => {
+    if (router.route.indexOf("/letter") > -1) {
+      setHeaderData(letterHeader);
+    } else if (router.route.indexOf("/email") > -1) {
+      setHeaderData(emailHeader);
+    } else if (router.route.indexOf("/burnbook") > -1) {
+      setHeaderData(burnbookHeader);
+    } else {
+      setHeaderData([]);
+    }
+  }, [router]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -38,10 +94,13 @@ const index = () => {
   };
   return (
     <HomeHeaderSection>
-      <HeaderMenuItem>inbox</HeaderMenuItem>
-      <HeaderMenuItem>draft</HeaderMenuItem>
-      <HeaderMenuItem>sent</HeaderMenuItem>
-      <HoDivider height={20} />
+      <HeaderMenu>
+        {headerData.map((item: any, key: any) => (
+          <HeaderMenuItem key={key} onClick={() => router.push(item.path)}>
+            {item.title}
+          </HeaderMenuItem>
+        ))}
+      </HeaderMenu>
       <HeaderAvatar>
         <Image
           src={avatar}

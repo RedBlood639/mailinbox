@@ -29,6 +29,7 @@ export const SidebarMenu = styled.div`
   margin-top: 72px;
   height: calc(100vh - 72px);
   padding-top: 10px;
+  overflow: auto;
 `;
 
 interface MenuItemProps {

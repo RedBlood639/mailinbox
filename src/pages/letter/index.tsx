@@ -1,5 +1,5 @@
 import React from "react";
-import Letter from "views/letter/Letter";
+import Letter from "views/letter/myletter/Letter";
 
 const index = () => {
   return <Letter />;

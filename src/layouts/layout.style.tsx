@@ -11,6 +11,7 @@ export interface Props {
   fColor?: string;
   fSize?: number;
   height?: number;
+  textTransform?: string;
 }
 
 export const PageContainer = styled.div`
@@ -69,15 +70,16 @@ export const PageDiv = styled.div`
 `;
 
 export const PageTitle = styled.div<Props>`
-  font-size: 40px;
+  font-size: ${({ fSize }) => (fSize ? fSize : 40)}px;
   font-weight: 900;
-  text-transform: uppercase;
+  text-transform: ${({ textTransform }) =>
+    textTransform ? textTransform : "uppercase"};
   color: ${({ fColor }) => (fColor ? fColor : "#fff")};
   padding: ${({ pd }) => (pd ? pd : "0")};
 `;
 
 export const WhitePageSection = styled.div`
-  background: #d1d1d1;
+  background: #fff;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -92,9 +94,50 @@ export const HomeContentSection = styled.div`
 export const HomeContent = styled.div`
   padding-top: 72px;
   height: calc(100vh - 72px);
+  overflow: auto;
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 30, 60) !important;
+    border-radius: 10px;
+  }
 `;
 
 export const HomeMainContent = styled.div`
-  width: 100%;
-  min-height: calc(100vh - 72px - 58px);
+  width: calc(100% - 100px);
+  padding: 50px;
+  min-height: calc(100vh - 72px - 58px - 100px);
+`;
+
+interface BadgeProps {
+  type?: string;
+}
+
+export const Badge = styled.span<BadgeProps>`
+  font-size: 14px;
+  padding: 3px;
+  color: white;
+  border-radius: 5px;
+  background-color: ${({ type }) => {
+    switch (type) {
+      case "primary":
+        return "#28a745";
+      case "secondary":
+        return "#ffc107";
+      case "error":
+        return "#6c757d";
+      default:
+        break;
+    }
+  }};
 `;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const HomeHeaderSection = styled.div`
   height: 70px;
+  z-index: 2;
   border-bottom: 2px solid rgb(10, 25, 41);
   width: calc(100% - 100px);
   padding: 0 50px;
@@ -12,9 +13,16 @@ export const HomeHeaderSection = styled.div`
   box-shadow: 0 0 10px rgb(0, 30, 60);
   position: absolute;
   top: 0;
-  justify-content: flex-end;
+  justify-content: space-between;
   & > *:not(:last-child) {
     margin-right: 15px;
+  }
+`;
+
+export const HeaderMenu = styled.div`
+  display: flex;
+  & > *:not(:first-child) {
+    margin-left: 15px;
   }
 `;
 
