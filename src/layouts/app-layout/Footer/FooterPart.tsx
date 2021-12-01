@@ -8,6 +8,7 @@ import {
   FooterTitle,
   FooterIcon,
 } from "./Footer.style";
+
 interface Props {
   partIcon?: any;
   title?: string;

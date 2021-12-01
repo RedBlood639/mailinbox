@@ -12,6 +12,7 @@ export interface Props {
   fSize?: number;
   height?: number;
   textTransform?: string;
+  bgColor?: string;
 }
 
 export const PageContainer = styled.div`
@@ -22,7 +23,8 @@ export const PageContainer = styled.div`
 
 export const HoDivider = styled.div<Props>`
   width: 2px;
-  background-color: white;
+  margin: ${({ mg }) => (mg ? mg : "0")};
+  background-color: ${({ bgColor }) => (bgColor ? bgColor : "white")};
   border-radius: 2px;
   height: ${({ height }) => (height ? height + "px" : "auto")};
 `;

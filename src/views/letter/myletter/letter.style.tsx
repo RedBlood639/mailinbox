@@ -29,14 +29,19 @@ export const LetterTitle = styled.div`
   align-items: center;
 `;
 
-export const LetterContent = styled.div`
+interface ContentProps {
+  full?: boolean;
+}
+
+export const LetterContent = styled.div<ContentProps>`
   margin-top: 10px;
 
   min-height: 32px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  ${({ full }) => !full && "-webkit-line-clamp: 2;"}
+
   -webkit-box-orient: vertical;
   line-height: 25px;
 `;
@@ -107,4 +112,29 @@ export const TitleDiv = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   height: 50px;
+`;
+
+export const Title = styled.div`
+  display: inline;
+  cursor: pointer;
+  color: darkblue;
+  position: relative;
+  transition: all 0.1s;
+  ::after {
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    content: "";
+    height: 2px;
+    background-color: darkblue;
+    width: 100%;
+    left: 0;
+    bottom: -5px;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  :hover {
+    ::after {
+      transform: scaleX(1);
+    }
+  }
 `;

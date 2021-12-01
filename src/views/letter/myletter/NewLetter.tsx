@@ -14,7 +14,7 @@ import { EditorState } from "draft-js";
 import { EditorProps } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Tooltip } from "@mui/material";
-// import draftToHtml from "draftjs-to-html";
+import draftToHtml from "draftjs-to-html";
 // import htmlToDraft from "html-to-draftjs";
 
 const Editor = dynamic<EditorProps>(
@@ -37,6 +37,8 @@ const NewLetter = () => {
 
   const handleContentStateChange = (e: any) => {
     // console.log("as HTML:", htmlToDraft(draftToHtml(e)));
+    console.log("as HTML:", draftToHtml(e));
+    // console.log(editorState.getCurrentContent().getPlainText());
   };
 
   return (

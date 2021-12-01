@@ -9,6 +9,7 @@ import {
   LetterItem,
   LetterTitle,
   MyLettersSection,
+  Title,
   TitleDiv,
 } from "./letter.style";
 import { letters } from "data";
@@ -26,12 +27,12 @@ const MyLetters = () => {
         .map((item: any, key: any) => (
           <LetterItem key={key}>
             <LetterTitle>
-              {item.title}
+              <Title>{item.title}</Title>
               {item.flag === 1 && <Badge type="primary">Public</Badge>}
               {item.flag === 2 && <Badge type="secondary">Private</Badge>}
               {item.flag === 3 && <Badge type="error">Draft</Badge>}
             </LetterTitle>
-            <LetterContent>{item.content}</LetterContent>
+            <LetterContent>{item.plaintext}</LetterContent>
             <LetterInfo>
               {new Intl.DateTimeFormat("en-US", {
                 dateStyle: "medium",
