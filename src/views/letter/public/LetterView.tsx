@@ -19,14 +19,14 @@ const LetterView = () => {
     <LetterViewSection>
       <TitleDiv>
         <PageTitle fColor="rgb(0, 30, 60)" textTransform="none">
-          {letters[letters.length - 1].title}
+          {letters[0].title}
         </PageTitle>
       </TitleDiv>
       <LetterViewContent>
         <LetterContent
           full={true}
           dangerouslySetInnerHTML={{
-            __html: letters[letters.length - 1].htmlcontent,
+            __html: letters[0].htmlcontent,
           }}
         />
         <LetterInfo>
