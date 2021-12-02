@@ -1,3 +1,4 @@
+import { Tooltip } from "@mui/material";
 import React, { useState } from "react";
 import {
   MdDelete,
@@ -15,7 +16,12 @@ import {
   ListActions,
 } from "./emailMenu.style";
 
-const EmailMenuSection = () => {
+interface Props {
+  onNewEmail?: any;
+  newEmailBtnRef?: any;
+}
+
+const EmailMenuSection = (props: Props) => {
   const [selectedItem, setSelectedItem] = useState("inbox");
 
   return (
@@ -51,18 +57,26 @@ const EmailMenuSection = () => {
           <MdOutlineSearch />
           <input type="text" placeholder="Search ..." />
         </FilterInput>
-        <ListAction>
-          <MdLibraryAdd />
-        </ListAction>
-        <ListAction>
-          <MdChecklist />
-        </ListAction>
-        <ListAction>
-          <MdDelete />
-        </ListAction>
-        <ListAction>
-          <MdRefresh />
-        </ListAction>
+        <Tooltip title="New" placement="top" arrow>
+          <ListAction ref={props.newEmailBtnRef} onClick={props.onNewEmail}>
+            <MdLibraryAdd />
+          </ListAction>
+        </Tooltip>
+        <Tooltip title="Select" placement="top" arrow>
+          <ListAction>
+            <MdChecklist />
+          </ListAction>
+        </Tooltip>
+        <Tooltip title="Delete" placement="top" arrow>
+          <ListAction>
+            <MdDelete />
+          </ListAction>
+        </Tooltip>
+        <Tooltip title="Refresh" placement="top" arrow>
+          <ListAction>
+            <MdRefresh />
+          </ListAction>
+        </Tooltip>
       </ListActions>
     </EmailMenuBar>
   );

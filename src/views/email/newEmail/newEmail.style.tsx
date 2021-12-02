@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const NewEmailDiv = styled.div`
+interface NewEmailProps {
+  show?: boolean;
+}
+
+export const NewEmailDiv = styled.div<NewEmailProps>`
   position: fixed;
   bottom: 0px;
   right: 20px;
@@ -10,6 +14,9 @@ export const NewEmailDiv = styled.div`
   border-radius: 10px 10px 0 0;
   box-shadow: 0 0 10px #555555a0;
   contain: content;
+  transform: ${({ show }) => (show ? "scaleY(1)" : "scaleY(0)")};
+  transform-origin: bottom center;
+  transition: all 0.2s;
 `;
 
 export const NewEmailHeader = styled.div`

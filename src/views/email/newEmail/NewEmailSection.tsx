@@ -20,7 +20,7 @@ const Editor = dynamic<EditorProps>(
   { ssr: false }
 );
 
-const NewEmailSection = () => {
+const NewEmailSection = ({ show, newEmailRef, handleClose }: any) => {
   const [editorState, setEditorState] = useState<any>(() =>
     EditorState.createEmpty()
   );
@@ -30,8 +30,9 @@ const NewEmailSection = () => {
     console.log("as HTML:", draftToHtml(e));
     // console.log(editorState.getCurrentContent().getPlainText());
   };
+
   return (
-    <NewEmailDiv>
+    <NewEmailDiv show={show} ref={newEmailRef}>
       <NewEmailHeader>
         <span>New Message</span>
         <HeaderAction>
@@ -41,7 +42,7 @@ const NewEmailSection = () => {
             </div>
           </Tooltip>
           <Tooltip title="Close" placement="top" arrow>
-            <div className="header_action">
+            <div className="header_action" onClick={handleClose}>
               <MdOutlineClose />
             </div>
           </Tooltip>
