@@ -78,3 +78,5 @@ export const letters = [
     unlikes: [],
   },
 ];
+
+export const emails = [];

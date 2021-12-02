@@ -34,24 +34,24 @@ const letterHeader = [
   // },
 ];
 
-const emailHeader = [
-  {
-    title: "New",
-    path: "/email/new",
-  },
-  {
-    title: "Inbox",
-    path: "/email/inbox",
-  },
-  {
-    title: "Sent",
-    path: "/email/sent",
-  },
-  {
-    title: "Draft",
-    path: "/email/draft",
-  },
-];
+// const emailHeader = [
+//   // {
+//   //   title: "New",
+//   //   path: "/email/new",
+//   // },
+//   // {
+//   //   title: "Inbox",
+//   //   path: "/email/inbox",
+//   // },
+//   // {
+//   //   title: "Sent",
+//   //   path: "/email/sent",
+//   // },
+//   // {
+//   //   title: "Draft",
+//   //   path: "/email/draft",
+//   // },
+// ];
 
 const burnbookHeader = [
   {
@@ -70,7 +70,7 @@ const index = () => {
     if (router.route.indexOf("/letter") > -1) {
       setHeaderData(letterHeader);
     } else if (router.route.indexOf("/email") > -1) {
-      setHeaderData(emailHeader);
+      // setHeaderData(emailHeader);
     } else if (router.route.indexOf("/burnbook") > -1) {
       setHeaderData(burnbookHeader);
     } else {

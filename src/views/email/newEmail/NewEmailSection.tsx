@@ -1,77 +1,68 @@
-import dynamic from "next/dynamic";
-import { BiSave } from "react-icons/bi";
-import { AiOutlineCloseSquare } from "react-icons/ai";
-
-import { PageTitle } from "layouts/layout.style";
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import {
-  LetterFormSection,
-  NewActions,
-  TitleDiv,
-  TitleForm,
-} from "./letter.style";
+  HeaderAction,
+  NewEmailDiv,
+  NewEmailForm,
+  NewEmailHeader,
+  NewEmailInput,
+} from "./newEmail.style";
 import { EditorState } from "draft-js";
 import { EditorProps } from "react-draft-wysiwyg";
-
-import { Tooltip } from "@mui/material";
 import draftToHtml from "draftjs-to-html";
-// import htmlToDraft from "html-to-draftjs";
+
+import { MdOutlineClose } from "react-icons/md";
+import { IoIosSend } from "react-icons/io";
+import { Tooltip } from "@mui/material";
 
 const Editor = dynamic<EditorProps>(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
 
-const NewLetter = () => {
-  const [state, setState] = useState<any>({
-    title: "",
-    content: "",
-  });
+const NewEmailSection = () => {
   const [editorState, setEditorState] = useState<any>(() =>
     EditorState.createEmpty()
   );
-
-  const handleTitleChange = (e: any) => {
-    setState({ [e.target.name]: e.target.value });
-  };
 
   const handleContentStateChange = (e: any) => {
     // console.log("as HTML:", htmlToDraft(draftToHtml(e)));
     console.log("as HTML:", draftToHtml(e));
     // console.log(editorState.getCurrentContent().getPlainText());
   };
-
   return (
-    <div>
-      <TitleDiv>
-        <PageTitle fSize={25} fColor="rgb(0,30,60)" textTransform="none">
-          Compose New Letter
-        </PageTitle>
-        <NewActions>
-          <Tooltip title="Save" placement="top" arrow>
-            <div>
-              <BiSave />
+    <NewEmailDiv>
+      <NewEmailHeader>
+        <span>New Message</span>
+        <HeaderAction>
+          <Tooltip title="Send" placement="top" arrow>
+            <div className="header_action">
+              <IoIosSend />
             </div>
           </Tooltip>
           <Tooltip title="Close" placement="top" arrow>
-            <div>
-              <AiOutlineCloseSquare />
+            <div className="header_action">
+              <MdOutlineClose />
             </div>
           </Tooltip>
-        </NewActions>
-      </TitleDiv>
-      <LetterFormSection>
-        <TitleForm
-          type="text"
-          value={state.title}
-          onChange={handleTitleChange}
-          name="title"
-          placeholder="Title here...."
-        />
+        </HeaderAction>
+      </NewEmailHeader>
+      <NewEmailForm>
+        <NewEmailInput>
+          <input type="text" placeholder="To : " />
+        </NewEmailInput>
+        <NewEmailInput>
+          <input type="text" placeholder="Subject : " />
+        </NewEmailInput>
         <Editor
           editorState={editorState}
           onEditorStateChange={setEditorState}
           onContentStateChange={handleContentStateChange}
+          editorStyle={{
+            maxHeight: "50vh",
+            minHeight: "40vh",
+            padding: "0 10px",
+          }}
           toolbar={{
             options: [
               "inline",
@@ -90,9 +81,9 @@ const NewLetter = () => {
             history: { inDropdown: true },
           }}
         />
-      </LetterFormSection>
-    </div>
+      </NewEmailForm>
+    </NewEmailDiv>
   );
 };
 
-export default NewLetter;
+export default NewEmailSection;

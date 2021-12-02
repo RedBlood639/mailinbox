@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Loading from "components/Loading";
 
 NProgress.configure({ showSpinner: false });
