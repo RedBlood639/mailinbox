@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import router from "next/router";
+import Image from "next/image";
 // component
 import { ScrollTop } from "components/Button";
 // layout
@@ -12,9 +13,10 @@ import {
   HomeContent,
   HomeContentSection,
   HomeMainContent,
+  OverLayout,
   WhitePageSection,
 } from "./layout.style";
-import Scrollbar from "react-custom-scrollbars";
+import bg from "assets/images/bg/bg.png";
 
 // -----------------------------------------------------------
 
@@ -34,14 +36,17 @@ const Layout = ({ children }: any) => {
         </>
       ) : (
         <WhitePageSection>
-          <HomeSidebar />
-          <HomeContentSection>
-            <HomeHeader />
-            <HomeContent>
-              <HomeMainContent>{children}</HomeMainContent>
-              <HomeFooter />
-            </HomeContent>
-          </HomeContentSection>
+          <Image src={bg} layout="fill" objectFit="cover" />
+          <OverLayout bgColor="rgba(71, 71, 71, 0.603)">
+            <HomeSidebar />
+            <HomeContentSection>
+              <HomeHeader />
+              <HomeContent>
+                <HomeMainContent>{children}</HomeMainContent>
+                <HomeFooter />
+              </HomeContent>
+            </HomeContentSection>
+          </OverLayout>
         </WhitePageSection>
       )}
 

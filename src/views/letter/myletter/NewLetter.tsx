@@ -44,7 +44,7 @@ const NewLetter = () => {
   return (
     <div>
       <TitleDiv>
-        <PageTitle fSize={25} fColor="rgb(0,30,60)" textTransform="none">
+        <PageTitle fSize={25} textTransform="none">
           Compose New Letter
         </PageTitle>
         <NewActions>

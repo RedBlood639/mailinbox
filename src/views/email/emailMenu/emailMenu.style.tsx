@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const EmailMenuBar = styled.div`
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,8 +16,8 @@ interface ItemProps {
 }
 
 export const EmailMenuItem = styled.div<ItemProps>`
-  color: ${({ active }) => (active ? "black" : "#555")};
-  border-bottom: 2px solid ${({ active }) => (active ? "black" : "transparent")};
+  color: ${({ active }) => (active ? "#fff" : "#888")};
+  border-bottom: 2px solid ${({ active }) => (active ? "white" : "transparent")};
   padding: 15px 25px;
   font-size: 16px;
   font-weight: 700;
@@ -51,15 +51,16 @@ export const FilterInput = styled.div`
   }
   :focus-within {
     svg {
-      color: #000;
+      color: #fff;
     }
     input {
-      color: #000;
+      color: #fff;
     }
-    color: #000;
-    border: 1px solid #000;
+    color: #fff;
+    border: 1px solid #fff;
   }
   input {
+    background-color: transparent;
     transition: 0.2s all;
     color: #aaa;
     outline: none;
@@ -82,18 +83,12 @@ export const ListAction = styled.div`
   svg {
     cursor: pointer;
     transition: 0.2s all;
-    color: #777;
+    color: #fff;
   }
   :hover {
-    svg {
-      color: #333;
-    }
-    background: #ddd;
+    background: #88888880;
   }
   :active {
-    svg {
-      color: black;
-    }
-    background: #aaa;
+    background: #aaaaaa80;
   }
 `;

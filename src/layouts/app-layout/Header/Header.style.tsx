@@ -4,10 +4,15 @@ import { Props } from "layouts/layout.style";
 
 export const scrollEvent = () => {
   const scrollmove: any = document.getElementById("header");
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    scrollmove.style.padding = "15px 0";
-  } else {
-    scrollmove.style.padding = "25px 0";
+  if (scrollmove) {
+    if (
+      document.body.scrollTop > 50 ||
+      document.documentElement.scrollTop > 50
+    ) {
+      scrollmove.style.padding = "15px 0";
+    } else {
+      scrollmove.style.padding = "25px 0";
+    }
   }
 };
 

@@ -1,16 +1,17 @@
 import styled from "styled-components";
 
 export const HomeHeaderSection = styled.div`
-  height: 70px;
+  height: 72px;
   z-index: 2;
-  border-bottom: 2px solid rgb(10, 25, 41);
+  /* border-bottom: 2px solid white; */
   width: calc(100% - 100px);
   padding: 0 50px;
-  background: rgb(0, 30, 60);
+  background: rgba(147, 0, 0);
+  backdrop-filter: blur(30px);
   display: flex;
   align-items: center;
   color: white;
-  box-shadow: 0 0 10px rgb(0, 30, 60);
+  box-shadow: 0 0 10px rgb(80, 0, 0);
   position: absolute;
   top: 0;
   justify-content: space-between;
@@ -27,8 +28,9 @@ export const HeaderMenu = styled.div`
 `;
 
 export const HeaderMenuItem = styled.div`
-  background-color: rgb(0, 30, 60);
-  border: 2px solid rgb(23, 58, 94);
+  background-color: rgba(110, 7, 7);
+  border: 2px solid white;
+  font-weight: 700;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;

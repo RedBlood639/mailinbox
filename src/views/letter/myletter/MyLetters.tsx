@@ -18,9 +18,8 @@ const MyLetters = () => {
   return (
     <MyLettersSection>
       <TitleDiv>
-        <PageTitle fColor="rgb(0,30,60)" textTransform="none">
-          My Letters
-        </PageTitle>
+        {/*fColor="rgb(0,30,60)" */}
+        <PageTitle textTransform="none">My Letters</PageTitle>
       </TitleDiv>
       {letters
         .filter((item: any) => item.email === "albinorabbithunter@gmail.com")

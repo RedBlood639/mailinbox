@@ -43,7 +43,7 @@ html {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(147, 0, 0) !important;
+  background-color: rgb(147, 0, 0, 0.8) !important;
   border-radius: 10px;
   box-shadow: inset 1px 1px 2px rgb(155 155 155 / 40%);
 }

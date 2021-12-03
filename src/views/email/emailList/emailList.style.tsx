@@ -8,7 +8,7 @@ export const EmailListDiv = styled.div`
 `;
 
 export const EmailItemDiv = styled.label`
-  background-color: #eee;
+  background-color: #ffffff10;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -18,6 +18,7 @@ export const EmailItemDiv = styled.label`
   & > *:not(:last-child) {
     margin-right: 10px;
   }
+  color: white;
 
   input {
     color: transparent;
@@ -25,7 +26,7 @@ export const EmailItemDiv = styled.label`
     height: 15px;
   }
   :hover {
-    background-color: #dfdfdf;
+    background-color: #dfdfdf30;
   }
 `;
 
@@ -39,7 +40,7 @@ export const EmailSubject = styled.span`
   word-break: break-all;
   -webkit-box-orient: vertical;
   font-weight: 700;
-  color: #555;
+  color: #aaa;
 `;
 
 export const EmailContent = styled.span`
@@ -67,7 +68,7 @@ export const FavouriteIcon = styled.div`
   }
 
   :hover {
-    background-color: #ccc;
+    background-color: #cccccc40;
   }
 `;
 
@@ -75,5 +76,5 @@ export const EmailDate = styled.span`
   text-align: right;
   min-width: 180px;
   font-size: 14px;
-  color: #888;
+  color: #aaa;
 `;

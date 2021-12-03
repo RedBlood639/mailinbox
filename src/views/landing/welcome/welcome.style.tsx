@@ -70,6 +70,8 @@ export const HandImg = styled.div`
 `;
 
 export const WelcomeText = styled.div`
+  transform: rotate3d(1, 1, 1, -10deg);
+  text-shadow: 0 20px 10px #000;
   color: white;
   width: 100%;
 
@@ -83,7 +85,7 @@ export const WelcomeText = styled.div`
     font-size: 5vw;
     font-weight: 900;
     transition: all 0.2s;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   h2 {
     font-size: 2vw;

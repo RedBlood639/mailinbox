@@ -12,11 +12,12 @@ interface FilterItemProps {
 }
 
 export const FilterItem = styled.div<FilterItemProps>`
-  border-bottom: 1px solid ${({ active }) => (active ? "#4e4c57" : "#fff")};
+  border-bottom: 1px solid ${({ active }) => (active ? "#fff" : "transparent")};
   padding: 10px 20px;
   font-size: 20px;
   font-weight: 700;
-  color: ${({ active }) => (active ? "rgb(0, 30, 60)" : "#777")};
+  transition: all 0.2s;
+  color: ${({ active }) => (active ? "white" : "#777")};
   cursor: pointer;
 `;
 
@@ -65,7 +66,14 @@ export const LikeDiv = styled.div<LikeProps>`
   }
 `;
 
-export const LetterViewSection = styled.div``;
+export const LetterViewSection = styled.div`
+  background-color: #ffffff10;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ffffff10;
+  color: white;
+  position: relative;
+`;
 
 export const LetterViewContent = styled.div`
   margin-top: 15px;

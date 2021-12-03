@@ -25,7 +25,7 @@ const WelcomePart = () => {
         <Swiper
           speed={600}
           autoplay={{
-            delay: 10000,
+            delay: 100000,
             disableOnInteraction: false,
           }}
           parallax={true}

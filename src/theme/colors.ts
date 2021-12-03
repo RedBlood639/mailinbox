@@ -67,7 +67,7 @@ const baseColor = {
   },
   blue: {
     regular: "#36558F",
-    dark: "rgb(10, 25, 41)",
+    dark: "rgb(10, 25, 41, 0.8)",
     light: "#2D9CDB",
     link: "#004FB9",
     100: "#31b0d5",

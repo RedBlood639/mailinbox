@@ -10,14 +10,17 @@ export const MyLettersSection = styled.div``;
 
 export const LetterItem = styled.div`
   margin-top: 20px;
-  border: 2px solid transparent;
+  border: 2px solid #ffffff10;
   border-radius: 5px;
   padding: 15px;
   transition: all 0.2s;
-  color: rgb(0, 30, 60);
-  box-shadow: 0 0 5px #666666 inset;
+  color: white;
+  background-color: #ffffff10;
+  box-shadow: 0 0 5px #2400004b;
+  /* backdrop-filter: blur(50px); */
   :hover {
-    border: 2px solid #666666;
+    border: 2px solid white;
+    box-shadow: 2px 2px 0px white;
   }
 `;
 
@@ -50,13 +53,13 @@ export const LetterInfo = styled.div`
   display: flex;
   margin-top: 10px;
   font-size: 15px;
-  color: #666;
+  color: #aaa;
   justify-content: space-between;
 `;
 
 export const LetterEvents = styled.div`
   & > *:not(:last-child) {
-    border-right: 2px solid #666;
+    border-right: 2px solid #aaa;
   }
   svg {
     padding: 0 10px;
@@ -76,6 +79,17 @@ export const LetterFormSection = styled.div`
   .rdw-editor-main {
     min-height: 400px;
     max-height: 500px;
+    color: white;
+    pre {
+      background: #88888820;
+    }
+  }
+  .rdw-editor-toolbar {
+    background-color: transparent;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
   }
 `;
 
@@ -87,18 +101,19 @@ export const TitleForm = styled.input`
   padding: 10px;
   font-size: 20px;
   font-weight: 900;
-  color: rgb(0, 30, 60);
+  color: white;
+  background-color: transparent;
   :focus {
     border: none;
     border-radius: 0;
-    border-bottom: 2px solid rgb(0, 30, 60);
+    border-bottom: 2px solid #666666;
   }
   width: -webkit-fill-available;
 `;
 
 export const NewActions = styled.div`
   font-size: 25px;
-  color: rgb(0, 30, 60);
+  color: white;
   display: flex;
   align-items: flex-end;
   svg {
@@ -112,12 +127,14 @@ export const TitleDiv = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   height: 50px;
+  padding: 10px 0;
+  border-bottom: 2px solid white;
 `;
 
 export const Title = styled.div`
   display: inline;
   cursor: pointer;
-  color: darkblue;
+  color: white;
   position: relative;
   transition: all 0.1s;
   ::after {
@@ -125,7 +142,7 @@ export const Title = styled.div`
     position: absolute;
     content: "";
     height: 2px;
-    background-color: darkblue;
+    background-color: white;
     width: 100%;
     left: 0;
     bottom: -5px;

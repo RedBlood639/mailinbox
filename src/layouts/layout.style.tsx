@@ -56,10 +56,11 @@ export const AppContent = styled.div`
   margin: 91px 0 0 0;
 `;
 
-export const OverLayout = styled.div`
+export const OverLayout = styled.div<Props>`
   width: 100%;
   height: 100%;
-  background-color: rgba(58, 0, 0, 0.5);
+  background-color: ${({ bgColor }) =>
+    bgColor ? bgColor : "rgba(58, 0, 0, 0.5)"};
   backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
@@ -81,6 +82,7 @@ export const PageTitle = styled.div<Props>`
 `;
 
 export const WhitePageSection = styled.div`
+  position: relative;
   background: #fff;
   height: 100vh;
   width: 100%;
@@ -94,7 +96,9 @@ export const HomeContentSection = styled.div`
 `;
 
 export const HomeContent = styled.div`
-  padding-top: 72px;
+  background-color: rgb(92 0 0 / 30%);
+  backdrop-filter: blur(50px);
+  margin-top: 72px;
   height: calc(100vh - 72px);
   overflow: auto;
   ::-webkit-scrollbar {

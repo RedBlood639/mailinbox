@@ -1,27 +1,36 @@
 import styled from "styled-components";
-import Color from "theme/colors";
 
 export const HomeSidebarSection = styled.div`
   position: relative;
   height: 100vh;
-  background: ${Color.blue.dark};
-  width: 170px;
+  background: rgba(147, 0, 0);
+  width: 200px;
   color: white;
-  box-shadow: rgb(19 47 76) 0px 0px 10px;
+  box-shadow: 0px 0px 10px rgb(82, 0, 0);
+  backdrop-filter: blur(30px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 3;
+  /* border-right: 2px solid white; */
 `;
 
 export const SidebarMark = styled.div`
   top: 0;
   position: absolute;
-  height: 70px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(147, 0, 0, 0.8);
   width: 100%;
-  border-bottom: 2px solid rgb(0, 30, 60);
+  box-shadow: 0 0 5px rgb(80, 0, 0);
+  transition: all 0.2s;
+  :hover {
+    box-shadow: 0 0 20px rgb(80, 0, 0);
+  }
+  /* border-bottom: 2px solid white; */
+  /* border-right: 2px solid white; */
 `;
 
 export const SidebarMenu = styled.div`
@@ -40,15 +49,14 @@ export const SidebarMenuItem = styled.div<MenuItemProps>`
   padding: 15px 20px;
   transition: 0.2s all;
   background-color: ${({ active }) =>
-    active ? "rgb(19, 47, 76)" : "transparent"};
-  border-right: 5px solid
-    ${({ active }) => (active ? "rgb(100, 119, 138)" : "none")};
+    active ? "rgba(82, 0, 0, 0.8)" : "transparent"};
+  border-right: 5px solid ${({ active }) => (active ? "white" : "none")};
   :hover {
-    background-color: ${({ active }) => !active && "rgba(19, 47, 76, 0.4)"};
+    background-color: ${({ active }) => !active && "rgba(82, 0, 0, 0.4)"};
     cursor: pointer;
   }
   :active {
-    background-color: rgb(19, 47, 76);
+    background-color: rgba(82, 0, 0, 0.8);
   }
   svg {
     margin-right: 10px;

@@ -18,9 +18,7 @@ const LetterView = () => {
   return (
     <LetterViewSection>
       <TitleDiv>
-        <PageTitle fColor="rgb(0, 30, 60)" textTransform="none">
-          {letters[0].title}
-        </PageTitle>
+        <PageTitle textTransform="none">{letters[0].title}</PageTitle>
       </TitleDiv>
       <LetterViewContent>
         <LetterContent
