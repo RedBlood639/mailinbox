@@ -1,13 +1,19 @@
 import Button from "components/button";
 import Input from "components/input";
-import React from "react";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/router";
 import { Div, Text } from "styles/globals.styled";
 import Checkbox from "components/checkbox";
 
 const SignInSection = () => {
+  const [state, setState] = useState({ email: "", password: "" });
   const router = useRouter();
+
+  const handleChange = (e: any) => {
+    setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   return (
     <Div mode="column" w={80} maxW={500} m="auto">
       <Text fSize={36} fWeight={800} mb={30}>
@@ -18,8 +24,8 @@ const SignInSection = () => {
         type="text"
         name="email"
         placeholder="Email"
-        onChange={() => {}}
-        value="value"
+        onChange={handleChange}
+        value={state.email}
         label="Email"
       />
       <Div mt={26} />
@@ -27,8 +33,8 @@ const SignInSection = () => {
         type="password"
         name="password"
         placeholder="Password"
-        onChange={() => {}}
-        value="value"
+        onChange={handleChange}
+        value={state.password}
         label="Password"
       />
       <Div mt={13} />
