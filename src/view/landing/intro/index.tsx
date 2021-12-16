@@ -32,7 +32,7 @@ const IntroSection = () => {
         }}
       />
       <Div mt={24}>
-        <Image src={LandingImg} />
+        <Image src={LandingImg} alt="landing" />
       </Div>
     </Div>
   );

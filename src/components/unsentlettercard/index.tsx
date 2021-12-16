@@ -18,7 +18,7 @@ const UnsentLetters = () => {
         <Item>asdf</Item>
       </List> */}
       <EmptyDiv>
-        <Image src={EmptyImg} />
+        <Image src={EmptyImg} alt="empty" />
       </EmptyDiv>
       <Text
         fSize={16}
@@ -27,7 +27,7 @@ const UnsentLetters = () => {
         fWeight={500}
         tAlign="center"
       >
-        You don't have any emails yet. Create one.
+        {"You don't have any emails yet. Create one."}
       </Text>
     </UnsentCard>
   );

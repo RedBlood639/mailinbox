@@ -7,7 +7,7 @@ import Img from "assets/getStarted.svg";
 const GetStartSection = () => {
   return (
     <GetStartedImg>
-      <Image src={Img} />
+      <Image src={Img} alt="getstarted" />
     </GetStartedImg>
   );
 };
