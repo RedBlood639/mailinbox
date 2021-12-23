@@ -6,9 +6,21 @@ import { useRouter } from "next/router";
 
 import { Div, Text } from "styles/globals.styled";
 import LandingImg from "assets/landing.svg";
+import { useAuthContext } from "context/state";
 
 const IntroSection = () => {
   const router = useRouter();
+  const { authContext } = useAuthContext();
+
+  const handleGetStarted = () => {
+    console.log(authContext);
+    if (authContext.isAuthenticated) {
+      router.push("/home");
+    } else {
+      router.push("/getstarted");
+    }
+  };
+
   return (
     <Div mode="column" alignItems="center" maxW={720} m="auto">
       <LogoSection m="40px 0" />
@@ -20,9 +32,7 @@ const IntroSection = () => {
       </Text>
       <Button
         label="Get Start"
-        onClick={() => {
-          router.push("/getstarted");
-        }}
+        onClick={handleGetStarted}
         style={{
           fSize: 16,
           fWeight: 700,
