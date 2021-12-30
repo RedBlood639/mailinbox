@@ -19,12 +19,6 @@ const SignInSection = () => {
     rememberFlag: false,
   });
 
-  useEffect(() => {
-    if (localStorage.getItem("user")) {
-      router.push("/home");
-    }
-  }, []);
-
   const { authContext, setAuthContext } = useAuthContext();
 
   const handleChange = (e: any) => {
@@ -83,6 +77,7 @@ const SignInSection = () => {
   const googleAuthFailed = (err: any) => {
     toast.error("Google Authentication Failed", {
       theme: "colored",
+      autoClose: 3000,
     });
   };
 

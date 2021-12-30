@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { StyleProps } from "types";
 
 export const ButtonDiv = styled.div<StyleProps>`
-  display: flex;
+  display: inline-flex;
   cursor: pointer;
   justify-content: center;
   align-items: center;

@@ -28,3 +28,29 @@ export const registerAction = async (data: RegisterUser) => {
 
   return result;
 };
+
+export const resendAction = async (email: string) => {
+  const result = await axios
+    .post(AUTH_API.resend + email)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+
+  return result;
+};
+
+export const verifyAction = async (token: string) => {
+  const result = await axios
+    .post(AUTH_API.verify + token)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+
+  return result;
+};
