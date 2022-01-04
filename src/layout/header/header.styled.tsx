@@ -17,6 +17,6 @@ export const MenuDiv = styled.div`
   justify-content: center;
   align-items: center;
   & > *:not(:first-child) {
-    margin-left: 15px;
+    margin-left: 35px;
   }
 `;

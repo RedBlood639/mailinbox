@@ -1,20 +1,21 @@
-import { ToastContainer, toast } from "react-toastify";
-import React, { useState } from "react";
+import Input from "components/input";
 import dynamic from "next/dynamic";
-import { NewLetterCardDiv } from "./newletter.styled";
+import React, { useState } from "react";
 import { EditorState } from "draft-js";
 import { EditorProps } from "react-draft-wysiwyg";
-import draftToHtml from "draftjs-to-html";
+import { toast, ToastContainer } from "react-toastify";
 import { Div } from "styles/globals.styled";
+import { NewLetterCardDiv } from "./newletter.styled";
+import draftToHtml from "draftjs-to-html";
 import Button from "components/button";
 import { getMyInfo } from "utils/getMyInfo";
 import { addLetterAction } from "actions/letterAction";
-import Input from "components/input";
 const Editor = dynamic<EditorProps>(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
-const NewLetterCard = () => {
+
+const EditLetter = () => {
   const [state, setState] = useState<any>({
     to: "",
     plainText: "",
@@ -23,6 +24,7 @@ const NewLetterCard = () => {
   const [editorState, setEditorState] = useState<any>(() =>
     EditorState.createEmpty()
   );
+
   const handleContentStateChange = (e: any) => {
     setState({
       ...state,
@@ -69,8 +71,6 @@ const NewLetterCard = () => {
       }
     }
   };
-
-  const handlePublish = () => {};
 
   return (
     <NewLetterCardDiv>
@@ -136,4 +136,4 @@ const NewLetterCard = () => {
   );
 };
 
-export default NewLetterCard;
+export default EditLetter;

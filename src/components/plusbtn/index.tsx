@@ -2,9 +2,9 @@ import React from "react";
 import { PlusButtonDiv } from "./plusbtn.styled";
 import { AiOutlinePlus } from "react-icons/ai";
 
-const PlusButton = () => {
+const PlusButton = ({ onClick }: any) => {
   return (
-    <PlusButtonDiv>
+    <PlusButtonDiv onClick={onClick}>
       <AiOutlinePlus />
     </PlusButtonDiv>
   );

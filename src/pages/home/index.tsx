@@ -1,12 +1,31 @@
+import { getAllLetters } from "actions/letterAction";
 import LetterListCard from "components/letterlistcard";
 import MyInfoCard from "components/myinfocard/MyInfoCard";
 import PlusButton from "components/plusbtn";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { Container, Div, HomeContainer } from "styles/globals.styled";
+import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 
 const HomePage = () => {
+  const [letters, setLetters] = useState<any>([]);
+  const router = useRouter();
+  const handleAddClick = () => {
+    router.push("/newletter");
+  };
+
+  useEffect(() => {
+    const getData = async () => {
+      const letters = await getAllLetters();
+      console.log(letters);
+      setLetters(letters);
+      // getAllEmails()
+    };
+    getData();
+  }, []);
+
   return (
     <React.Fragment>
       <HeaderSection />
@@ -16,15 +35,19 @@ const HomePage = () => {
             <Div w={60} mode="column" gap={30}>
               <Div justifyContent="space-between" alignItems="center">
                 <MyInfoCard />
-                <PlusButton />
+                <PlusButton onClick={handleAddClick} />
               </Div>
-              <LetterListCard />
-              <LetterListCard />
-              <LetterListCard />
-              <LetterListCard />
-              <LetterListCard />
-              <LetterListCard />
-              <LetterListCard />
+              {letters.length > 0 ? (
+                letters.map((item: any, key: any) => (
+                  <LetterListCard key={key} data={item} />
+                ))
+              ) : (
+                <LetterListCardDiv
+                  style={{ textAlign: "center", fontSize: 20 }}
+                >
+                  No Data
+                </LetterListCardDiv>
+              )}
             </Div>
             <Div w={30} mode="column" gap={30}>
               <UnsentLetters />

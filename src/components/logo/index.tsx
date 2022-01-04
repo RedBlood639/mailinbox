@@ -6,7 +6,7 @@ import { Div } from "styles/globals.styled";
 
 const LogoSection = (props: any) => {
   return (
-    <Div {...props} maxW={200}>
+    <Div {...props} maxW={200} onClick={props.onClick}>
       <Image src={LogoImg} alt="logo" />
     </Div>
   );

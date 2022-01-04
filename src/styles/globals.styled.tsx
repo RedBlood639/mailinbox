@@ -9,6 +9,7 @@ export const Container = styled.div<StyleProps>`
 
 export const Text = styled.div<StyleProps>`
   line-height: 105%;
+  word-break: break-word;
   font-size: ${({ fSize }) => fSize}px;
   color: ${({ fColor }) => (fColor ? fColor : "#000")};
   font-weight: ${({ fWeight }) => fWeight};

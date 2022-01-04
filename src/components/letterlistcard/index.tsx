@@ -1,3 +1,4 @@
+import Router, { useRouter } from "next/router";
 import React from "react";
 import { FiUser } from "react-icons/fi";
 import { Div, Text } from "styles/globals.styled";
@@ -8,31 +9,27 @@ import {
   UserInfo,
 } from "./letterlistcard.styled";
 
-const LetterListCard = () => {
+const LetterListCard = ({ data }: any) => {
+  const router = useRouter();
+  const handleClick = (id: string) => {
+    router.push("/letter/" + id);
+  };
   return (
-    <LetterListCardDiv>
+    <LetterListCardDiv onClick={() => handleClick(data._id)}>
       <UserInfo>
         <AvatarDiv>
           <FiUser />
         </AvatarDiv>
         <Div mode="column">
           <Text fColor="#191D21" fSize={24} fWeight={500}>
-            Lorem Ipsum
+            {data.to}
           </Text>
           <Text fColor="#191D21" fSize={18} mt={10}>
-            Lorem Ipsum
+            {data.from}
           </Text>
         </Div>
       </UserInfo>
-      <ListContentText>
-        Sesame snaps pudding marshmallow chocolate cake toffee cookie ice cream
-        tiramisu cake. Liquorice croissant jelly lemon drops jelly beans apple
-        pie pudding caramels donut. Cotton candy jujubes danish cookie chocolate
-        bar apple pie Sesame snaps pudding marshmallow chocolate cake toffee
-        cookie ice cream tiramisu cake. Liquorice croissant jelly lemon drops
-        jelly beans apple pie pudding caramels donut. Cotton candy jujubes
-        danish cookie chocolate bar apple pie
-      </ListContentText>
+      <ListContentText>{data.plainText}</ListContentText>
     </LetterListCardDiv>
   );
 };

@@ -1,6 +1,6 @@
 import Button from "components/button";
 import Input from "components/input";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/router";
 import { Div, Text } from "styles/globals.styled";

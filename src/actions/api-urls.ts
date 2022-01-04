@@ -8,3 +8,8 @@ export const AUTH_API = {
   verify: path(BASE_URL, "user/verify/"),
   resend: path(BASE_URL, "user/resend/"),
 };
+
+export const LETTER_API = {
+  get: path(BASE_URL, "letter/"),
+  addnew: path(BASE_URL, "letter/new"),
+};

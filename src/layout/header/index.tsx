@@ -23,19 +23,34 @@ const HeaderSection = () => {
 
   return (
     <HeaderDiv>
-      <LogoSection />
+      <LogoSection onClick={() => router.push("/")} />
       <MenuDiv>
-        <Text>asdf</Text>
-        <Text>asdf</Text>
-        <Text>asdf</Text>
+        <Text
+          style={{ cursor: "pointer" }}
+          onClick={() => router.push("/home")}
+        >
+          Home
+        </Text>
+        <Text
+          style={{ cursor: "pointer" }}
+          onClick={() => router.push("/myletters")}
+        >
+          Letter
+        </Text>
+        <Text
+          style={{ cursor: "pointer" }}
+          onClick={() => router.push("/myemails")}
+        >
+          Email
+        </Text>
         <Button
           label="Logout"
           onClick={handleLogout}
           style={{
-            fSize: 24,
+            fSize: 16,
             fWeight: 700,
             fColor: "#fff",
-            p: "10px 19px",
+            p: "10px 14px",
             bgColor: "#D30505",
             radius: 12,
           }}
