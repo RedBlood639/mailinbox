@@ -6,7 +6,7 @@ import jwtDecode from "jwt-decode";
 import { resendAction } from "actions/authActions";
 import { toast, ToastContainer } from "react-toastify";
 
-const index = () => {
+const UnverifiedPage = () => {
   const [decoded, setDecoded] = useState<any>({});
   useEffect(() => {
     const temp: any = jwtDecode(localStorage.user);
@@ -38,6 +38,7 @@ const index = () => {
                 href="https://mail.google.com"
                 style={{ color: "blue" }}
                 target="_blank"
+                rel="noreferrer"
               >
                 {decoded.email}
               </a>
@@ -67,4 +68,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default UnverifiedPage;

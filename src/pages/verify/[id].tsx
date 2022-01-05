@@ -33,6 +33,7 @@ const Verify = () => {
     if (router.query.id) {
       fetchVerify(router.query.id.toString());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query]);
   return <div>{router.query.id}</div>;
 };

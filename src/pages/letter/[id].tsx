@@ -1,5 +1,4 @@
 import MyInfoCard from "components/myinfocard/MyInfoCard";
-import NewLetterCard from "components/newletter";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
 import React, { useEffect, useState } from "react";
@@ -18,6 +17,7 @@ const LetterPage = () => {
       setstate(res);
     };
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <React.Fragment>

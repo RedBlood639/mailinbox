@@ -2,7 +2,7 @@ import {
   Badge,
   HeaderActions,
 } from "components/mylettercard/mylettercard.styled";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiUser } from "react-icons/fi";
 import { GrEdit } from "react-icons/gr";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -22,11 +22,15 @@ import {
 import { getMyInfo } from "utils/getMyInfo";
 
 const LetterViewCard = ({ data }: any) => {
+  const [state, setState] = useState<any>({});
+  useEffect(() => {
+    setState(getMyInfo());
+  }, []);
   return (
     <LetterViewDiv>
       <HeaderActions style={{ justifyContent: "flex-end" }}>
         <Badge>{data.stateFlag === 0 ? "PUBLIC" : "PRIVATE"}</Badge>
-        {getMyInfo().email === data.from && (
+        {state.email === data.from && (
           <>
             <GrEdit onClick={() => {}} />
             <RiDeleteBinLine onClick={() => {}} />
@@ -55,7 +59,7 @@ const LetterViewCard = ({ data }: any) => {
         <br />
         {data.from}
       </Text>
-      {getMyInfo().email !== data.from && (
+      {state.email !== data.from && (
         <Actions>
           <Action>
             <Text fColor="#5C5C5C">

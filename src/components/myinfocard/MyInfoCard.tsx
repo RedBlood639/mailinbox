@@ -14,6 +14,7 @@ const MyInfoCard = () => {
     } else {
       setState({ ...state, name: user.email, email: user.email });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
