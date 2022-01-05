@@ -54,6 +54,7 @@ export default class CustomDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap"
             rel="stylesheet"
           />
+          <title>Madreply</title>
         </Head>
         <body>
           <Main />
