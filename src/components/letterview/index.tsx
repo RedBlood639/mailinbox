@@ -20,12 +20,45 @@ import {
   LetterViewDiv,
 } from "./letterview.styled";
 import { getMyInfo } from "utils/getMyInfo";
+import { removeLetter } from "actions/letterAction";
+import { Button, Modal } from "react-bootstrap";
+import { useRouter } from "next/router";
 
 const LetterViewCard = ({ data }: any) => {
+  const router = useRouter();
   const [state, setState] = useState<any>({});
+  const [show, setShow] = useState(false);
   useEffect(() => {
     setState(getMyInfo());
   }, []);
+
+  const formatDate = (date: any) => {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  };
+
+  const handleDelete = async () => {
+    const res = await removeLetter(data._id);
+    if (!res.error) {
+      router.back();
+    }
+  };
+
+  const handleDeleteClick = () => {
+    setShow(true);
+  };
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
   return (
     <LetterViewDiv>
       <HeaderActions style={{ justifyContent: "flex-end" }}>
@@ -33,7 +66,7 @@ const LetterViewCard = ({ data }: any) => {
         {state.email === data.from && (
           <>
             <GrEdit onClick={() => {}} />
-            <RiDeleteBinLine onClick={() => {}} />
+            <RiDeleteBinLine onClick={handleDeleteClick} />
           </>
         )}
       </HeaderActions>
@@ -44,7 +77,7 @@ const LetterViewCard = ({ data }: any) => {
           {data.to}
         </Text>
         <Text fSize={18} fWeight={500}>
-          Date: {data.date}
+          Date: {formatDate(data.date)}
         </Text>
       </Div>
       <Div mt={40}>
@@ -122,6 +155,27 @@ const LetterViewCard = ({ data }: any) => {
           cream icing candy candy canes. Cake muffin powder jujubes gingerbread.
         </Div>
       </CommentPart>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Letter!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          You can't recovery this letter after delete. Are you sure?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </LetterViewDiv>
   );
 };

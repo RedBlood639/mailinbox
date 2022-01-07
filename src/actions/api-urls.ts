@@ -11,5 +11,7 @@ export const AUTH_API = {
 
 export const LETTER_API = {
   get: path(BASE_URL, "letter/"),
+  getByEmail: path(BASE_URL, "letter/email/"),
   addnew: path(BASE_URL, "letter/new"),
+  removeById: path(BASE_URL, "letter/"),
 };

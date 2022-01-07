@@ -29,9 +29,7 @@ const SignInSection = () => {
     setState((prev) => ({ ...prev, rememberFlag: !prev.rememberFlag }));
   };
 
-  const handleForget = () => {
-    console.log(authContext);
-  };
+  const handleForget = () => {};
 
   const handleLogin = async () => {
     const validation = LoginValidation(state);

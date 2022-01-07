@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text } from "styles/globals.styled";
 import { GrEdit } from "react-icons/gr";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -13,29 +13,22 @@ import {
   MyletterCardDiv,
 } from "./mylettercard.styled";
 
-const MyLetterCard = () => {
+const MyLetterCard = ({ data, onClick }: any) => {
   return (
     <MyletterCardDiv>
       <CardHeader>
-        <Text>To, Lorem Ispum</Text>
+        <Text onClick={onClick}>To, {data.to}</Text>
         <HeaderActions>
-          <Badge>FOR FRIEND</Badge>
+          <Badge>{data.stateFlag === 0 ? "Published" : "Private"}</Badge>
           <GrEdit />
           <RiDeleteBinLine />
         </HeaderActions>
       </CardHeader>
-      <CardContent>
-        Sesame snaps pudding marshmallow chocolate cake toffee cookie ice cream
-        tiramisu cake. Liquorice croissant jelly lemon drops jelly beans apple
-        pie pudding caramels donut. Cotton candy jujubes danish cookie chocolate
-        bar apple pieSesame snaps pudding marshmallow chocolate cake toffee
-        cookie ice cream tiramisu cake. Liquorice croissant jelly lemon drops
-        jelly beans apple pie pudding caramels donut. Cotton candy jujubes
-        danish cookie chocolate bar apple pie
-      </CardContent>
+      <CardContent onClick={onClick}>{data.plainText}</CardContent>
       <CardFooter>
-        <CommentAction>
-          <BiComment />5 Comments
+        <CommentAction onClick={onClick}>
+          <BiComment />
+          {data.comments.length} Comments
         </CommentAction>
       </CardFooter>
     </MyletterCardDiv>

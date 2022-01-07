@@ -13,7 +13,6 @@ const IntroSection = () => {
   const { authContext } = useAuthContext();
 
   const handleGetStarted = () => {
-    console.log(authContext);
     if (authContext.isAuthenticated) {
       router.push("/home");
     } else {

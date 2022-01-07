@@ -19,7 +19,6 @@ const HomePage = () => {
   useEffect(() => {
     const getData = async () => {
       const letters = await getAllLetters();
-      console.log(letters);
       setLetters(letters);
       // getAllEmails()
     };
