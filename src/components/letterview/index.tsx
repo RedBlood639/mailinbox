@@ -165,7 +165,7 @@ const LetterViewCard = ({ data }: any) => {
           <Modal.Title>Delete Letter!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          You can't recovery this letter after delete. Are you sure?
+          {"You can't recovery this letter after delete. Are you sure?"}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

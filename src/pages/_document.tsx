@@ -41,6 +41,7 @@ export default class CustomDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <title>Madreply</title>
 
           <link
             href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600&family=Exo:wght@500;600;700&family=Noto+Serif:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap"
@@ -54,7 +55,6 @@ export default class CustomDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap"
             rel="stylesheet"
           />
-          <title>Madreply</title>
         </Head>
         <body>
           <Main />
