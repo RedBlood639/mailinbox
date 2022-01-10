@@ -1,7 +1,7 @@
 import Input from "components/input";
 import dynamic from "next/dynamic";
-import React, { useState } from "react";
-import { EditorState } from "draft-js";
+import React, { useState, useEffect } from "react";
+import { ContentState, convertFromHTML, EditorState } from "draft-js";
 import { EditorProps } from "react-draft-wysiwyg";
 import { toast, ToastContainer } from "react-toastify";
 import { Div } from "styles/globals.styled";
@@ -10,20 +10,26 @@ import draftToHtml from "draftjs-to-html";
 import Button from "components/button";
 import { getMyInfo } from "utils/getMyInfo";
 import { addLetterAction } from "actions/letterAction";
+import htmlToDraft from "html-to-draftjs";
 const Editor = dynamic<EditorProps>(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
 
-const EditLetter = () => {
+const EditLetter = ({ data }: any) => {
   const [state, setState] = useState<any>({
-    to: "",
-    plainText: "",
-    htmlText: null,
+    to: data.to,
+    plainText: data.plainText,
+    htmlText: data.htmlText,
   });
+
   const [editorState, setEditorState] = useState<any>(() =>
     EditorState.createEmpty()
   );
+  
+  useEffect(() => {
+    // setEditorState(htmlToDraft(data.htmlText));
+  }, [data]);
 
   const handleContentStateChange = (e: any) => {
     setState({

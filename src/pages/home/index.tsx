@@ -20,7 +20,6 @@ const HomePage = () => {
     const getData = async () => {
       const letters = await getAllLetters();
       setLetters(letters);
-      // getAllEmails()
     };
     getData();
   }, []);

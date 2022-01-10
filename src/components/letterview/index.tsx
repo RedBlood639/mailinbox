@@ -62,7 +62,7 @@ const LetterViewCard = ({ data }: any) => {
   return (
     <LetterViewDiv>
       <HeaderActions style={{ justifyContent: "flex-end" }}>
-        <Badge>{data.stateFlag === 0 ? "PUBLIC" : "PRIVATE"}</Badge>
+        <Badge>{data.stateFlag === 0 ? "PUBLISHED" : "PRIVATE"}</Badge>
         {state.email === data.from && (
           <>
             <GrEdit onClick={() => {}} />
