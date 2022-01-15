@@ -13,5 +13,8 @@ export const LETTER_API = {
   get: path(BASE_URL, "letter/"),
   getByEmail: path(BASE_URL, "letter/email/"),
   addnew: path(BASE_URL, "letter/new"),
+  edit: path(BASE_URL, "letter/edit/"),
   removeById: path(BASE_URL, "letter/"),
+  recommend: path(BASE_URL, "letter/like/"),
+  opposite: path(BASE_URL, "letter/unlike/"),
 };

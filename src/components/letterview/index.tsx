@@ -20,17 +20,34 @@ import {
   LetterViewDiv,
 } from "./letterview.styled";
 import { getMyInfo } from "utils/getMyInfo";
-import { removeLetter } from "actions/letterAction";
+import {
+  oppositeLetter,
+  recommendLetter,
+  removeLetter,
+} from "actions/letterAction";
 import { Button, Modal } from "react-bootstrap";
 import { useRouter } from "next/router";
 
 const LetterViewCard = ({ data }: any) => {
   const router = useRouter();
   const [state, setState] = useState<any>({});
+  const [letterData, setLetterData] = useState<any>({});
   const [show, setShow] = useState(false);
   useEffect(() => {
     setState(getMyInfo());
   }, []);
+
+  useEffect(() => {
+    setLetterData(data);
+    console.log(data);
+  }, [data]);
+
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
 
   const formatDate = (date: any) => {
     var d = new Date(date),
@@ -45,7 +62,7 @@ const LetterViewCard = ({ data }: any) => {
   };
 
   const handleDelete = async () => {
-    const res = await removeLetter(data._id);
+    const res = await removeLetter(letterData._id);
     if (!res.error) {
       router.back();
     }
@@ -59,13 +76,39 @@ const LetterViewCard = ({ data }: any) => {
     setShow(false);
   };
 
+  const handleRecommend = async () => {
+    const res = await recommendLetter(state.email, letterData._id);
+    if (res.error) {
+    } else {
+      setLetterData(res);
+      console.log(res);
+    }
+  };
+
+  const handleOpposite = async () => {
+    const res = await oppositeLetter(state.email, letterData._id);
+    if (res.error) {
+    } else {
+      setLetterData(res);
+      console.log(res);
+    }
+  };
+
+  const handleComment = () => {};
+
+  const handleEditClick = () => {
+    router.push("/editletter/" + letterData._id);
+  };
+
+  // const handleReport = () => {};
+
   return (
     <LetterViewDiv>
       <HeaderActions style={{ justifyContent: "flex-end" }}>
-        <Badge>{data.stateFlag === 0 ? "PUBLISHED" : "PRIVATE"}</Badge>
-        {state.email === data.from && (
+        <Badge>{letterData.stateFlag === 0 ? "PUBLISHED" : "PRIVATE"}</Badge>
+        {state.email === letterData.from && (
           <>
-            <GrEdit onClick={() => {}} />
+            <GrEdit onClick={handleEditClick} />
             <RiDeleteBinLine onClick={handleDeleteClick} />
           </>
         )}
@@ -74,43 +117,79 @@ const LetterViewCard = ({ data }: any) => {
         <Text fSize={18} fWeight={500}>
           To,
           <br />
-          {data.to}
+          {letterData.to}
         </Text>
         <Text fSize={18} fWeight={500}>
-          Date: {formatDate(data.date)}
+          Date: {formatDate(letterData.date)}
         </Text>
       </Div>
       <Div mt={40}>
         <div
           dangerouslySetInnerHTML={{
-            __html: data.htmlText,
+            __html: letterData.htmlText,
           }}
         ></div>
       </Div>
       <Text mt={40} fSize={18} fWeight={500}>
         From,
         <br />
-        {data.from}
+        {letterData.from}
       </Text>
-      {state.email !== data.from && (
+      {state.email !== letterData.from && (
         <Actions>
-          <Action>
-            <Text fColor="#5C5C5C">
+          <Action onClick={handleRecommend}>
+            <Text
+              fColor={
+                letterData.likes?.filter(
+                  (like: any) => like.email === state.email
+                ).length > 0
+                  ? "#800000"
+                  : "#5C5C5C"
+              }
+            >
               <BsHandThumbsUp />
             </Text>
-            <Text ml={5} fSize={15} fColor="#5C5C5C">
+            <Text
+              ml={5}
+              fSize={15}
+              fColor={
+                letterData.likes?.filter(
+                  (like: any) => like.email === state.email
+                ).length > 0
+                  ? "#800000"
+                  : "#5C5C5C"
+              }
+            >
               Recommend
             </Text>
           </Action>
-          <Action>
-            <Text fColor="#5C5C5C">
+          <Action onClick={handleOpposite}>
+            <Text
+              fColor={
+                letterData.unlikes?.filter(
+                  (like: any) => like.email === state.email
+                ).length > 0
+                  ? "#800000"
+                  : "#5C5C5C"
+              }
+            >
               <BsHandThumbsDown />
             </Text>
-            <Text ml={5} fSize={15} fColor="#5C5C5C">
+            <Text
+              ml={5}
+              fSize={15}
+              fColor={
+                letterData.unlikes?.filter(
+                  (like: any) => like.email === state.email
+                ).length > 0
+                  ? "#800000"
+                  : "#5C5C5C"
+              }
+            >
               Opposite
             </Text>
           </Action>
-          <Action>
+          <Action onClick={handleComment}>
             <Text fColor="#5C5C5C">
               <BiComment />
             </Text>
@@ -118,14 +197,14 @@ const LetterViewCard = ({ data }: any) => {
               Comment
             </Text>
           </Action>
-          <Action>
+          {/* <Action onClick={handleReport}>
             <Text fColor="#5C5C5C">
               <FiFlag />
             </Text>
             <Text ml={5} fSize={15} fColor="#5C5C5C">
               Report
             </Text>
-          </Action>
+          </Action> */}
         </Actions>
       )}
 

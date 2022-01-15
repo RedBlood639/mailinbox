@@ -7,6 +7,11 @@ export const LetterListCardDiv = styled.div`
   padding: 25px 10px;
   border-radius: 10px;
   background-color: white;
+  transition: all 0.2s;
+  :hover {
+    box-shadow: 0 0 5px #55000080;
+  }
+  cursor: pointer;
 `;
 
 export const UserInfo = styled.div`

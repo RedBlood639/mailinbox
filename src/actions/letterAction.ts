@@ -39,6 +39,19 @@ export const addLetterAction = async (data: any) => {
   return res;
 };
 
+export const editLetterAction = async (id: any, data: any) => {
+  const res = await axios
+    .post(LETTER_API.edit + id, data)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+
+  return res;
+};
+
 export const getMyLetters = async (email: any) => {
   const res = await axios
     .get(LETTER_API.getByEmail + email)
@@ -54,6 +67,30 @@ export const getMyLetters = async (email: any) => {
 export const removeLetter = async (id: any) => {
   const res = axios
     .delete(LETTER_API.removeById + id)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return res;
+};
+
+export const recommendLetter = async (email: any, id: any) => {
+  const res = axios
+    .post(LETTER_API.recommend + email + "/" + id)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return res;
+};
+
+export const oppositeLetter = async (email: any, id: any) => {
+  const res = axios
+    .post(LETTER_API.opposite + email + "/" + id)
     .then((res) => {
       return res.data;
     })

@@ -10,6 +10,8 @@ import { EmailValidation, passValidation } from "utils/authValidation";
 import GoogleLogin from "react-google-login";
 import { registerAction } from "actions/authActions";
 
+import credentials from "config/credentials.json";
+
 const SignUpSection = () => {
   const router = useRouter();
   const [state, setState] = useState({
@@ -81,12 +83,14 @@ const SignUpSection = () => {
         Create your account
       </Text>
       <GoogleLogin
-        clientId="561228158715-g8dqcj35lqseg3l4231hbh60bs1kggs3.apps.googleusercontent.com"
+        // 561228158715-g8dqcj35lqseg3l4231hbh60bs1kggs3.apps.googleusercontent.com
+        clientId={credentials.web.client_id}
         buttonText="Login"
         onSuccess={googleAuthSuccess}
         onFailure={googleAuthFailed}
         // uxMode="popup"
-        redirectUri="http://localhost:3000"
+        // redirectUri="http://localhost:3000"
+        redirectUri={credentials.web.redirect_uris[0]}
         cookiePolicy="single_host_origin"
         render={(renderProps) => (
           <Button

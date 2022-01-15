@@ -1,10 +1,10 @@
+import React, { useEffect, useState } from "react";
 import { getLetterById } from "actions/letterAction";
 import MyInfoCard from "components/myinfocard/MyInfoCard";
 import EditLetter from "components/newletter/EditLetter";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
 import { Container, Div, HomeContainer } from "styles/globals.styled";
 
 const EditLetterPage = () => {
@@ -13,11 +13,15 @@ const EditLetterPage = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await getLetterById(router.query.id);
+
+      console.log(res);
       setstate(res);
     };
-    getData();
+    if (router.query.id) {
+      getData();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [router.query.id]);
   return (
     <React.Fragment>
       <HeaderSection />

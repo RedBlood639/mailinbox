@@ -16,9 +16,9 @@ const LetterPage = () => {
       const res = await getLetterById(router.query.id);
       setstate(res);
     };
-    getData();
+    if (router.query.id) getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [router.query.id]);
   return (
     <React.Fragment>
       <HeaderSection />

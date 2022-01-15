@@ -10,4 +10,8 @@ export const PlusButtonDiv = styled.div`
   border-radius: 100px;
   font-size: 30px;
   cursor: pointer;
+  transition: all 0.2s;
+  :hover {
+    box-shadow: 0 0 5px #55000080;
+  }
 `;

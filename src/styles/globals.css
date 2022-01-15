@@ -12,5 +12,27 @@ a {
 }
 
 * {
+  word-break: break-all;
   box-sizing: border-box;
+}
+
+/* ------ Custom Scroll ------ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff30;
+  box-shadow: inset 1px 1px 2px transparent;
+  border: 0.1px solid #ffffff30;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(147, 0, 0, 0.8) !important;
+  border-radius: 10px;
+  box-shadow: inset 1px 1px 2px rgb(155 155 155 / 40%);
 }

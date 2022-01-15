@@ -9,26 +9,36 @@ import { NewLetterCardDiv } from "./newletter.styled";
 import draftToHtml from "draftjs-to-html";
 import Button from "components/button";
 import { getMyInfo } from "utils/getMyInfo";
-import { addLetterAction } from "actions/letterAction";
-import htmlToDraft from "html-to-draftjs";
+import { editLetterAction } from "actions/letterAction";
+
 const Editor = dynamic<EditorProps>(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
 
 const EditLetter = ({ data }: any) => {
-  const [state, setState] = useState<any>({
-    to: data.to,
-    plainText: data.plainText,
-    htmlText: data.htmlText,
-  });
+  const [state, setState] = useState<any>({});
 
-  const [editorState, setEditorState] = useState<any>(() =>
-    EditorState.createEmpty()
-  );
-  
+  const [editorState, setEditorState] = useState<any>("");
+
   useEffect(() => {
-    // setEditorState(htmlToDraft(data.htmlText));
+    const setImport = async () => {
+      const { default: htmlToDraft } = await import("html-to-draftjs");
+      setEditorState(() => {
+        const blocksFromHTML = htmlToDraft(data.htmlText + "");
+        const contentState = ContentState.createFromBlockArray(
+          blocksFromHTML.contentBlocks,
+          blocksFromHTML.entityMap
+        );
+
+        return EditorState.createWithContent(contentState);
+      });
+
+      setState(data);
+    };
+    if (data) {
+      setImport();
+    }
   }, [data]);
 
   const handleContentStateChange = (e: any) => {
@@ -43,7 +53,7 @@ const EditLetter = ({ data }: any) => {
     setState({ ...state, to: e.target.value });
   };
 
-  const handleAddClick = async (num: number) => {
+  const handleEditClick = async (num: number) => {
     if (!state.to) {
       toast.error("To field is required", {
         theme: "colored",
@@ -63,14 +73,14 @@ const EditLetter = ({ data }: any) => {
         date: new Date(),
         stateFlag: num,
       };
-      const res = await addLetterAction(data);
+      const res = await editLetterAction(state._id, data);
       if (res.error) {
         toast.error(res.error, {
           theme: "colored",
           autoClose: 3000,
         });
       } else {
-        toast.success("A Letter is created successfully", {
+        toast.success("A Letter is changed successfully", {
           theme: "colored",
           autoClose: 3000,
         });
@@ -114,7 +124,7 @@ const EditLetter = ({ data }: any) => {
       <Div justifyContent="flex-end" mt={40} gap={15}>
         <Button
           label="PRIVATE"
-          onClick={() => handleAddClick(1)}
+          onClick={() => handleEditClick(1)}
           style={{
             fSize: 20,
             fWeight: 700,
@@ -127,7 +137,7 @@ const EditLetter = ({ data }: any) => {
         />
         <Button
           label="PUBLISH"
-          onClick={() => handleAddClick(0)}
+          onClick={() => handleEditClick(0)}
           style={{
             fSize: 20,
             fWeight: 700,

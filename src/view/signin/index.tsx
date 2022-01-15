@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { loginAction } from "actions/authActions";
 import { useAuthContext } from "context/state";
 import { LoginValidation } from "utils/authValidation";
+import credentials from "config/credentials.json";
 
 const SignInSection = () => {
   const router = useRouter();
@@ -131,12 +132,14 @@ const SignInSection = () => {
         }}
       />
       <GoogleLogin
-        clientId="561228158715-g8dqcj35lqseg3l4231hbh60bs1kggs3.apps.googleusercontent.com"
+        clientId={credentials.web.client_id}
+        // clientId="561228158715-g8dqcj35lqseg3l4231hbh60bs1kggs3.apps.googleusercontent.com"
         buttonText="Login"
         onSuccess={googleAuthSuccess}
         onFailure={googleAuthFailed}
         // uxMode="popup"
-        redirectUri="http://localhost:3000"
+        redirectUri={credentials.web.redirect_uris[0]}
+        // redirectUri="http://localhost:3000"
         cookiePolicy="single_host_origin"
         render={(renderProps) => (
           <Button
