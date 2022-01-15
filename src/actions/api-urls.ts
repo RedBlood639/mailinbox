@@ -1,7 +1,7 @@
 import { path } from "utils/helpUrl";
 
 // const BASE_URL = "http://localhost:5000/";
-const BASE_URL = "https://api.madreply.com";
+const BASE_URL = "https://api.madreply.com/";
 
 export const AUTH_API = {
   login: path(BASE_URL, "user/login"),
