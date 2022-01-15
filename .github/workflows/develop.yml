@@ -5,7 +5,7 @@ name: Deploy
 # Controls when the action will run. Triggers the workflow on push or pull request
 on:
   push:
-    branches: [version2]
+    branches: [main]
 
 jobs:
   bulid:
@@ -57,6 +57,16 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: ".next"
           target: "/home/ubuntu/madreply"
+
+      - name: Run SSH command on target
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            PATH=$PATH:/home/ubuntu/.nvm/versions/node/v14.17.3/bin
+            pm2 restart madreply_frontend
 
       - uses: sarisia/actions-status-discord@v1
         if: always()
