@@ -1,12 +1,19 @@
+import { gmailAuth } from "actions/emailActions";
+import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import LinkEmailCard from "components/linkemail";
 import MyInfoCard from "components/myinfocard/MyInfoCard";
-import PlusButton from "components/plusbtn";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
 import React from "react";
 import { Container, Div, HomeContainer } from "styles/globals.styled";
 
 const MyEmailePage = () => {
+  const handleLinkEmail = async () => {
+    const res = await gmailAuth();
+    console.log(res.authUrl);
+    window.open(res.authUrl, "_blank");
+  };
+
   return (
     <React.Fragment>
       <HeaderSection />
@@ -16,8 +23,11 @@ const MyEmailePage = () => {
             <Div w={60} mode="column" gap={30}>
               <Div justifyContent="space-between" alignItems="center">
                 <MyInfoCard />
-                <LinkEmailCard />
+                <LinkEmailCard onClick={handleLinkEmail} />
               </Div>
+              <LetterListCardDiv style={{ textAlign: "center", fontSize: 20 }}>
+                No Data
+              </LetterListCardDiv>
             </Div>
             <Div w={30} mode="column" gap={30}>
               <UnsentLetters />

@@ -3,9 +3,9 @@ import { FiPaperclip } from "react-icons/fi";
 import { Div, Text } from "styles/globals.styled";
 import { LinkEmailDiv } from "./linkemail.styled";
 
-const LinkEmailCard = () => {
+const LinkEmailCard = ({ onClick }: any) => {
   return (
-    <LinkEmailDiv>
+    <LinkEmailDiv onClick={onClick}>
       <div>
         <FiPaperclip />
       </div>

@@ -19,3 +19,7 @@ export const LETTER_API = {
   recommend: path(BASE_URL, "letter/like/"),
   opposite: path(BASE_URL, "letter/unlike/"),
 };
+
+export const EMAIL_API = {
+  gmailAuth: path(BASE_URL, "auth/gmailAuth"),
+};
