@@ -18,9 +18,9 @@ const MyEmailePage = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await getMessages();
-      console.log(res.messages);
+      // console.log(res.messages);
       if (res.error) {
-        console.log(res);
+        // console.log(res);
       } else {
         setMsgData(res.messages);
       }
