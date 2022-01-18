@@ -4,7 +4,7 @@ import { EmailListCardDiv } from "./emaillistcard.styled";
 const EmailListCard = ({ data }: any) => {
   return (
     <EmailListCardDiv>
-      <p>{new Date(data.internalDate)}</p>
+      {/* <p>{new Intl.DateTimeFormat("en-US").format(data)}</p> */}
       {data.snippet}
     </EmailListCardDiv>
   );
