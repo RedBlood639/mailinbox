@@ -17,7 +17,7 @@ export const getMessages = async () => {
   const res = await axios
     .get(EMAIL_API.getMessages)
     .then((res) => {
-      return res;
+      return res.data;
     })
     .catch((err) => {
       return err.response.data;
