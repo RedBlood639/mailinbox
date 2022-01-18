@@ -47,8 +47,9 @@ const MyEmailePage = () => {
                 <LetterListCardDiv
                   style={{ textAlign: "center", fontSize: 20 }}
                 >
-                  Please Click the "Link Your Email With us" to Connect to your
-                  email indox
+                  {
+                    'Please Click the "Link Your Email With us" to Connect to your email indox'
+                  }
                 </LetterListCardDiv>
               )}
             </Div>
