@@ -19,11 +19,12 @@ const MyEmailePage = () => {
     const getData = async () => {
       const res = await getMessages();
       // console.log(res.messages);
-      if (res.error) {
-        // console.log(res);
-      } else {
-        setMsgData(res.messages);
-      }
+      // if (res.error) {
+      //   // console.log(res);
+      //   setMsgData([]);
+      // } else {
+      setMsgData(res.messages);
+      // }
     };
     getData();
   }, []);

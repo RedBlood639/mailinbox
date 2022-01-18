@@ -22,6 +22,6 @@ export const getMessages = async () => {
     .catch((err) => {
       return err.response.data;
     });
-  console.log(res);
+  // console.log(res);
   return res;
 };
