@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.17.3]
+        node-version: [16.13.1]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -65,7 +65,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            PATH=$PATH:/home/ubuntu/.nvm/versions/node/v14.17.3/bin
+            PATH=$PATH:/home/ubuntu/.nvm/versions/node/v16.13.1/bin
             pm2 restart madreply_frontend
 
       - uses: sarisia/actions-status-discord@v1

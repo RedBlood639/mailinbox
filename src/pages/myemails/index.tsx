@@ -22,7 +22,7 @@ const MyEmailePage = () => {
       if (res.error) {
         console.log(res);
       } else {
-        setMsgData(res);
+        setMsgData(res.messages);
       }
     };
     getData();
