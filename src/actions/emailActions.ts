@@ -12,3 +12,16 @@ export const gmailAuth = async () => {
     });
   return res;
 };
+
+export const getMessages = async () => {
+  const res = await axios
+    .get(EMAIL_API.getMessages)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      return err.data;
+    });
+  console.log(res);
+  return res;
+};

@@ -1,17 +1,32 @@
-import { gmailAuth } from "actions/emailActions";
+import { getMessages, gmailAuth } from "actions/emailActions";
+import EmailListCard from "components/emaillistcard/EmailListCard";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import LinkEmailCard from "components/linkemail";
 import MyInfoCard from "components/myinfocard/MyInfoCard";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Div, HomeContainer } from "styles/globals.styled";
 
 const MyEmailePage = () => {
+  const [msgData, setMsgData] = useState<any>([]);
   const handleLinkEmail = async () => {
     const res = await gmailAuth();
     location.href = res.authUrl;
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      const res = await getMessages();
+      console.log(res);
+      if (res.error) {
+        console.log(res);
+      } else {
+        setMsgData(res);
+      }
+    };
+    getData();
+  }, []);
 
   return (
     <React.Fragment>
@@ -24,9 +39,18 @@ const MyEmailePage = () => {
                 <MyInfoCard />
                 <LinkEmailCard onClick={handleLinkEmail} />
               </Div>
-              <LetterListCardDiv style={{ textAlign: "center", fontSize: 20 }}>
-                No Data
-              </LetterListCardDiv>
+              {msgData.length > 0 ? (
+                msgData.map((item: any, key: any) => (
+                  <EmailListCard key={key} data={item} />
+                ))
+              ) : (
+                <LetterListCardDiv
+                  style={{ textAlign: "center", fontSize: 20 }}
+                >
+                  Please Click the "Link Your Email With us" to Connect to your
+                  email indox
+                </LetterListCardDiv>
+              )}
             </Div>
             <Div w={30} mode="column" gap={30}>
               <UnsentLetters />
