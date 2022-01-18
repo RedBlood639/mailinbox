@@ -10,8 +10,7 @@ import { Container, Div, HomeContainer } from "styles/globals.styled";
 const MyEmailePage = () => {
   const handleLinkEmail = async () => {
     const res = await gmailAuth();
-    console.log(res.authUrl);
-    window.open(res.authUrl, "_blank");
+    window.open(res.authUrl);
   };
 
   return (
