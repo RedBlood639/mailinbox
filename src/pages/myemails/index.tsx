@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Div, HomeContainer } from "styles/globals.styled";
 
 const MyEmailePage = () => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [msgData, setMsgData] = useState<any>([]);
   const handleLinkEmail = async () => {
     const res = await gmailAuth();
@@ -19,13 +20,15 @@ const MyEmailePage = () => {
     const getData = async () => {
       const res = await getMessages();
       // console.log(res.messages);
-      // if (res.error) {
-      //   // console.log(res);
-      //   setMsgData([]);
-      // } else {
-      setMsgData(res.messages);
-      // }
+      if (res.error) {
+        console.log(res);
+        setMsgData([]);
+      } else {
+        setMsgData(res.messages);
+      }
+      setLoading(false);
     };
+    setLoading(true);
     getData();
   }, []);
 
@@ -40,18 +43,28 @@ const MyEmailePage = () => {
                 <MyInfoCard />
                 <LinkEmailCard onClick={handleLinkEmail} />
               </Div>
-              {msgData.length > 0 ? (
-                msgData.map((item: any, key: any) => (
-                  <EmailListCard key={key} data={item} />
-                ))
-              ) : (
+              {loading ? (
                 <LetterListCardDiv
                   style={{ textAlign: "center", fontSize: 20 }}
                 >
-                  {
-                    'Please Click the "Link Your Email With us" to Connect to your email indox'
-                  }
+                  Loading ...
                 </LetterListCardDiv>
+              ) : (
+                <>
+                  {msgData.length > 0 ? (
+                    msgData.map((item: any, key: any) => (
+                      <EmailListCard key={key} data={item} />
+                    ))
+                  ) : (
+                    <LetterListCardDiv
+                      style={{ textAlign: "center", fontSize: 20 }}
+                    >
+                      {
+                        'Please Click the "Link Your Email With us" to Connect to your email indox'
+                      }
+                    </LetterListCardDiv>
+                  )}
+                </>
               )}
             </Div>
             <Div w={30} mode="column" gap={30}>
