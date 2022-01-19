@@ -1,6 +1,6 @@
 import Button from "components/button";
 import Input from "components/input";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,6 +11,7 @@ import GoogleLogin from "react-google-login";
 import { registerAction } from "actions/authActions";
 
 import credentials from "config/credentials.json";
+import { isMobile } from "utils/isMobile";
 
 const SignUpSection = () => {
   const router = useRouter();
@@ -21,6 +22,14 @@ const SignUpSection = () => {
     isAllow: false,
   });
   const [flag, setFlag] = useState(true);
+
+  const [mobile, setmobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setmobile(isMobile(768));
+    });
+  }, []);
 
   const handleChange = (e: any) => {
     setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -77,7 +86,7 @@ const SignUpSection = () => {
   };
 
   return (
-    <Div mode="column" w={80} maxW={500} m="auto">
+    <Div mode="column" w={80} maxW={500} m={mobile ? "30px auto" : "auto"}>
       <ToastContainer />
       <Text fSize={36} fWeight={800} mb={32}>
         Create your account
@@ -104,7 +113,7 @@ const SignUpSection = () => {
               fSize: 16,
               fWeight: 700,
               fColor: "#fff",
-              p: "12px 24px",
+              p: "12px 20px",
               bgColor: "#2D3748",
               radius: 5,
             }}

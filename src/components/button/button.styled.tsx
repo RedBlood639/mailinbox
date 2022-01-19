@@ -7,7 +7,8 @@ export const ButtonDiv = styled.div<StyleProps>`
   justify-content: center;
   align-items: center;
   background-color: ${({ bgColor }) => bgColor};
-  font-size: ${({ fSize }) => fSize}px;
+  font-size: ${({ fSize }) =>
+    "clamp(" + Number(fSize) / 2 + "px, 6vw, " + fSize + "px)"};
   color: ${({ fColor }) => (fColor ? fColor : "#000")};
   font-weight: ${({ fWeight }) => fWeight};
   text-align: ${({ tAlign }) => tAlign};

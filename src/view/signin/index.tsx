@@ -1,6 +1,6 @@
 import Button from "components/button";
 import Input from "components/input";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/router";
 import { Div, Text } from "styles/globals.styled";
@@ -11,6 +11,7 @@ import { loginAction } from "actions/authActions";
 import { useAuthContext } from "context/state";
 import { LoginValidation } from "utils/authValidation";
 import credentials from "config/credentials.json";
+import { isMobile } from "utils/isMobile";
 
 const SignInSection = () => {
   const router = useRouter();
@@ -21,6 +22,14 @@ const SignInSection = () => {
   });
 
   const { authContext, setAuthContext } = useAuthContext();
+
+  const [mobile, setmobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setmobile(isMobile(768));
+    });
+  }, []);
 
   const handleChange = (e: any) => {
     setState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -81,7 +90,7 @@ const SignInSection = () => {
   };
 
   return (
-    <Div mode="column" w={80} maxW={500} m="auto">
+    <Div mode="column" w={80} maxW={500} m={mobile ? "30px auto" : "auto"}>
       <ToastContainer />
       <Text fSize={36} fWeight={800} mb={30}>
         Log into your account
@@ -153,8 +162,8 @@ const SignInSection = () => {
               fSize: 16,
               fWeight: 700,
               fColor: "#fff",
-              p: "12px 24px",
-              bgColor: "#2D3748",
+              p: "12px 20px",
+              bgColor: "rgb(45, 55, 72)",
               radius: 5,
               mt: 30,
             }}

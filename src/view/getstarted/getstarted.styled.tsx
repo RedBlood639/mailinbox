@@ -24,6 +24,6 @@ export const GetStartText = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin: auto;
+  margin: 30px auto;
   justify-content: center;
 `;
