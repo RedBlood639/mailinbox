@@ -1,10 +1,17 @@
 import React from "react";
 import { ButtonDiv } from "./button.styled";
 
-const Button = ({ style, onClick, label }: any) => {
+const Button = ({ style, onClick, label, loading }: any) => {
   return (
     <ButtonDiv {...style} onClick={onClick}>
-      {label}
+      {loading ? (
+        <React.Fragment>
+          <i className="fa fa-spinner fa-spin"></i>
+          &nbsp;Loading
+        </React.Fragment>
+      ) : (
+        label
+      )}
     </ButtonDiv>
   );
 };

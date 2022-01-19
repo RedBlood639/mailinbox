@@ -21,6 +21,8 @@ const SignInSection = () => {
     rememberFlag: false,
   });
 
+  const [loading, setLoading] = useState<any>(false);
+
   const { authContext, setAuthContext } = useAuthContext();
 
   const [mobile, setmobile] = useState<boolean>(false);
@@ -43,6 +45,7 @@ const SignInSection = () => {
   const handleForget = () => {};
 
   const handleLogin = async () => {
+    setLoading(true);
     const validation = LoginValidation(state);
     if (validation !== "success") {
       toast.error(validation, { theme: "colored", autoClose: 3000 });
@@ -58,6 +61,7 @@ const SignInSection = () => {
         loginSuccess(result);
       }
     }
+    setLoading(false);
   };
 
   const loginSuccess = (data: any) => {
@@ -132,6 +136,7 @@ const SignInSection = () => {
       <Button
         label="Login now"
         onClick={handleLogin}
+        loading={loading}
         style={{
           fSize: 16,
           fWeight: 700,

@@ -22,6 +22,7 @@ const SignUpSection = () => {
     isAllow: false,
   });
   const [flag, setFlag] = useState(true);
+  const [loading, setLoading] = useState<any>(false);
 
   const [mobile, setmobile] = useState<boolean>(false);
 
@@ -37,6 +38,7 @@ const SignUpSection = () => {
   };
 
   const handleSignUp = async () => {
+    setLoading(true);
     const validation = passValidation(state);
     if (validation !== "success") {
       toast.error(validation, { theme: "colored", autoClose: 3000 });
@@ -54,9 +56,11 @@ const SignUpSection = () => {
         toast.success(res.success, { theme: "colored", autoClose: 3000 });
       }
     }
+    setLoading(false);
   };
 
   const handleGotocreate = () => {
+    setLoading(true);
     const validation = EmailValidation(state);
     if (validation !== "success") {
       toast.error(validation, { theme: "colored", autoClose: 3000 });
@@ -64,6 +68,7 @@ const SignUpSection = () => {
       setFlag(false);
       setState((prev) => ({ ...prev, isAllow: false }));
     }
+    setLoading(false);
   };
 
   const googleAuthSuccess = (res: any) => {
@@ -170,6 +175,7 @@ const SignUpSection = () => {
             bgColor: "#4E6AF0",
             radius: 5,
           }}
+          loading={loading}
         />
       ) : (
         <Button
@@ -183,6 +189,7 @@ const SignUpSection = () => {
             bgColor: "#4E6AF0",
             radius: 5,
           }}
+          loading={loading}
         />
       )}
 
