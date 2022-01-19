@@ -40,46 +40,48 @@ const HeaderSection = () => {
   };
 
   return (
-    <HeaderDiv>
+    <>
       <ToastContainer />
-      <LogoSection onClick={() => router.push("/")} />
-      <MenuDiv>
-        <Text
-          style={{ cursor: "pointer" }}
-          onClick={() => router.push("/home")}
-          className={path === "home" ? "active" : ""}
-        >
-          Home
-        </Text>
-        <Text
-          style={{ cursor: "pointer" }}
-          onClick={() => router.push("/myletters")}
-          className={path === "letter" ? "active" : ""}
-        >
-          Letter
-        </Text>
-        <Text
-          style={{ cursor: "pointer" }}
-          onClick={() => router.push("/myemails")}
-          className={path === "email" ? "active" : ""}
-        >
-          Email
-        </Text>
-        <Button
-          label="Logout"
-          onClick={handleLogout}
-          style={{
-            fSize: 16,
-            fWeight: 700,
-            fColor: "#fff",
-            p: "10px 14px",
-            bgColor: "#D30505",
-            radius: 12,
-            ml: 20,
-          }}
-        />
-      </MenuDiv>
-    </HeaderDiv>
+      <HeaderDiv>
+        <LogoSection onClick={() => router.push("/")} />
+        <MenuDiv>
+          <Text
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push("/home")}
+            className={path === "home" ? "active" : ""}
+          >
+            Home
+          </Text>
+          <Text
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push("/myletters")}
+            className={path === "letter" ? "active" : ""}
+          >
+            Letter
+          </Text>
+          <Text
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push("/myemails")}
+            className={path === "email" ? "active" : ""}
+          >
+            Email
+          </Text>
+          <Button
+            label="Logout"
+            onClick={handleLogout}
+            style={{
+              fSize: 16,
+              fWeight: 700,
+              fColor: "#fff",
+              p: "10px 14px",
+              bgColor: "#D30505",
+              radius: 12,
+              ml: 20,
+            }}
+          />
+        </MenuDiv>
+      </HeaderDiv>
+    </>
   );
 };
 
