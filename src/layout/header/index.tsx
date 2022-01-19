@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import Button from "components/button";
@@ -9,7 +9,18 @@ import { HeaderDiv, MenuDiv } from "./header.styled";
 
 const HeaderSection = () => {
   const router = useRouter();
+  const [path, setPath] = useState<string>("");
   const { authContext, setAuthContext } = useAuthContext();
+
+  useEffect(() => {
+    if (router.pathname.search(/letter/i) > -1) {
+      setPath("letter");
+    } else if (router.pathname.search(/email/i) > -1) {
+      setPath("email");
+    } else {
+      setPath("home");
+    }
+  }, [router.pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -28,18 +39,21 @@ const HeaderSection = () => {
         <Text
           style={{ cursor: "pointer" }}
           onClick={() => router.push("/home")}
+          className={path === "home" ? "active" : ""}
         >
           Home
         </Text>
         <Text
           style={{ cursor: "pointer" }}
           onClick={() => router.push("/myletters")}
+          className={path === "letter" ? "active" : ""}
         >
           Letter
         </Text>
         <Text
           style={{ cursor: "pointer" }}
           onClick={() => router.push("/myemails")}
+          className={path === "email" ? "active" : ""}
         >
           Email
         </Text>
@@ -53,6 +67,7 @@ const HeaderSection = () => {
             p: "10px 14px",
             bgColor: "#D30505",
             radius: 12,
+            ml: 20,
           }}
         />
       </MenuDiv>
