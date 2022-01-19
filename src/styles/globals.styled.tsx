@@ -10,7 +10,13 @@ export const Container = styled.div<StyleProps>`
 export const Text = styled.div<StyleProps>`
   line-height: 105%;
   word-break: break-word;
-  font-size: ${({ fSize }) => fSize}px;
+
+  font-size: ${({ fSize }) =>
+    "clamp(" +
+    Number(fSize) / 2 +
+    "px, 6vw, " +
+    fSize +
+    "px)"}; //clamp(24px, 6vw, 40px);
   color: ${({ fColor }) => (fColor ? fColor : "#000")};
   font-weight: ${({ fWeight }) => fWeight};
   text-align: ${({ tAlign }) => tAlign};

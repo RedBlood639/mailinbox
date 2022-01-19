@@ -5,6 +5,13 @@ export const FooterDescSection = styled.div`
   & > *:not(:first-child) {
     margin-left: 30px;
   }
+  @media screen and (max-width: 630px) {
+    flex-direction: column;
+    & > *:not(:first-child) {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
 `;
 
 export const FooterDescPart = styled.div`
@@ -15,7 +22,7 @@ export const FooterDescPart = styled.div`
 `;
 
 export const FooterDescContent = styled.div`
-  font-size: 16px;
+  font-size: clamp(8px, 6vw, 16px);
   display: flex;
   align-items: center;
   color: black;
@@ -31,7 +38,7 @@ export const FooterDescContent = styled.div`
 `;
 
 export const FooterDescTitle = styled.div`
-  font-size: 20px;
+  font-size: clamp(12px, 6vw, 20px);
   font-weight: 700;
 `;
 

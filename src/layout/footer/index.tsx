@@ -1,5 +1,5 @@
 import LogoSection from "components/logo";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ImLocation2 } from "react-icons/im";
 import { FiFacebook, FiTwitter, FiInstagram } from "react-icons/fi";
 import { MdPhoneInTalk } from "react-icons/md";
@@ -13,12 +13,21 @@ import {
   FooterDescTitle,
   FooterSocialIcons,
 } from "./footer.style";
+import { isMobile } from "utils/isMobile";
 
 const FooterSection = () => {
+  const [state, setstate] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setstate(isMobile(850));
+    });
+  }, []);
+
   return (
     <Container>
-      <Div pt={50} justifyContent="space-between">
-        <LogoSection />
+      <Div pt={50} justifyContent={state ? "center" : "space-between"}>
+        {!state && <LogoSection />}
         <FooterDescSection>
           <FooterDescPart>
             <FooterDescTitle>Visit Us</FooterDescTitle>
