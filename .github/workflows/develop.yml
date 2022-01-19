@@ -63,7 +63,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             PATH=$PATH:/home/ubuntu/.nvm/versions/node/v16.13.1/bin
-            pm2 restart madreply_frontend
+            pm2 restart madredply_frontend
 
       - uses: sarisia/actions-status-discord@v1
         if: always()
