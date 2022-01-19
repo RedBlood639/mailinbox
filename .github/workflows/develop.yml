@@ -43,9 +43,6 @@ jobs:
       - name: Install Node module by using ${{ matrix.node-version }}
         run: npm install
 
-      - name: Lint Test
-        run: npm run lint
-
       - name: Build
         run: npm run build
 
