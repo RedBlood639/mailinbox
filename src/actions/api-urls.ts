@@ -8,6 +8,7 @@ export const AUTH_API = {
   register: path(BASE_URL, "user/register"),
   verify: path(BASE_URL, "user/verify/"),
   resend: path(BASE_URL, "user/resend/"),
+  logout: path(BASE_URL, "user/logout"),
 };
 
 export const LETTER_API = {

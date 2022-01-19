@@ -5,7 +5,9 @@ import Button from "components/button";
 import LogoSection from "components/logo";
 import { useAuthContext } from "context/state";
 import { Text } from "styles/globals.styled";
+import { ToastContainer, toast } from "react-toastify";
 import { HeaderDiv, MenuDiv } from "./header.styled";
+import { logout } from "actions/authActions";
 
 const HeaderSection = () => {
   const router = useRouter();
@@ -22,18 +24,24 @@ const HeaderSection = () => {
     }
   }, [router.pathname]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    setAuthContext({
-      ...authContext,
-      isAuthenticated: false,
-      user: "",
-    });
-    router.push("/");
+  const handleLogout = async () => {
+    const res = await logout();
+    if (res.success) {
+      localStorage.removeItem("user");
+      setAuthContext({
+        ...authContext,
+        isAuthenticated: false,
+        user: "",
+      });
+      router.push("/");
+    } else {
+      toast.error(res.error, { theme: "colored", autoClose: 3000 });
+    }
   };
 
   return (
     <HeaderDiv>
+      <ToastContainer />
       <LogoSection onClick={() => router.push("/")} />
       <MenuDiv>
         <Text
