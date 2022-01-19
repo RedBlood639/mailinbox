@@ -29,6 +29,7 @@ const SignInSection = () => {
     window.addEventListener("resize", () => {
       setmobile(isMobile(768));
     });
+    setmobile(isMobile(768));
   }, []);
 
   const handleChange = (e: any) => {

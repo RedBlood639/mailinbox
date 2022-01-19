@@ -22,6 +22,7 @@ const FooterSection = () => {
     window.addEventListener("resize", () => {
       setstate(isMobile(850));
     });
+    setstate(isMobile(850));
   }, []);
 
   return (
