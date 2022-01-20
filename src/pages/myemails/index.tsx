@@ -7,12 +7,14 @@ import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
 import React, { useEffect, useState } from "react";
 import { Container, Div, HomeContainer } from "styles/globals.styled";
+import { getMyInfo } from "utils/getMyInfo";
 
 const MyEmailePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [msgData, setMsgData] = useState<any>([]);
   const handleLinkEmail = async () => {
-    const res = await gmailAuth();
+    console.log(getMyInfo().email);
+    const res = await gmailAuth(getMyInfo().email);
     location.href = res.authUrl;
   };
 

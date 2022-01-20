@@ -1,9 +1,9 @@
 import axios from "axios";
 import { EMAIL_API } from "./api-urls";
 
-export const gmailAuth = async () => {
+export const gmailAuth = async (email: string) => {
   const res = await axios
-    .get(EMAIL_API.gmailAuth)
+    .get(EMAIL_API.gmailAuth + email)
     .then((res) => {
       return res.data;
     })
