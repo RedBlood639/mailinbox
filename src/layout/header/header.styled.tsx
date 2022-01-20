@@ -21,11 +21,12 @@ export const MenuDiv = styled.div`
     padding: 25px 20px;
     transition: all 0.2s;
     :hover {
-      background-color: red;
+      background-color: rgb(165, 32, 32);
+      color: white;
     }
   }
   .active {
-    background-color: red;
-    color: white !important;
+    background-color: rgb(206, 0, 0);
+    color: white;
   }
 `;

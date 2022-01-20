@@ -11,15 +11,18 @@ import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styl
 
 const HomePage = () => {
   const [letters, setLetters] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
   const handleAddClick = () => {
     router.push("/newletter");
   };
 
   useEffect(() => {
+    setLoading(true);
     const getData = async () => {
       const letters = await getAllLetters();
       setLetters(letters);
+      setLoading(false);
     };
     getData();
   }, []);
@@ -35,16 +38,26 @@ const HomePage = () => {
                 <MyInfoCard />
                 <PlusButton onClick={handleAddClick} />
               </Div>
-              {letters.length > 0 ? (
-                letters.map((item: any, key: any) => (
-                  <LetterListCard key={key} data={item} />
-                ))
-              ) : (
+              {loading ? (
                 <LetterListCardDiv
                   style={{ textAlign: "center", fontSize: 20 }}
                 >
-                  No Data
+                  Loading ...
                 </LetterListCardDiv>
+              ) : (
+                <>
+                  {letters.length > 0 ? (
+                    letters.map((item: any, key: any) => (
+                      <LetterListCard key={key} data={item} />
+                    ))
+                  ) : (
+                    <LetterListCardDiv
+                      style={{ textAlign: "center", fontSize: 20 }}
+                    >
+                      No Data
+                    </LetterListCardDiv>
+                  )}
+                </>
               )}
             </Div>
             <Div w={30} mode="column" gap={30}>

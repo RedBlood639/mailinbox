@@ -57,14 +57,14 @@ const HeaderSection = () => {
             onClick={() => router.push("/myletters")}
             className={path === "letter" ? "active" : ""}
           >
-            Letter
+            My Letters
           </Text>
           <Text
             style={{ cursor: "pointer" }}
             onClick={() => router.push("/myemails")}
             className={path === "email" ? "active" : ""}
           >
-            Email
+            My Emails
           </Text>
           <Button
             label="Logout"

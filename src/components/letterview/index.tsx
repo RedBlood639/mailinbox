@@ -27,8 +27,9 @@ import {
 } from "actions/letterAction";
 import { Button, Modal } from "react-bootstrap";
 import { useRouter } from "next/router";
+import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 
-const LetterViewCard = ({ data }: any) => {
+const LetterViewCard = ({ data, loading }: any) => {
   const router = useRouter();
   const [state, setState] = useState<any>({});
   const [letterData, setLetterData] = useState<any>({});
@@ -39,15 +40,7 @@ const LetterViewCard = ({ data }: any) => {
 
   useEffect(() => {
     setLetterData(data);
-    console.log(data);
   }, [data]);
-
-  // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [input])
 
   const formatDate = (date: any) => {
     var d = new Date(date),
@@ -102,7 +95,7 @@ const LetterViewCard = ({ data }: any) => {
 
   // const handleReport = () => {};
 
-  return (
+  return !loading ? (
     <LetterViewDiv>
       <HeaderActions style={{ justifyContent: "flex-end" }}>
         <Badge>{letterData.stateFlag === 0 ? "PUBLISHED" : "PRIVATE"}</Badge>
@@ -256,6 +249,10 @@ const LetterViewCard = ({ data }: any) => {
         </Modal.Footer>
       </Modal>
     </LetterViewDiv>
+  ) : (
+    <LetterListCardDiv style={{ textAlign: "center", fontSize: 20 }}>
+      Loading ...
+    </LetterListCardDiv>
   );
 };
 

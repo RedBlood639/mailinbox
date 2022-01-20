@@ -1,4 +1,5 @@
 import { getMyLetters, removeLetter } from "actions/letterAction";
+import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import MyInfoCard from "components/myinfocard/MyInfoCard";
 import MyLetterCard from "components/mylettercard";
 import PlusButton from "components/plusbtn";
@@ -16,6 +17,8 @@ const MyLettersPage = () => {
   const [delId, setDelId] = useState("");
   const router = useRouter();
   const [show, setShow] = useState(false);
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleDelete = async () => {
     const res = await removeLetter(delId);
@@ -46,12 +49,14 @@ const MyLettersPage = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     const getData = async () => {
       const res = await getMyLetters(getMyInfo().email);
       setState(res);
+      setLoading(false);
     };
     getData();
-  }, [state]);
+  }, []);
 
   return (
     <React.Fragment>
@@ -65,14 +70,32 @@ const MyLettersPage = () => {
                 <MyInfoCard />
                 <PlusButton onClick={handlePlusClick} />
               </Div>
-              {state.map((item: any, key: any) => (
-                <MyLetterCard
-                  key={key}
-                  data={item}
-                  onClick={() => router.push("/letter/" + item._id)}
-                  onDelete={handleDeleteClick}
-                />
-              ))}
+              {loading ? (
+                <LetterListCardDiv
+                  style={{ textAlign: "center", fontSize: 20 }}
+                >
+                  Loading ...
+                </LetterListCardDiv>
+              ) : (
+                <>
+                  {state.length > 0 ? (
+                    state.map((item: any, key: any) => (
+                      <MyLetterCard
+                        key={key}
+                        data={item}
+                        onClick={() => router.push("/letter/" + item._id)}
+                        onDelete={handleDeleteClick}
+                      />
+                    ))
+                  ) : (
+                    <LetterListCardDiv
+                      style={{ textAlign: "center", fontSize: 20 }}
+                    >
+                      No Data
+                    </LetterListCardDiv>
+                  )}
+                </>
+              )}
             </Div>
             <Div w={30} mode="column" gap={30}>
               <UnsentLetters />
