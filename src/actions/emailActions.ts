@@ -25,3 +25,15 @@ export const getMessages = async () => {
   // console.log(res);
   return res;
 };
+
+export const getMessageById = async (id: any) => {
+  const result = await axios
+    .get(EMAIL_API.getMessageById + id)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
+};

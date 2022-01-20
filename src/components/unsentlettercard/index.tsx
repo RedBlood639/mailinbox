@@ -10,17 +10,17 @@ const UnsentLetters = () => {
       <Text fSize={24} fWeight={500} mb={30} tAlign="center">
         Your unsent letters
       </Text>
-      {/* <List>
+      <List>
         <Item>asdf</Item>
         <Item>asdf</Item>
         <Item>asdf</Item>
         <Item>asdf</Item>
         <Item>asdf</Item>
-      </List> */}
-      <EmptyDiv>
+      </List>
+      {/* <EmptyDiv>
         <Image src={EmptyImg} alt="empty" />
-      </EmptyDiv>
-      <Text
+      </EmptyDiv> */}
+      {/* <Text
         fSize={16}
         fColor="#5C5C5C"
         p="0 20px"
@@ -28,7 +28,7 @@ const UnsentLetters = () => {
         tAlign="center"
       >
         {"You don't have any emails yet. Create one."}
-      </Text>
+      </Text> */}
     </UnsentCard>
   );
 };

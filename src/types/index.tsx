@@ -35,6 +35,8 @@ export interface StyleProps {
   bColor?: string;
 
   gap?: number;
+
+  wrap?: string;
 }
 
 export interface LoginUser {

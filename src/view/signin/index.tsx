@@ -135,7 +135,7 @@ const SignInSection = () => {
       </Div>
       <Button
         label="Login now"
-        onClick={handleLogin}
+        onClick={loading ? () => {} : handleLogin}
         loading={loading}
         style={{
           fSize: 16,

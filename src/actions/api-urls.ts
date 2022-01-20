@@ -24,4 +24,5 @@ export const LETTER_API = {
 export const EMAIL_API = {
   gmailAuth: path(BASE_URL, "auth/gmailAuth"),
   getMessages: path(BASE_URL, "email/getMessages"),
+  getMessageById: path(BASE_URL, "email/getMessage/"),
 };

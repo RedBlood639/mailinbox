@@ -166,7 +166,7 @@ const SignUpSection = () => {
       {flag ? (
         <Button
           label="Go to Create"
-          onClick={handleGotocreate}
+          onClick={loading ? () => {} : handleGotocreate}
           style={{
             fSize: 16,
             fWeight: 700,
@@ -180,7 +180,7 @@ const SignUpSection = () => {
       ) : (
         <Button
           label="Create Account"
-          onClick={handleSignUp}
+          onClick={loading ? () => {} : handleSignUp}
           style={{
             fSize: 16,
             fWeight: 700,
