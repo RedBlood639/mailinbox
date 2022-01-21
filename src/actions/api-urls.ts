@@ -24,7 +24,7 @@ export const LETTER_API = {
 export const EMAIL_API = {
   gmailAuth: path(BASE_URL, "auth/gmailAuth/"),
   oauthCallback: path(BASE_URL, "auth/oauth2Callback"),
-  getMessages: path(BASE_URL, "email/getMessages"),
-  getMessageById: path(BASE_URL, "email/getMessage/"),
+  getMessages: path(BASE_URL, "gmail/getMessages"),
+  getMessageById: path(BASE_URL, "gmail/getMessage/"),
   publishEmail: path(BASE_URL, "email/publish"),
 };

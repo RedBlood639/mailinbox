@@ -31,7 +31,7 @@ const EmailViewCard = ({ data, loading }: any) => {
       html: data.textHtml,
       publishDate: Date.now(),
     };
-    const res = await publishEmail(newData, email);
+    const res = await publishEmail(newData);
 
     if (res.success) {
       toast.success(res.success, {

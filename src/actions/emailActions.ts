@@ -52,9 +52,9 @@ export const oauthCallback = (code: any, email: any) => {
   return result;
 };
 
-export const publishEmail = async (data: any, email: any) => {
+export const publishEmail = async (data: any) => {
   const result = axios
-    .post(EMAIL_API.publishEmail, { ...data, email: email })
+    .post(EMAIL_API.publishEmail, { ...data })
     .then((res) => {
       return res.data;
     })
