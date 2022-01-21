@@ -9,7 +9,7 @@ const GoogleAuth = () => {
     const func = async () => {
       const res = await oauthCallback(router.query.code, getMyInfo().email);
       console.log(res);
-      router.push("/myemails");
+      location.href = "/myemails";
     };
     if (router.query.code) {
       func();
