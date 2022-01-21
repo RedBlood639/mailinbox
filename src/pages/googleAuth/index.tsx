@@ -3,9 +3,7 @@ import React, { useEffect } from "react";
 
 const index = () => {
   const router = useRouter();
-  useEffect(() => {
-    console.log(router.query);
-  }, []);
+  useEffect(() => {}, []);
 
   return <div></div>;
 };
