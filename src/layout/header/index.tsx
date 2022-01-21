@@ -8,6 +8,7 @@ import { Text } from "styles/globals.styled";
 import { ToastContainer, toast } from "react-toastify";
 import { HeaderDiv, MenuDiv } from "./header.styled";
 import { logout } from "actions/authActions";
+import { getMyInfo } from "utils/getMyInfo";
 
 const HeaderSection = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ const HeaderSection = () => {
   }, [router.pathname]);
 
   const handleLogout = async () => {
-    const res = await logout();
+    const res = await logout(getMyInfo().email);
     if (res.success) {
       localStorage.removeItem("user");
       setAuthContext({

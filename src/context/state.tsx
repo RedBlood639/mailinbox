@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { isPrivateUrl } from "utils/isPrivateUrl";
 import { logout } from "actions/authActions";
+import { getMyInfo } from "utils/getMyInfo";
 
 const AuthContext = createContext({});
 const LetterContext = createContext({});
@@ -31,7 +32,7 @@ export const AppWrapper = ({ children }: any) => {
     if (token) {
       const decoded: any = jwt_decode(String(token));
       if (decoded.exp < Date.now() / 1000) {
-        const res = await logout();
+        const res = await logout(getMyInfo().email);
         if (res.success) {
           localStorage.removeItem("user");
           setAuthContext({
