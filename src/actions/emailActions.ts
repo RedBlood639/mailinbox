@@ -51,3 +51,15 @@ export const oauthCallback = (code: any, email: any) => {
     });
   return result;
 };
+
+export const publishEmail = async (data: any, email: any) => {
+  const result = axios
+    .post(EMAIL_API.publishEmail, { ...data, email })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
+};
