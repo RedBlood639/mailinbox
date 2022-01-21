@@ -12,8 +12,8 @@ import { getMyInfo } from "utils/getMyInfo";
 const MyEmailePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [msgData, setMsgData] = useState<any>([]);
+
   const handleLinkEmail = async () => {
-    console.log(getMyInfo().email);
     const res = await gmailAuth(getMyInfo().email);
     location.href = res.authUrl;
   };
