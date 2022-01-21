@@ -6,8 +6,13 @@ import { getMyInfo } from "utils/getMyInfo";
 const GoogleAuth = () => {
   const router = useRouter();
   useEffect(() => {
+    const func = async () => {
+      const res = await oauthCallback(router.query.code, getMyInfo().email);
+      console.log(res);
+      router.push("/myemails");
+    };
     if (router.query.code) {
-      oauthCallback(router.query.code, getMyInfo().email);
+      func();
     }
   }, [router.query]);
 

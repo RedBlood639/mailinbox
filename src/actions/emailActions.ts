@@ -39,12 +39,13 @@ export const getMessageById = async (id: any, email: any) => {
 };
 
 export const oauthCallback = (code: any, email: any) => {
-  axios
+  const result = axios
     .post(EMAIL_API.oauthCallback, { code: code, email: email })
     .then((res) => {
-      console.log(res);
+      return res.data;
     })
     .then((err) => {
-      console.log(err);
+      return err.response.data;
     });
+  return result;
 };
