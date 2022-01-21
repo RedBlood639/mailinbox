@@ -13,9 +13,9 @@ export const gmailAuth = async (email: string) => {
   return res;
 };
 
-export const getMessages = async () => {
+export const getMessages = async (email: any) => {
   const res = await axios
-    .get(EMAIL_API.getMessages)
+    .post(EMAIL_API.getMessages, { email: email })
     .then((res) => {
       return res.data;
     })
@@ -26,9 +26,9 @@ export const getMessages = async () => {
   return res;
 };
 
-export const getMessageById = async (id: any) => {
+export const getMessageById = async (id: any, email: any) => {
   const result = await axios
-    .get(EMAIL_API.getMessageById + id)
+    .post(EMAIL_API.getMessageById + id, { email: email })
     .then((res) => {
       return res.data;
     })
@@ -36,4 +36,15 @@ export const getMessageById = async (id: any) => {
       return err.response.data;
     });
   return result;
+};
+
+export const oauthCallback = (code: any, email: any) => {
+  axios
+    .post(EMAIL_API.oauthCallback, { code: code, email: email })
+    .then((res) => {
+      console.log(res);
+    })
+    .then((err) => {
+      console.log(err);
+    });
 };

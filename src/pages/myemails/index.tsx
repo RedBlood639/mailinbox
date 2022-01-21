@@ -20,7 +20,7 @@ const MyEmailePage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const res = await getMessages();
+      const res = await getMessages(getMyInfo().email);
       // console.log(res.messages);
       if (res.error) {
         console.log(res);

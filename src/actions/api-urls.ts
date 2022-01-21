@@ -25,4 +25,5 @@ export const EMAIL_API = {
   gmailAuth: path(BASE_URL, "auth/gmailAuth/"),
   getMessages: path(BASE_URL, "email/getMessages"),
   getMessageById: path(BASE_URL, "email/getMessage/"),
+  oauthCallback: path(BASE_URL, "email/oauth2Callback"),
 };

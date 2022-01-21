@@ -7,6 +7,7 @@ import UnsentLetters from "components/unsentlettercard";
 import EmailViewCard from "components/emailview/EmailView";
 import { useRouter } from "next/router";
 import { getMessageById } from "actions/emailActions";
+import { getMyInfo } from "utils/getMyInfo";
 
 const EmailPage = () => {
   const [state, setstate] = useState<any>({});
@@ -15,7 +16,7 @@ const EmailPage = () => {
   useEffect(() => {
     setLoading(true);
     const getData = async () => {
-      const res = await getMessageById(router.query.id);
+      const res = await getMessageById(router.query.id, getMyInfo().email);
       console.log(res);
       setstate(res);
       setLoading(false);
