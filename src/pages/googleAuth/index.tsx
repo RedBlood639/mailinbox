@@ -1,11 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
-const index = () => {
-  const router = useRouter();
-  useEffect(() => {}, []);
-
+const GoogleAuth = () => {
   return <div></div>;
 };
 
-export default index;
+export default GoogleAuth;
