@@ -35,10 +35,6 @@ const PublicEmail = () => {
         <Container>
           <Div justifyContent="space-between">
             <Div w={60} mode="column" gap={30}>
-              <Div justifyContent="space-between" alignItems="center">
-                <MyInfoCard />
-                <LinkEmailCard onClick={() => {}} />
-              </Div>
               {loading ? (
                 <LetterListCardDiv
                   style={{ textAlign: "center", fontSize: 20 }}
@@ -69,6 +65,7 @@ const PublicEmail = () => {
               )}
             </Div>
             <Div w={30} mode="column" gap={30}>
+              <MyInfoCard />
               <UnsentLetters />
             </Div>
           </Div>

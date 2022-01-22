@@ -57,7 +57,7 @@ const PublicEmailView = ({ data, loading }: any) => {
                   email.likes?.filter((like: any) => like === getMyInfo().email)
                     .length > 0
                     ? "#800000"
-                    : "#5C5C5C"
+                    : "#181616"
                 }
               >
                 <BsHandThumbsUpFill />
@@ -69,7 +69,7 @@ const PublicEmailView = ({ data, loading }: any) => {
                   email.likes?.filter((like: any) => like === getMyInfo().email)
                     .length > 0
                     ? "#800000"
-                    : "#5C5C5C"
+                    : "#181616"
                 }
               >
                 {email.likes.length}
