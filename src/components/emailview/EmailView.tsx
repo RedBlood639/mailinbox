@@ -11,6 +11,7 @@ import { EmailHeader } from "./emailview.styled";
 
 const EmailViewCard = ({ data, loading }: any) => {
   const [email, setEmail] = useState<any>(null);
+  const [btnLoading, setBtnLoading] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const EmailViewCard = ({ data, loading }: any) => {
   }, [data]);
 
   const handlePublish = async () => {
+    setBtnLoading(true);
     // console.log(data);
     const newData = {
       e_id: data.id,
@@ -44,6 +46,7 @@ const EmailViewCard = ({ data, loading }: any) => {
         autoClose: 3000,
       });
     }
+    setBtnLoading(false);
   };
 
   return !loading ? (
@@ -74,6 +77,7 @@ const EmailViewCard = ({ data, loading }: any) => {
               bgColor: "#FB6F6F",
               radius: 10,
             }}
+            loading={btnLoading}
           />
         </Div>
         <EmailHeader>
