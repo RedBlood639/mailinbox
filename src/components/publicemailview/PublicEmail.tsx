@@ -107,6 +107,7 @@ const PublicEmailView = ({ data, loading }: any) => {
           dangerouslySetInnerHTML={{
             __html: email.html,
           }}
+          style={{ marginTop: "20px" }}
         ></div>
       </LetterViewDiv>
     )
