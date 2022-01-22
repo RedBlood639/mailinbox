@@ -1,15 +1,9 @@
-import { useRouter } from "next/router";
 import React from "react";
 import { EmailListCardDiv, EmailListContent } from "./emaillistcard.styled";
 
-const EmailListCard = ({ data }: any) => {
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push("/email/" + data.id);
-  };
+const EmailListCard = ({ data, onClick }: any) => {
   return (
-    <EmailListCardDiv onClick={handleClick}>
+    <EmailListCardDiv onClick={onClick}>
       <p>
         {new Intl.DateTimeFormat("en-US", {
           dateStyle: "medium",

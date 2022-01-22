@@ -20,6 +20,8 @@ const HeaderSection = () => {
       setPath("letter");
     } else if (router.pathname.search(/email/i) > -1) {
       setPath("email");
+    } else if (router.pathname.search(/e_published/i) > -1) {
+      setPath("e_published");
     } else {
       setPath("home");
     }
@@ -51,7 +53,14 @@ const HeaderSection = () => {
             onClick={() => router.push("/home")}
             className={path === "home" ? "active" : ""}
           >
-            Home
+            Public Letters
+          </Text>
+          <Text
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push("/e_published")}
+            className={path === "e_published" ? "active" : ""}
+          >
+            Public Emails
           </Text>
           <Text
             style={{ cursor: "pointer" }}

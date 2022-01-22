@@ -1,4 +1,4 @@
-import { getMessages, gmailAuth } from "actions/emailActions";
+import { getPublicEmails } from "actions/emailActions";
 import EmailListCard from "components/emaillistcard/EmailListCard";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import LinkEmailCard from "components/linkemail";
@@ -8,36 +8,24 @@ import { HeaderSection } from "layout";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Container, Div, HomeContainer } from "styles/globals.styled";
-import { getMyInfo } from "utils/getMyInfo";
 
-const MyEmailePage = () => {
+const PublicEmail = () => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [msgData, setMsgData] = useState<any>([]);
+  const [emailData, setEmailData] = useState<any>([]);
   const router = useRouter();
 
-  const handleLinkEmail = async () => {
-    const res = await gmailAuth(getMyInfo().email);
-    location.href = res.authUrl;
-  };
-
   useEffect(() => {
+    setLoading(true);
     const getData = async () => {
-      const res = await getMessages(getMyInfo().email);
-      // console.log(res.messages);
-      if (res.error) {
-        console.log(res);
-        setMsgData([]);
-      } else {
-        setMsgData(res.messages);
-      }
+      const res = await getPublicEmails();
+      setEmailData(res);
       setLoading(false);
     };
-    setLoading(true);
     getData();
   }, []);
 
   const handleClick = (id: any) => {
-    router.push("/email/" + id);
+    router.push("/e_published/" + id);
   };
 
   return (
@@ -49,7 +37,7 @@ const MyEmailePage = () => {
             <Div w={60} mode="column" gap={30}>
               <Div justifyContent="space-between" alignItems="center">
                 <MyInfoCard />
-                <LinkEmailCard onClick={handleLinkEmail} />
+                <LinkEmailCard onClick={() => {}} />
               </Div>
               {loading ? (
                 <LetterListCardDiv
@@ -59,21 +47,22 @@ const MyEmailePage = () => {
                 </LetterListCardDiv>
               ) : (
                 <>
-                  {msgData.length > 0 ? (
-                    msgData.map((item: any, key: any) => (
+                  {emailData.length > 0 ? (
+                    emailData.map((item: any, key: any) => (
                       <EmailListCard
                         key={key}
-                        data={item}
-                        onClick={() => handleClick(item.id)}
+                        onClick={() => handleClick(item._id)}
+                        data={{
+                          ...item,
+                          internalDate: Date.parse(item.publishDate),
+                        }}
                       />
                     ))
                   ) : (
                     <LetterListCardDiv
                       style={{ textAlign: "center", fontSize: 20 }}
                     >
-                      {
-                        'Please Click the "Link Your Email With us" to Connect to your email indox'
-                      }
+                      {"No Data"}
                     </LetterListCardDiv>
                   )}
                 </>
@@ -89,4 +78,4 @@ const MyEmailePage = () => {
   );
 };
 
-export default MyEmailePage;
+export default PublicEmail;

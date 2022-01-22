@@ -27,4 +27,8 @@ export const EMAIL_API = {
   getMessages: path(BASE_URL, "gmail/getMessages"),
   getMessageById: path(BASE_URL, "gmail/getMessage/"),
   publishEmail: path(BASE_URL, "email/publish"),
+  getPublicEmails: path(BASE_URL, "email"),
+  getPublicEmailById: path(BASE_URL, "email/get/"),
+  setLike: path(BASE_URL, "email/like/"),
+  setUnlike: path(BASE_URL, "email/unlike/"),
 };

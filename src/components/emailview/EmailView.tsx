@@ -25,6 +25,7 @@ const EmailViewCard = ({ data, loading }: any) => {
     // console.log(data);
     const newData = {
       e_id: data.id,
+      subject: data.headers.subject,
       publisher: getMyInfo().email,
       from: data.headers.from,
       to: data.headers.to,

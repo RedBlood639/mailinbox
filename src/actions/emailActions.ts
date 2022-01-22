@@ -63,3 +63,51 @@ export const publishEmail = async (data: any) => {
     });
   return result;
 };
+
+export const getPublicEmails = async () => {
+  const result = axios
+    .get(EMAIL_API.getPublicEmails)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
+};
+
+export const getPublicEmailById = async (id: any) => {
+  const result = axios
+    .get(EMAIL_API.getPublicEmailById + id)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
+};
+
+export const setLike = async (id: any, email: any) => {
+  const result = axios
+    .post(EMAIL_API.setLike + id, { email })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
+};
+
+export const setUnlike = async (id: any, email: any) => {
+  const result = axios
+    .post(EMAIL_API.setUnlike + id, { email })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
+};

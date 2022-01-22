@@ -6,8 +6,9 @@ import MyInfoCard from "components/myinfocard/MyInfoCard";
 import UnsentLetters from "components/unsentlettercard";
 import EmailViewCard from "components/emailview/EmailView";
 import { useRouter } from "next/router";
-import { getMessageById } from "actions/emailActions";
+import { getMessageById, getPublicEmailById } from "actions/emailActions";
 import { getMyInfo } from "utils/getMyInfo";
+import PublicEmailView from "components/publicemailview/PublicEmail";
 
 const EmailPage = () => {
   const [state, setstate] = useState<any>({});
@@ -16,7 +17,8 @@ const EmailPage = () => {
   useEffect(() => {
     setLoading(true);
     const getData = async () => {
-      const res = await getMessageById(router.query.id, getMyInfo().email);
+      const res = await getPublicEmailById(router.query.id);
+      console.log(res);
       setstate(res);
       setLoading(false);
     };
@@ -32,7 +34,7 @@ const EmailPage = () => {
         <Container>
           <Div justifyContent="space-between">
             <Div w={60} mode="column" gap={30}>
-              <EmailViewCard data={state.messages} loading={loading} />
+              <PublicEmailView data={state} loading={loading} />
             </Div>
             <Div w={30} mode="column" gap={30}>
               <MyInfoCard />
