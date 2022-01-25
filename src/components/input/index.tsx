@@ -12,6 +12,7 @@ const Input = (props: any) => {
         onChange={props.onChange}
         name={props.name}
         disabled={props.disabled}
+        style={props.style}
       />
     </InputDiv>
   );

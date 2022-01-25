@@ -56,6 +56,7 @@ export const Div = styled.div<StyleProps>`
         ? "margin-left: " + gap + "px"
         : "margin-top: " + gap + "px"};
   }
+  max-height: ${({ maxH }) => maxH};
 `;
 
 export const HomeContainer = styled.div`

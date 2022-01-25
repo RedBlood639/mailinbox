@@ -16,7 +16,9 @@ export const EmailValidation = (data: any) => {
 };
 
 export const passValidation = (data: any) => {
-  if (!data.pass1) {
+  if (data.fName.trim() === "" || data.lName.trim() === "") {
+    return "Name field is required.";
+  } else if (!data.pass1) {
     return "Password field is required.";
   } else if (!data.pass2) {
     return "Confirm Password field is required.";

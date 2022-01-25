@@ -17,6 +17,8 @@ const SignUpSection = () => {
   const router = useRouter();
   const [state, setState] = useState({
     email: "",
+    fName: "",
+    lName: "",
     pass1: "",
     pass2: "",
     isAllow: false,
@@ -45,6 +47,8 @@ const SignUpSection = () => {
     } else {
       const data = {
         email: state.email,
+        fName: state.fName,
+        lName: state.lName,
         password: state.pass1,
         isAllow: state.isAllow,
       };
@@ -76,8 +80,8 @@ const SignUpSection = () => {
     setState({
       ...state,
       email: userInfo.email,
-      // fName: userInfo.givenName,
-      // lName: userInfo.familyName,
+      fName: userInfo.givenName,
+      lName: userInfo.familyName,
       isAllow: true,
     });
     setFlag(false);
@@ -88,7 +92,14 @@ const SignUpSection = () => {
       theme: "colored",
     });
     setFlag(true);
-    setState({ email: "", pass1: "", pass2: "", isAllow: false });
+    setState({
+      email: "",
+      pass1: "",
+      fName: "",
+      lName: "",
+      pass2: "",
+      isAllow: false,
+    });
   };
 
   return (
@@ -143,6 +154,27 @@ const SignUpSection = () => {
       <Div mt={13} />
       {!flag && (
         <>
+          <Div justifyContent="space-between" gap={10}>
+            <Input
+              type="text"
+              name="fName"
+              placeholder="First Name"
+              onChange={handleChange}
+              value={state.fName}
+              label="First Name"
+              style={{ width: "inherit" }}
+            />
+            <Input
+              type="text"
+              name="lName"
+              placeholder="Last Name"
+              onChange={handleChange}
+              value={state.lName}
+              label="Last Name"
+              style={{ width: "inherit" }}
+            />
+          </Div>
+          <Div mt={13} />
           <Input
             type="password"
             name="pass1"
