@@ -18,6 +18,7 @@ export const GetStartedImg = styled.div`
   justify-content: center;
   padding: 0 6px;
   background-color: #ef4646;
+  cursor: pointer;
 `;
 
 export const GetStartText = styled.div`

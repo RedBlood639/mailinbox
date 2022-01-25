@@ -7,11 +7,13 @@ import { getAllLetters } from "actions/letterAction";
 
 const UnsentLetters = () => {
   const [data, setData] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
+    setLoading(true);
     const getData = async () => {
       const res = await getAllLetters();
-      console.log(res);
-      setData(res);
+      setData(res.filter((item: any) => item.stateFlag === 1));
+      setLoading(false);
     };
     getData();
   }, []);
@@ -22,24 +24,30 @@ const UnsentLetters = () => {
         Your unsent letters
       </Text>
       <List>
-        {data.length > 0 ? (
-          data.map((item: any, key: any) => (
-            <Item key={key}>{item.plainText}</Item>
-          ))
+        {loading ? (
+          <Text tAlign="center"> Loading ... </Text>
         ) : (
           <>
-            <EmptyDiv>
-              <Image src={EmptyImg} alt="empty" />
-            </EmptyDiv>
-            <Text
-              fSize={16}
-              fColor="#5C5C5C"
-              p="0 20px"
-              fWeight={500}
-              tAlign="center"
-            >
-              {"You don't have any emails yet. Create one."}
-            </Text>
+            {data.length > 0 ? (
+              data.map((item: any, key: any) => (
+                <Item key={key}>{item.plainText}</Item>
+              ))
+            ) : (
+              <>
+                <EmptyDiv>
+                  <Image src={EmptyImg} alt="empty" />
+                </EmptyDiv>
+                <Text
+                  fSize={16}
+                  fColor="#5C5C5C"
+                  p="0 20px"
+                  fWeight={500}
+                  tAlign="center"
+                >
+                  {"You don't have any emails yet. Create one."}
+                </Text>
+              </>
+            )}
           </>
         )}
       </List>
@@ -49,4 +57,4 @@ const UnsentLetters = () => {
 
 export default UnsentLetters;
 
-export const UnsentEmails = () => {};
+// export const UnsentEmails = () => {};
