@@ -32,6 +32,13 @@ const SignInSection = () => {
       setmobile(isMobile(768));
     });
     setmobile(isMobile(768));
+    if (localStorage.remember_me) {
+      setState((prev) => ({
+        ...prev,
+        rememberFlag: true,
+        email: localStorage.remember_me,
+      }));
+    }
   }, []);
 
   const handleChange = (e: any) => {
@@ -39,6 +46,11 @@ const SignInSection = () => {
   };
 
   const handleRememberChange = () => {
+    if (!state.rememberFlag) {
+      localStorage.setItem("remember_me", state.email);
+    } else {
+      localStorage.removeItem("remember_me");
+    }
     setState((prev) => ({ ...prev, rememberFlag: !prev.rememberFlag }));
   };
 
