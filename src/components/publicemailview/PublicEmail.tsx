@@ -1,18 +1,21 @@
 import { setLike, setUnlike } from "actions/emailActions";
-import { EmailHeader } from "components/emailview/emailview.styled";
+import Button from "components/button";
+import { ActionDiv, EmailHeader } from "components/emailview/emailview.styled";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import {
   Action,
   Actions,
   LetterViewDiv,
 } from "components/letterview/letterview.styled";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { BsHandThumbsDownFill, BsHandThumbsUpFill } from "react-icons/bs";
-import { Text } from "styles/globals.styled";
+import { Div, Text } from "styles/globals.styled";
 import { getMyInfo } from "utils/getMyInfo";
 
 const PublicEmailView = ({ data, loading }: any) => {
   const [email, setEmail] = useState<any>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (data) {
@@ -32,6 +35,77 @@ const PublicEmailView = ({ data, loading }: any) => {
   return !loading ? (
     email && (
       <LetterViewDiv>
+        {getMyInfo().email !== email.from && (
+          <Div gap={10} mb={20} justifyContent="space-between">
+            <Button
+              label="BACK"
+              onClick={() => router.back()}
+              style={{
+                fSize: 20,
+                fWeight: 700,
+                fColor: "#FB6F6F",
+                p: "7px 17px",
+                bgColor: "white",
+                bColor: "#C4C4C4",
+                radius: 10,
+              }}
+            />
+            <ActionDiv>
+              <Action onClick={handleLike}>
+                <Text
+                  fColor={
+                    email.likes?.filter(
+                      (like: any) => like === getMyInfo().email
+                    ).length > 0
+                      ? "#800000"
+                      : "#181616"
+                  }
+                >
+                  <BsHandThumbsUpFill />
+                </Text>
+                <Text
+                  ml={5}
+                  fSize={15}
+                  fColor={
+                    email.likes?.filter(
+                      (like: any) => like === getMyInfo().email
+                    ).length > 0
+                      ? "#800000"
+                      : "#181616"
+                  }
+                >
+                  {email.likes.length}
+                </Text>
+              </Action>
+              <Action onClick={handleUnlike}>
+                <Text
+                  fColor={
+                    email.unlikes?.filter(
+                      (like: any) => like === getMyInfo().email
+                    ).length > 0
+                      ? "#800000"
+                      : "#5C5C5C"
+                  }
+                >
+                  <BsHandThumbsDownFill />
+                </Text>
+                <Text
+                  ml={5}
+                  fSize={15}
+                  fColor={
+                    email.unlikes?.filter(
+                      (like: any) => like === getMyInfo().email
+                    ).length > 0
+                      ? "#800000"
+                      : "#5C5C5C"
+                  }
+                >
+                  {email.unlikes.length}
+                </Text>
+              </Action>
+            </ActionDiv>
+          </Div>
+        )}
         <EmailHeader>
           <Text fWeight={700} fSize={20}>
             {email.subject}
@@ -49,60 +123,7 @@ const PublicEmailView = ({ data, loading }: any) => {
         <Text mt={10} mb={30}>
           to : {email.to}
         </Text>
-        {getMyInfo().email !== email.from && (
-          <Actions>
-            <Action onClick={handleLike}>
-              <Text
-                fColor={
-                  email.likes?.filter((like: any) => like === getMyInfo().email)
-                    .length > 0
-                    ? "#800000"
-                    : "#181616"
-                }
-              >
-                <BsHandThumbsUpFill />
-              </Text>
-              <Text
-                ml={5}
-                fSize={15}
-                fColor={
-                  email.likes?.filter((like: any) => like === getMyInfo().email)
-                    .length > 0
-                    ? "#800000"
-                    : "#181616"
-                }
-              >
-                {email.likes.length}
-              </Text>
-            </Action>
-            <Action onClick={handleUnlike}>
-              <Text
-                fColor={
-                  email.unlikes?.filter(
-                    (like: any) => like === getMyInfo().email
-                  ).length > 0
-                    ? "#800000"
-                    : "#5C5C5C"
-                }
-              >
-                <BsHandThumbsDownFill />
-              </Text>
-              <Text
-                ml={5}
-                fSize={15}
-                fColor={
-                  email.unlikes?.filter(
-                    (like: any) => like === getMyInfo().email
-                  ).length > 0
-                    ? "#800000"
-                    : "#5C5C5C"
-                }
-              >
-                {email.unlikes.length}
-              </Text>
-            </Action>
-          </Actions>
-        )}
+
         <div
           dangerouslySetInnerHTML={{
             __html: email.html,

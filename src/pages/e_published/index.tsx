@@ -52,7 +52,7 @@ const PublicEmail = () => {
       case "popular":
         const temp1 = emailData;
         await temp1.sort((a: any, b: any) => a.publisher - b.publisher);
-        setFitlerData(emailData.reverse());
+        setFitlerData(temp1.reverse());
 
         break;
       case "newest":

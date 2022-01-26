@@ -37,7 +37,7 @@ const EmailPage = () => {
               <PublicEmailView data={state} loading={loading} />
             </Div>
             <Div w={30} mode="column" gap={30}>
-              <MyInfoCard />
+              {/* <MyInfoCard /> */}
               <UnsentLetters />
             </Div>
           </Div>

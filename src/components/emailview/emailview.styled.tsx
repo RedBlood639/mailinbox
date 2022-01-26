@@ -5,3 +5,10 @@ export const EmailHeader = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const ActionDiv = styled.div`
+  display: flex;
+  & > *:not(:last-child) {
+    margin-right: 10px;
+  }
+`;
