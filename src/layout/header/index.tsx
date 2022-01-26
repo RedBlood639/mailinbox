@@ -97,20 +97,6 @@ const HeaderSection = () => {
         <MenuDiv>
           <Text
             style={{ cursor: "pointer" }}
-            onClick={() => router.push("/home")}
-            className={path === "home" ? "active" : ""}
-          >
-            Public Letters
-          </Text>
-          <Text
-            style={{ cursor: "pointer" }}
-            onClick={() => router.push("/e_published")}
-            className={path === "e_published" ? "active" : ""}
-          >
-            Public Emails
-          </Text>
-          <Text
-            style={{ cursor: "pointer" }}
             onClick={() => router.push("/myletters")}
             className={path === "letter" ? "active" : ""}
           >
@@ -122,6 +108,20 @@ const HeaderSection = () => {
             className={path === "email" ? "active" : ""}
           >
             My Emails
+          </Text>
+          <Text
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push("/home")}
+            className={path === "home" ? "active" : ""}
+          >
+            Public Letters
+          </Text>
+          <Text
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push("/e_published")}
+            className={path === "e_published" ? "active" : ""}
+          >
+            Public Emails
           </Text>
           {/* <Button
             label="Logout"

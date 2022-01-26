@@ -57,6 +57,8 @@ export const Div = styled.div<StyleProps>`
         : "margin-top: " + gap + "px"};
   }
   max-height: ${({ maxH }) => maxH};
+  background-color: ${({ bgColor }) => bgColor};
+  border-radius: ${({ radius }) => radius}px;
 `;
 
 export const HomeContainer = styled.div`
