@@ -1,5 +1,4 @@
 import { getPublicEmails } from "actions/emailActions";
-import Button from "components/button";
 import EmailListCard from "components/emaillistcard/EmailListCard";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import SearchBox from "components/SearchBox";

@@ -3,6 +3,7 @@ import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styl
 import MyInfoCard from "components/myinfocard/MyInfoCard";
 import MyLetterCard from "components/mylettercard";
 import PlusButton from "components/plusbtn";
+import SearchBox from "components/SearchBox";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
 import { useRouter } from "next/router";
@@ -14,6 +15,7 @@ import { getMyInfo } from "utils/getMyInfo";
 
 const MyLettersPage = () => {
   const [state, setState] = useState<any>([]);
+  const [fitlerData, setFitlerData] = useState<any>([]);
   const [delId, setDelId] = useState("");
   const router = useRouter();
   const [show, setShow] = useState(false);
@@ -48,11 +50,50 @@ const MyLettersPage = () => {
     router.push("/newletter");
   };
 
+  const selectFilterChanged = async (e: any) => {
+    switch (e.value) {
+      case "all":
+        setFitlerData(state);
+        break;
+      case "my":
+        setFitlerData(
+          state.filter((item: any) => item.from === getMyInfo().email)
+        );
+        break;
+      case "popular":
+        const temp1 = state;
+        await temp1.sort((a: any, b: any) => a.publisher - b.publisher);
+        setFitlerData(temp1.reverse());
+
+        break;
+      case "newest":
+        break;
+      case "latest":
+        break;
+      default:
+        break;
+    }
+  };
+
+  const inputFilterChanged = (e: any) => {
+    const temp_str = e.target.value.toLowerCase();
+    setFitlerData(
+      state.filter(
+        (item: any) =>
+          item.from.toLowerCase().includes(temp_str) ||
+          item.to.toLowerCase().includes(temp_str) ||
+          item.plainText.toLowerCase().includes(temp_str) ||
+          item.snippet.toLowerCase().includes(temp_str)
+      )
+    );
+  };
+
   useEffect(() => {
     setLoading(true);
     const getData = async () => {
       const res = await getMyLetters(getMyInfo().email);
       setState(res);
+      console.log(res);
       setLoading(false);
     };
     getData();
@@ -66,8 +107,17 @@ const MyLettersPage = () => {
         <Container>
           <Div justifyContent="space-between">
             <Div w={60} mode="column" gap={30}>
-              <Div justifyContent="space-between" alignItems="center">
-                <MyInfoCard />
+              <Div justifyContent="space-between" gap={20} alignItems="center">
+                <SearchBox
+                  options={[
+                    { value: "all", label: "All" },
+                    { value: "popular", label: "Popular" },
+                    { value: "newest", label: "Newest" },
+                    { value: "latest", label: "Latest" },
+                  ]}
+                  onSelectChange={selectFilterChanged}
+                  onInputChange={inputFilterChanged}
+                />
                 <PlusButton onClick={handlePlusClick} />
               </Div>
               {loading ? (
