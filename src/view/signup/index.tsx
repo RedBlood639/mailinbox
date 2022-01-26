@@ -17,11 +17,14 @@ const SignUpSection = () => {
   const router = useRouter();
   const [state, setState] = useState({
     email: "",
+    fName: "",
+    lName: "",
     pass1: "",
     pass2: "",
     isAllow: false,
   });
   const [flag, setFlag] = useState(true);
+  const [loading, setLoading] = useState<any>(false);
 
   const [mobile, setmobile] = useState<boolean>(false);
 
@@ -37,12 +40,15 @@ const SignUpSection = () => {
   };
 
   const handleSignUp = async () => {
+    setLoading(true);
     const validation = passValidation(state);
     if (validation !== "success") {
       toast.error(validation, { theme: "colored", autoClose: 3000 });
     } else {
       const data = {
         email: state.email,
+        fName: state.fName,
+        lName: state.lName,
         password: state.pass1,
         isAllow: state.isAllow,
       };
@@ -54,9 +60,11 @@ const SignUpSection = () => {
         toast.success(res.success, { theme: "colored", autoClose: 3000 });
       }
     }
+    setLoading(false);
   };
 
   const handleGotocreate = () => {
+    setLoading(true);
     const validation = EmailValidation(state);
     if (validation !== "success") {
       toast.error(validation, { theme: "colored", autoClose: 3000 });
@@ -64,6 +72,7 @@ const SignUpSection = () => {
       setFlag(false);
       setState((prev) => ({ ...prev, isAllow: false }));
     }
+    setLoading(false);
   };
 
   const googleAuthSuccess = (res: any) => {
@@ -71,8 +80,8 @@ const SignUpSection = () => {
     setState({
       ...state,
       email: userInfo.email,
-      // fName: userInfo.givenName,
-      // lName: userInfo.familyName,
+      fName: userInfo.givenName,
+      lName: userInfo.familyName,
       isAllow: true,
     });
     setFlag(false);
@@ -83,7 +92,14 @@ const SignUpSection = () => {
       theme: "colored",
     });
     setFlag(true);
-    setState({ email: "", pass1: "", pass2: "", isAllow: false });
+    setState({
+      email: "",
+      pass1: "",
+      fName: "",
+      lName: "",
+      pass2: "",
+      isAllow: false,
+    });
   };
 
   return (
@@ -138,6 +154,27 @@ const SignUpSection = () => {
       <Div mt={13} />
       {!flag && (
         <>
+          <Div justifyContent="space-between" gap={10}>
+            <Input
+              type="text"
+              name="fName"
+              placeholder="First Name"
+              onChange={handleChange}
+              value={state.fName}
+              label="First Name"
+              style={{ width: "inherit" }}
+            />
+            <Input
+              type="text"
+              name="lName"
+              placeholder="Last Name"
+              onChange={handleChange}
+              value={state.lName}
+              label="Last Name"
+              style={{ width: "inherit" }}
+            />
+          </Div>
+          <Div mt={13} />
           <Input
             type="password"
             name="pass1"
@@ -161,7 +198,7 @@ const SignUpSection = () => {
       {flag ? (
         <Button
           label="Go to Create"
-          onClick={handleGotocreate}
+          onClick={loading ? () => {} : handleGotocreate}
           style={{
             fSize: 16,
             fWeight: 700,
@@ -170,11 +207,12 @@ const SignUpSection = () => {
             bgColor: "#4E6AF0",
             radius: 5,
           }}
+          loading={loading}
         />
       ) : (
         <Button
           label="Create Account"
-          onClick={handleSignUp}
+          onClick={loading ? () => {} : handleSignUp}
           style={{
             fSize: 16,
             fWeight: 700,
@@ -183,6 +221,7 @@ const SignUpSection = () => {
             bgColor: "#4E6AF0",
             radius: 5,
           }}
+          loading={loading}
         />
       )}
 

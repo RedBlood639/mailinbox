@@ -10,7 +10,7 @@ export const Container = styled.div<StyleProps>`
 export const Text = styled.div<StyleProps>`
   line-height: 105%;
   word-break: break-word;
-
+  white-space: ${({ wrap }) => wrap};
   font-size: ${({ fSize }) =>
     "clamp(" +
     Number(fSize) / 2 +
@@ -56,6 +56,9 @@ export const Div = styled.div<StyleProps>`
         ? "margin-left: " + gap + "px"
         : "margin-top: " + gap + "px"};
   }
+  max-height: ${({ maxH }) => maxH};
+  background-color: ${({ bgColor }) => bgColor};
+  border-radius: ${({ radius }) => radius}px;
 `;
 
 export const HomeContainer = styled.div`

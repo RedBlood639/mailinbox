@@ -8,6 +8,7 @@ export const AUTH_API = {
   register: path(BASE_URL, "user/register"),
   verify: path(BASE_URL, "user/verify/"),
   resend: path(BASE_URL, "user/resend/"),
+  logout: path(BASE_URL, "user/logout"),
 };
 
 export const LETTER_API = {
@@ -21,6 +22,13 @@ export const LETTER_API = {
 };
 
 export const EMAIL_API = {
-  gmailAuth: path(BASE_URL, "auth/gmailAuth"),
-  getMessages: path(BASE_URL, "email/getMessages"),
+  gmailAuth: path(BASE_URL, "auth/gmailAuth/"),
+  oauthCallback: path(BASE_URL, "auth/oauth2Callback"),
+  getMessages: path(BASE_URL, "gmail/getMessages"),
+  getMessageById: path(BASE_URL, "gmail/getMessage/"),
+  publishEmail: path(BASE_URL, "email/publish"),
+  getPublicEmails: path(BASE_URL, "email"),
+  getPublicEmailById: path(BASE_URL, "email/get/"),
+  setLike: path(BASE_URL, "email/like/"),
+  setUnlike: path(BASE_URL, "email/unlike/"),
 };

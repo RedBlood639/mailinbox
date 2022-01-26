@@ -44,6 +44,7 @@ export const StyledCheckbox = styled.div<Props>`
   }
 
   ${Icon} {
+    margin-top: -3px;
     visibility: ${({ checked }) => (checked ? "visible" : "hidden")};
   }
 `;

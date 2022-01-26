@@ -21,6 +21,8 @@ const SignInSection = () => {
     rememberFlag: false,
   });
 
+  const [loading, setLoading] = useState<any>(false);
+
   const { authContext, setAuthContext } = useAuthContext();
 
   const [mobile, setmobile] = useState<boolean>(false);
@@ -30,6 +32,13 @@ const SignInSection = () => {
       setmobile(isMobile(768));
     });
     setmobile(isMobile(768));
+    if (localStorage.remember_me) {
+      setState((prev) => ({
+        ...prev,
+        rememberFlag: true,
+        email: localStorage.remember_me,
+      }));
+    }
   }, []);
 
   const handleChange = (e: any) => {
@@ -37,12 +46,18 @@ const SignInSection = () => {
   };
 
   const handleRememberChange = () => {
+    if (!state.rememberFlag) {
+      localStorage.setItem("remember_me", state.email);
+    } else {
+      localStorage.removeItem("remember_me");
+    }
     setState((prev) => ({ ...prev, rememberFlag: !prev.rememberFlag }));
   };
 
   const handleForget = () => {};
 
   const handleLogin = async () => {
+    setLoading(true);
     const validation = LoginValidation(state);
     if (validation !== "success") {
       toast.error(validation, { theme: "colored", autoClose: 3000 });
@@ -58,6 +73,7 @@ const SignInSection = () => {
         loginSuccess(result);
       }
     }
+    setLoading(false);
   };
 
   const loginSuccess = (data: any) => {
@@ -68,7 +84,7 @@ const SignInSection = () => {
       user: data.token,
     });
 
-    router.push("/home");
+    router.push("/myletters");
   };
 
   const googleAuthSuccess = async (res: any) => {
@@ -131,7 +147,8 @@ const SignInSection = () => {
       </Div>
       <Button
         label="Login now"
-        onClick={handleLogin}
+        onClick={loading ? () => {} : handleLogin}
+        loading={loading}
         style={{
           fSize: 16,
           fWeight: 700,

@@ -16,7 +16,14 @@ export const List = styled.div`
 
 export const Item = styled.div`
   background-color: #ededed;
-  padding: 10px;
+  padding: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+
+  -webkit-box-orient: vertical;
+  line-height: 40px;
 `;
 
 export const EmptyDiv = styled.div`

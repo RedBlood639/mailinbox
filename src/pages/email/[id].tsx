@@ -1,25 +1,28 @@
+import React, { useEffect, useState } from "react";
+
+import { HeaderSection } from "layout";
+import { Container, Div, HomeContainer } from "styles/globals.styled";
 import MyInfoCard from "components/myinfocard/MyInfoCard";
 import UnsentLetters from "components/unsentlettercard";
-import { HeaderSection } from "layout";
-import React, { useEffect, useState } from "react";
-import { Container, Div, HomeContainer } from "styles/globals.styled";
-
+import EmailViewCard from "components/emailview/EmailView";
 import { useRouter } from "next/router";
-import LetterViewCard from "components/letterview";
-import { getLetterById } from "actions/letterAction";
+import { getMessageById } from "actions/emailActions";
+import { getMyInfo } from "utils/getMyInfo";
 
-const LetterPage = () => {
+const EmailPage = () => {
   const [state, setstate] = useState<any>({});
   const [loading, setLoading] = useState<any>(false);
   const router = useRouter();
   useEffect(() => {
     setLoading(true);
     const getData = async () => {
-      const res = await getLetterById(router.query.id);
+      const res = await getMessageById(router.query.id, getMyInfo().email);
       setstate(res);
       setLoading(false);
     };
-    if (router.query.id) getData();
+    if (router.query.id) {
+      getData();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query.id]);
   return (
@@ -29,7 +32,7 @@ const LetterPage = () => {
         <Container>
           <Div justifyContent="space-between">
             <Div w={60} mode="column" gap={30}>
-              <LetterViewCard data={state} loading={loading} />
+              <EmailViewCard data={state.messages} loading={loading} />
             </Div>
             <Div w={30} mode="column" gap={30}>
               <MyInfoCard />
@@ -42,4 +45,4 @@ const LetterPage = () => {
   );
 };
 
-export default LetterPage;
+export default EmailPage;

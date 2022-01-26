@@ -3,7 +3,7 @@ import { InputDiv } from "./input.styled";
 
 const Input = (props: any) => {
   return (
-    <InputDiv>
+    <InputDiv style={props.style}>
       {props.label}
       <input
         type={props.type}

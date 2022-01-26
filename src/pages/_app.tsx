@@ -9,6 +9,7 @@ import "../styles/globals.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ScrollTop from "components/button/ScrollTop";
 
 NProgress.configure({ showSpinner: false });
 
@@ -28,6 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AppWrapper>
       <Component {...pageProps} />
+      <ScrollTop />
     </AppWrapper>
   );
 }

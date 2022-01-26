@@ -54,3 +54,15 @@ export const verifyAction = async (token: string) => {
 
   return result;
 };
+
+export const logout = async (email: any) => {
+  const result = await axios
+    .post(AUTH_API.logout, { email: email })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
+};
