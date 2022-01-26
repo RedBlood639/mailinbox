@@ -14,7 +14,7 @@ const IntroSection = () => {
 
   const handleGetStarted = () => {
     if (authContext.isAuthenticated) {
-      router.push("/home");
+      router.push("/myletters");
     } else {
       router.push("/getstarted");
     }

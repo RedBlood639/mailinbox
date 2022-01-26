@@ -84,7 +84,7 @@ const SignInSection = () => {
       user: data.token,
     });
 
-    router.push("/home");
+    router.push("/myletters");
   };
 
   const googleAuthSuccess = async (res: any) => {

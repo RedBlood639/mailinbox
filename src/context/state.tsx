@@ -60,7 +60,7 @@ export const AppWrapper = ({ children }: any) => {
             !isPrivateUrl(router.pathname, true) ||
             router.pathname === "/unverified"
           ) {
-            router.push("/home");
+            router.push("/myletters");
           }
         }
       }

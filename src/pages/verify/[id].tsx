@@ -26,7 +26,7 @@ const Verify = () => {
             user: data.token,
           });
 
-          router.push("/home");
+          router.push("/myletters");
         }
       }
     };
