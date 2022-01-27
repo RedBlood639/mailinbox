@@ -1,4 +1,3 @@
-import MyInfoCard from "components/myinfocard/MyInfoCard";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
 import React, { useEffect, useState } from "react";

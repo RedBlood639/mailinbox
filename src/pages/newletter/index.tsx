@@ -1,4 +1,3 @@
-import MyInfoCard from "components/myinfocard/MyInfoCard";
 import NewLetterCard from "components/newletter";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
@@ -16,7 +15,6 @@ const NewLetterPage = () => {
               <NewLetterCard />
             </Div>
             <Div w={30} mode="column" gap={30}>
-              <MyInfoCard />
               <UnsentLetters />
             </Div>
           </Div>

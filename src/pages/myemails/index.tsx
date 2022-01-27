@@ -2,7 +2,6 @@ import { getMessages, gmailAuth } from "actions/emailActions";
 import EmailListCard from "components/emaillistcard/EmailListCard";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import LinkEmailCard from "components/linkemail";
-import MyInfoCard from "components/myinfocard/MyInfoCard";
 import SearchBox from "components/SearchBox";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
@@ -127,7 +126,6 @@ const MyEmailePage = () => {
               )}
             </Div>
             <Div w={30} mode="column" gap={30}>
-              {/* <MyInfoCard /> */}
               <UnsentLetters />
             </Div>
           </Div>

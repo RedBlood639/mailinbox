@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getLetterById } from "actions/letterAction";
-import MyInfoCard from "components/myinfocard/MyInfoCard";
 import EditLetter from "components/newletter/EditLetter";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";

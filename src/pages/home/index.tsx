@@ -1,6 +1,5 @@
 import { getAllLetters } from "actions/letterAction";
 import LetterListCard from "components/letterlistcard";
-import MyInfoCard from "components/myinfocard/MyInfoCard";
 import PlusButton from "components/plusbtn";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";

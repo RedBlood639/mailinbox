@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import { HeaderSection } from "layout";
 import { Container, Div, HomeContainer } from "styles/globals.styled";
-import MyInfoCard from "components/myinfocard/MyInfoCard";
 import UnsentLetters from "components/unsentlettercard";
 import EmailViewCard from "components/emailview/EmailView";
 import { useRouter } from "next/router";
@@ -36,7 +35,6 @@ const EmailPage = () => {
               <PublicEmailView data={state} loading={loading} />
             </Div>
             <Div w={30} mode="column" gap={30}>
-              {/* <MyInfoCard /> */}
               <UnsentLetters />
             </Div>
           </Div>
