@@ -11,7 +11,9 @@ export const List = styled.div`
   & > *:not(:first-child) {
     margin-top: 15px;
   }
-  padding: 0 20px;
+  padding: 1px 20px;
+  max-height: 300px;
+  overflow: auto;
 `;
 
 export const Item = styled.div`
@@ -24,6 +26,13 @@ export const Item = styled.div`
 
   -webkit-box-orient: vertical;
   line-height: 40px;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+  cursor: pointer;
+  transition: all 0.2s;
+  :hover {
+    background-color: #ffdddd;
+  }
 `;
 
 export const EmptyDiv = styled.div`

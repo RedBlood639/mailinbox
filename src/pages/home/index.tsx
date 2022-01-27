@@ -23,8 +23,8 @@ const HomePage = () => {
     setLoading(true);
     const getData = async () => {
       const letters = await getAllLetters();
-      setLetters(letters);
-      setFitlerData(letters);
+      setLetters(letters.filter((item: any) => item.stateFlag === 0));
+      setFitlerData(letters.filter((item: any) => item.stateFlag === 0));
       setLoading(false);
     };
     getData();
