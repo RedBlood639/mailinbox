@@ -1,6 +1,5 @@
 import { getMyLetters, removeLetter } from "actions/letterAction";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
-import MyInfoCard from "components/myinfocard/MyInfoCard";
 import MyLetterCard from "components/mylettercard";
 import PlusButton from "components/plusbtn";
 import SearchBox from "components/SearchBox";
@@ -34,6 +33,9 @@ const MyLettersPage = () => {
         theme: "colored",
         autoClose: 3000,
       });
+      const temp = state.filter((item: any) => item._id !== delId);
+      setState(temp);
+      setFitlerData(temp);
     }
     setShow(false);
   };
@@ -52,20 +54,6 @@ const MyLettersPage = () => {
 
   const selectFilterChanged = async (e: any) => {
     switch (e.value) {
-      case "all":
-        setFitlerData(state);
-        break;
-      case "my":
-        setFitlerData(
-          state.filter((item: any) => item.from === getMyInfo().email)
-        );
-        break;
-      case "popular":
-        const temp1 = state;
-        await temp1.sort((a: any, b: any) => a.publisher - b.publisher);
-        setFitlerData(temp1.reverse());
-
-        break;
       case "newest":
         break;
       case "latest":
@@ -82,8 +70,8 @@ const MyLettersPage = () => {
         (item: any) =>
           item.from.toLowerCase().includes(temp_str) ||
           item.to.toLowerCase().includes(temp_str) ||
-          item.plainText.toLowerCase().includes(temp_str) ||
-          item.snippet.toLowerCase().includes(temp_str)
+          item.plainText.toLowerCase().includes(temp_str)
+        // item.snippet.toLowerCase().includes(temp_str)
       )
     );
   };
@@ -93,7 +81,7 @@ const MyLettersPage = () => {
     const getData = async () => {
       const res = await getMyLetters(getMyInfo().email);
       setState(res);
-      console.log(res);
+      setFitlerData(res);
       setLoading(false);
     };
     getData();
@@ -128,8 +116,8 @@ const MyLettersPage = () => {
                 </LetterListCardDiv>
               ) : (
                 <>
-                  {state.length > 0 ? (
-                    state.map((item: any, key: any) => (
+                  {fitlerData.length > 0 ? (
+                    fitlerData.map((item: any, key: any) => (
                       <MyLetterCard
                         key={key}
                         data={item}

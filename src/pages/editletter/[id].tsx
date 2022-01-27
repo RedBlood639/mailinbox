@@ -32,7 +32,6 @@ const EditLetterPage = () => {
               <EditLetter data={state} />
             </Div>
             <Div w={30} mode="column" gap={30}>
-              <MyInfoCard />
               <UnsentLetters />
             </Div>
           </Div>

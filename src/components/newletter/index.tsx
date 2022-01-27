@@ -10,11 +10,13 @@ import Button from "components/button";
 import { getMyInfo } from "utils/getMyInfo";
 import { addLetterAction } from "actions/letterAction";
 import Input from "components/input";
+import { useRouter } from "next/router";
 const Editor = dynamic<EditorProps>(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
   { ssr: false }
 );
 const NewLetterCard = () => {
+  const router = useRouter();
   const [state, setState] = useState<any>({
     to: "",
     plainText: "",
@@ -62,15 +64,22 @@ const NewLetterCard = () => {
           autoClose: 3000,
         });
       } else {
-        toast.success("A Letter is created successfully", {
-          theme: "colored",
-          autoClose: 3000,
-        });
+        if (num === 1) {
+          router.push("/myletters");
+          toast.success("A private Letter is created successfully", {
+            theme: "colored",
+            autoClose: 3000,
+          });
+        } else {
+          router.back();
+          toast.success("A public Letter is created successfully", {
+            theme: "colored",
+            autoClose: 3000,
+          });
+        }
       }
     }
   };
-
-  const handlePublish = () => {};
 
   return (
     <NewLetterCardDiv>

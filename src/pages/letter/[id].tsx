@@ -32,7 +32,6 @@ const LetterPage = () => {
               <LetterViewCard data={state} loading={loading} />
             </Div>
             <Div w={30} mode="column" gap={30}>
-              <MyInfoCard />
               <UnsentLetters />
             </Div>
           </Div>

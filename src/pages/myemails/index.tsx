@@ -3,6 +3,7 @@ import EmailListCard from "components/emaillistcard/EmailListCard";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import LinkEmailCard from "components/linkemail";
 import MyInfoCard from "components/myinfocard/MyInfoCard";
+import SearchBox from "components/SearchBox";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
 import { useRouter } from "next/router";
@@ -13,6 +14,7 @@ import { getMyInfo } from "utils/getMyInfo";
 const MyEmailePage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [msgData, setMsgData] = useState<any>([]);
+  const [fitlerData, setFitlerData] = useState<any>([]);
   const router = useRouter();
 
   const handleLinkEmail = async () => {
@@ -24,11 +26,13 @@ const MyEmailePage = () => {
     const getData = async () => {
       const res = await getMessages(getMyInfo().email);
       // console.log(res.messages);
+      console.log(res);
       if (res.error) {
-        console.log(res);
         setMsgData([]);
+        setFitlerData([]);
       } else {
         setMsgData(res.messages);
+        setFitlerData(res.messages);
       }
       setLoading(false);
     };
@@ -40,6 +44,44 @@ const MyEmailePage = () => {
     router.push("/email/" + id);
   };
 
+  const selectFilterChanged = async (e: any) => {
+    switch (e.value) {
+      case "all":
+        setFitlerData(msgData);
+        break;
+      case "my":
+        setFitlerData(
+          msgData.filter((item: any) => item.from === getMyInfo().email)
+        );
+        break;
+      case "popular":
+        const temp1 = msgData;
+        await temp1.sort((a: any, b: any) => a.publisher - b.publisher);
+        setFitlerData(temp1.reverse());
+
+        break;
+      case "newest":
+        break;
+      case "latest":
+        break;
+      default:
+        break;
+    }
+  };
+
+  const inputFilterChanged = (e: any) => {
+    const temp_str = e.target.value.toLowerCase();
+    setFitlerData(
+      msgData.filter(
+        (item: any) =>
+          item.from.toLowerCase().includes(temp_str) ||
+          item.to.toLowerCase().includes(temp_str) ||
+          item.snippet.toLowerCase().includes(temp_str)
+        // item.snippet.toLowerCase().includes(temp_str)
+      )
+    );
+  };
+
   return (
     <React.Fragment>
       <HeaderSection />
@@ -47,8 +89,15 @@ const MyEmailePage = () => {
         <Container>
           <Div justifyContent="space-between">
             <Div w={60} mode="column" gap={30}>
-              <Div justifyContent="space-between" alignItems="center">
-                <MyInfoCard />
+              <Div justifyContent="space-between" gap={20} alignItems="center">
+                <SearchBox
+                  options={[
+                    { value: "newest", label: "Newest" },
+                    { value: "latest", label: "Latest" },
+                  ]}
+                  onSelectChange={selectFilterChanged}
+                  onInputChange={inputFilterChanged}
+                />
                 <LinkEmailCard onClick={handleLinkEmail} />
               </Div>
               {loading ? (
@@ -59,8 +108,8 @@ const MyEmailePage = () => {
                 </LetterListCardDiv>
               ) : (
                 <>
-                  {msgData.length > 0 ? (
-                    msgData.map((item: any, key: any) => (
+                  {fitlerData.length > 0 ? (
+                    fitlerData.map((item: any, key: any) => (
                       <EmailListCard
                         key={key}
                         data={item}
@@ -80,6 +129,7 @@ const MyEmailePage = () => {
               )}
             </Div>
             <Div w={30} mode="column" gap={30}>
+              {/* <MyInfoCard /> */}
               <UnsentLetters />
             </Div>
           </Div>

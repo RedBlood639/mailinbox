@@ -1,6 +1,6 @@
 import React from "react";
 import { FiPaperclip } from "react-icons/fi";
-import { Div, Text } from "styles/globals.styled";
+// import { Div, Text } from "styles/globals.styled";
 import { LinkEmailDiv } from "./linkemail.styled";
 
 const LinkEmailCard = ({ onClick }: any) => {
@@ -9,7 +9,7 @@ const LinkEmailCard = ({ onClick }: any) => {
       <div>
         <FiPaperclip />
       </div>
-      <Text
+      {/* <Text
         ml={20}
         fSize={15}
         fWeight={700}
@@ -20,7 +20,7 @@ const LinkEmailCard = ({ onClick }: any) => {
         LINK YOUR
         <br /> EMAIL
         <br /> WITH US
-      </Text>
+      </Text> */}
     </LinkEmailDiv>
   );
 };

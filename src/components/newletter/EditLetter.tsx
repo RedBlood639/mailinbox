@@ -10,6 +10,7 @@ import draftToHtml from "draftjs-to-html";
 import Button from "components/button";
 import { getMyInfo } from "utils/getMyInfo";
 import { editLetterAction } from "actions/letterAction";
+import { useRouter } from "next/router";
 
 const Editor = dynamic<EditorProps>(
   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
@@ -17,6 +18,7 @@ const Editor = dynamic<EditorProps>(
 );
 
 const EditLetter = ({ data }: any) => {
+  const router = useRouter();
   const [state, setState] = useState<any>({});
 
   const [editorState, setEditorState] = useState<any>("");
@@ -84,6 +86,7 @@ const EditLetter = ({ data }: any) => {
           theme: "colored",
           autoClose: 3000,
         });
+        router.push("/myletters");
       }
     }
   };
