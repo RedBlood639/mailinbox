@@ -25,9 +25,11 @@ import {
   recommendLetter,
   removeLetter,
 } from "actions/letterAction";
-import { Button, Modal } from "react-bootstrap";
+import { Button as BsButton, Modal } from "react-bootstrap";
+
 import { useRouter } from "next/router";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
+import Button from "components/button";
 
 const LetterViewCard = ({ data, loading }: any) => {
   const router = useRouter();
@@ -95,15 +97,30 @@ const LetterViewCard = ({ data, loading }: any) => {
 
   return !loading ? (
     <LetterViewDiv>
-      <HeaderActions style={{ justifyContent: "flex-end" }}>
-        <Badge>{letterData.stateFlag === 0 ? "PUBLISHED" : "PRIVATE"}</Badge>
-        {state.email === letterData.from && (
-          <>
-            <GrEdit onClick={handleEditClick} />
-            <RiDeleteBinLine onClick={handleDeleteClick} />
-          </>
-        )}
-      </HeaderActions>
+      <Div justifyContent="space-between">
+        <Button
+          label="BACK"
+          onClick={() => router.back()}
+          style={{
+            fSize: 20,
+            fWeight: 700,
+            fColor: "#FB6F6F",
+            p: "7px 17px",
+            bgColor: "white",
+            bColor: "#C4C4C4",
+            radius: 10,
+          }}
+        />
+        <HeaderActions>
+          <Badge>{letterData.stateFlag === 0 ? "PUBLISHED" : "PRIVATE"}</Badge>
+          {state.email === letterData.from && (
+            <>
+              <GrEdit onClick={handleEditClick} />
+              <RiDeleteBinLine onClick={handleDeleteClick} />
+            </>
+          )}
+        </HeaderActions>
+      </Div>
       <Div justifyContent="space-between" mt={30}>
         <Text fSize={18} fWeight={500}>
           To,
@@ -238,12 +255,12 @@ const LetterViewCard = ({ data, loading }: any) => {
           {"You can't recovery this letter after delete. Are you sure?"}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <BsButton variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="danger" onClick={handleDelete}>
+          </BsButton>
+          <BsButton variant="danger" onClick={handleDelete}>
             Delete
-          </Button>
+          </BsButton>
         </Modal.Footer>
       </Modal>
     </LetterViewDiv>

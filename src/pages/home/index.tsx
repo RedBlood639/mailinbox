@@ -112,7 +112,7 @@ const HomePage = () => {
             </Div>
             <Div w={30} mode="column" gap={30}>
               <UnsentLetters />
-              <UnsentLetters />
+              {/* <UnsentLetters /> */}
             </Div>
           </Div>
         </Container>

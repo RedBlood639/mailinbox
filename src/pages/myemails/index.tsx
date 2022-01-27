@@ -24,6 +24,7 @@ const MyEmailePage = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await getMessages(getMyInfo().email);
+      console.log(res);
       if (res.error) {
         setMsgData([]);
         setFitlerData([]);

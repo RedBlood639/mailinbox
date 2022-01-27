@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const MyletterCardDiv = styled.div`
   background-color: white;
   border-radius: 12px;
+  cursor: pointer;
   padding: 20px;
   & > *:not(:first-child) {
     margin-top: 20px;

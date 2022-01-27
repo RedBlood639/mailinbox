@@ -20,7 +20,9 @@ const MyLetterCard = ({ data, onClick, onDelete }: any) => {
     <>
       <MyletterCardDiv>
         <CardHeader>
-          <Text onClick={onClick}>To, {data.to}</Text>
+          <Text onClick={onClick} fWeight={500}>
+            To, {data.to}
+          </Text>
           <HeaderActions>
             <Badge>{data.stateFlag === 0 ? "Published" : "Private"}</Badge>
             <GrEdit onClick={() => router.push("/editletter/" + data._id)} />
