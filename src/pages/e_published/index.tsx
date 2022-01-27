@@ -21,7 +21,6 @@ const PublicEmail = () => {
       const res = await getPublicEmails();
       setEmailData(res);
       setFitlerData(res);
-      console.log(res);
       setLoading(false);
     };
     getData();

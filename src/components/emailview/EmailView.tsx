@@ -22,7 +22,6 @@ const EmailViewCard = ({ data, loading }: any) => {
 
   const handlePublish = async () => {
     setBtnLoading(true);
-    // console.log(data);
     const newData = {
       e_id: data.id,
       subject: data.headers.subject,

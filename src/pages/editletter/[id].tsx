@@ -14,7 +14,6 @@ const EditLetterPage = () => {
     const getData = async () => {
       const res = await getLetterById(router.query.id);
 
-      console.log(res);
       setstate(res);
     };
     if (router.query.id) {

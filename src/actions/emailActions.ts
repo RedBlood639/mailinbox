@@ -22,7 +22,6 @@ export const getMessages = async (email: any) => {
     .catch((err) => {
       return err.response.data;
     });
-  // console.log(res);
   return res;
 };
 
@@ -42,11 +41,9 @@ export const oauthCallback = (code: any, email: any) => {
   const result = axios
     .post(EMAIL_API.oauthCallback, { code: code, email: email })
     .then((res) => {
-      console.log(res);
       return res.data;
     })
     .catch((err) => {
-      console.log(err);
       return err.response.data;
     });
   return result;

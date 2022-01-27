@@ -8,7 +8,6 @@ const GoogleAuth = () => {
   useEffect(() => {
     const func = async () => {
       const res = await oauthCallback(router.query.code, getMyInfo().email);
-      console.log(res);
       location.href = "/myemails";
     };
     if (router.query.code) {

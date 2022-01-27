@@ -26,7 +26,6 @@ const HomePage = () => {
       const letters = await getAllLetters();
       setLetters(letters);
       setFitlerData(letters);
-      console.log(letters);
       setLoading(false);
     };
     getData();

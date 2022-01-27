@@ -74,7 +74,6 @@ const LetterViewCard = ({ data, loading }: any) => {
     if (res.error) {
     } else {
       setLetterData(res);
-      console.log(res);
     }
   };
 
@@ -83,7 +82,6 @@ const LetterViewCard = ({ data, loading }: any) => {
     if (res.error) {
     } else {
       setLetterData(res);
-      console.log(res);
     }
   };
 

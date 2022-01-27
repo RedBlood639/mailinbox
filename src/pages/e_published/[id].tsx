@@ -18,7 +18,6 @@ const EmailPage = () => {
     setLoading(true);
     const getData = async () => {
       const res = await getPublicEmailById(router.query.id);
-      console.log(res);
       setstate(res);
       setLoading(false);
     };
