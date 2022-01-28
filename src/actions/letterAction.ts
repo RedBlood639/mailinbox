@@ -89,7 +89,7 @@ export const recommendLetter = async (email: any, id: any) => {
 };
 
 export const oppositeLetter = async (email: any, id: any) => {
-  const res = axios
+  const result = axios
     .post(LETTER_API.opposite + email + "/" + id)
     .then((res) => {
       return res.data;
@@ -97,5 +97,29 @@ export const oppositeLetter = async (email: any, id: any) => {
     .catch((err) => {
       return err.response.data;
     });
-  return res;
+  return result;
+};
+
+export const addComment = async (data: any) => {
+  const result = axios
+    .post(LETTER_API.addComment, { ...data })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
+};
+
+export const removeCommand = async (id: any) => {
+  const result = axios
+    .post(LETTER_API.removeComment + id)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
 };

@@ -19,6 +19,8 @@ export const LETTER_API = {
   removeById: path(BASE_URL, "letter/"),
   recommend: path(BASE_URL, "letter/like/"),
   opposite: path(BASE_URL, "letter/unlike/"),
+  addComment: path(BASE_URL, "letter/addcomment"),
+  removeComment: path(BASE_URL, "letter/comment/one/"),
 };
 
 export const EMAIL_API = {

@@ -7,6 +7,7 @@ import {
   Actions,
   LetterViewDiv,
 } from "components/letterview/letterview.styled";
+import Loading from "components/loading";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { BsHandThumbsDownFill, BsHandThumbsUpFill } from "react-icons/bs";
@@ -134,7 +135,7 @@ const PublicEmailView = ({ data, loading }: any) => {
     )
   ) : (
     <LetterListCardDiv style={{ textAlign: "center", fontSize: 20 }}>
-      Loading ...
+      <Loading />
     </LetterListCardDiv>
   );
 };

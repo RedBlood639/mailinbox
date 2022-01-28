@@ -1,6 +1,7 @@
 import { getPublicEmails } from "actions/emailActions";
 import EmailListCard from "components/emaillistcard/EmailListCard";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
+import Loading from "components/loading";
 import SearchBox from "components/SearchBox";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
@@ -103,7 +104,7 @@ const PublicEmail = () => {
                 <LetterListCardDiv
                   style={{ textAlign: "center", fontSize: 20 }}
                 >
-                  Loading ...
+                  <Loading />
                 </LetterListCardDiv>
               ) : (
                 <>

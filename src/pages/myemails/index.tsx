@@ -2,6 +2,7 @@ import { getMessages, gmailAuth } from "actions/emailActions";
 import EmailListCard from "components/emaillistcard/EmailListCard";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import LinkEmailCard from "components/linkemail";
+import Loading from "components/loading";
 import SearchBox from "components/SearchBox";
 import UnsentLetters from "components/unsentlettercard";
 import { HeaderSection } from "layout";
@@ -102,7 +103,7 @@ const MyEmailePage = () => {
                 <LetterListCardDiv
                   style={{ textAlign: "center", fontSize: 20 }}
                 >
-                  Loading ...
+                  <Loading />
                 </LetterListCardDiv>
               ) : (
                 <>

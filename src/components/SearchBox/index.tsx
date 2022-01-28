@@ -10,11 +10,11 @@ const SearchBox = ({ options, onSelectChange, onInputChange }: any) => {
   };
   return (
     <SearchBoxDiv>
-      <CustomSelect
+      {/* <CustomSelect
         value={selectedOption}
         onChange={handleChange}
         options={options}
-      />
+      /> */}
       <SearchInput>
         <input type="text" placeholder="Search ..." onChange={onInputChange} />
       </SearchInput>

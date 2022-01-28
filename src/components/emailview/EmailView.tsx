@@ -2,6 +2,7 @@ import { publishEmail } from "actions/emailActions";
 import Button from "components/button";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import { LetterViewDiv } from "components/letterview/letterview.styled";
+import Loading from "components/loading";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -103,7 +104,7 @@ const EmailViewCard = ({ data, loading }: any) => {
     )
   ) : (
     <LetterListCardDiv style={{ textAlign: "center", fontSize: 20 }}>
-      Loading ...
+      <Loading />
     </LetterListCardDiv>
   );
 };

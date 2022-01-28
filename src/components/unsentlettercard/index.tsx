@@ -7,6 +7,7 @@ import { getAllLetters } from "actions/letterAction";
 import { SearchInput } from "components/SearchBox/searchbox.styled";
 import { getMyInfo } from "utils/getMyInfo";
 import { useRouter } from "next/router";
+import Loading from "components/loading";
 
 const UnsentLetters = () => {
   const router = useRouter();
@@ -55,7 +56,7 @@ const UnsentLetters = () => {
       </Div>
       <List>
         {loading ? (
-          <Text tAlign="center"> Loading ... </Text>
+          <Loading />
         ) : (
           <>
             {filterData.length > 0 ? (

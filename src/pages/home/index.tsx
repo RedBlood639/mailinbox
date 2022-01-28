@@ -9,6 +9,7 @@ import { Container, Div, HomeContainer } from "styles/globals.styled";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import SearchBox from "components/SearchBox";
 import { getMyInfo } from "utils/getMyInfo";
+import Loading from "components/loading";
 
 const HomePage = () => {
   const [letters, setLetters] = useState<any>([]);
@@ -92,7 +93,7 @@ const HomePage = () => {
                 <LetterListCardDiv
                   style={{ textAlign: "center", fontSize: 20 }}
                 >
-                  Loading ...
+                  <Loading />
                 </LetterListCardDiv>
               ) : (
                 <>

@@ -8,7 +8,6 @@ import { GrEdit } from "react-icons/gr";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BsHandThumbsUp, BsHandThumbsDown } from "react-icons/bs";
 import { BiComment } from "react-icons/bi";
-import { FiFlag } from "react-icons/fi";
 
 import { Div, Text } from "styles/globals.styled";
 import {
@@ -21,8 +20,10 @@ import {
 } from "./letterview.styled";
 import { getMyInfo } from "utils/getMyInfo";
 import {
+  addComment,
   oppositeLetter,
   recommendLetter,
+  removeCommand,
   removeLetter,
 } from "actions/letterAction";
 import { Button as BsButton, Modal } from "react-bootstrap";
@@ -30,12 +31,28 @@ import { Button as BsButton, Modal } from "react-bootstrap";
 import { useRouter } from "next/router";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
 import Button from "components/button";
+import Input from "components/input";
+import dynamic from "next/dynamic";
+import { EditorProps } from "react-draft-wysiwyg";
+import draftToHtml from "draftjs-to-html";
+import { toast } from "react-toastify";
+import Loading from "components/loading";
+
+const Editor = dynamic<EditorProps>(
+  () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
+  { ssr: false }
+);
 
 const LetterViewCard = ({ data, loading }: any) => {
   const router = useRouter();
   const [state, setState] = useState<any>({});
   const [letterData, setLetterData] = useState<any>({});
   const [show, setShow] = useState(false);
+  const [commentShow, setCommentShow] = useState<boolean>(false);
+  const [editorState, setEditorState] = useState<any>("");
+  const [deleteFlag, setDeleteFlag] = useState("");
+  const [commentState, setCommentState] = useState<any>({});
+
   useEffect(() => {
     setState(getMyInfo());
   }, []);
@@ -57,18 +74,82 @@ const LetterViewCard = ({ data, loading }: any) => {
   };
 
   const handleDelete = async () => {
-    const res = await removeLetter(letterData._id);
-    if (!res.error) {
-      router.back();
+    if (deleteFlag === "letter") {
+      const res = await removeLetter(letterData._id);
+      if (!res.error) {
+        router.back();
+      }
+    } else {
+      const res = await removeCommand(letterData._id);
+      if (res.error) {
+        toast.error(res.error, {
+          theme: "colored",
+          autoClose: 3000,
+        });
+      } else {
+        toast.success("A comment has removed successfully.", {
+          theme: "colored",
+          autoClose: 3000,
+        });
+        setLetterData(res);
+      }
     }
   };
 
-  const handleDeleteClick = () => {
+  const handleContentStateChange = (e: any) => {
+    setCommentState({
+      ...commentState,
+      plainText: editorState.getCurrentContent().getPlainText(),
+      htmlText: draftToHtml(e),
+    });
+  };
+
+  const handleDeleteClick = (key: any) => {
     setShow(true);
+    setDeleteFlag(key);
   };
 
   const handleClose = () => {
     setShow(false);
+  };
+
+  const handleCommentClose = () => {
+    setCommentState({});
+    setEditorState("");
+    setCommentShow(false);
+  };
+
+  const handleCommentSave = async () => {
+    if (!commentState.to) {
+      toast.error("Title field is required", {
+        theme: "colored",
+        autoClose: 3000,
+      });
+    } else if (!commentState.plainText) {
+      toast.error("Content field is required", {
+        theme: "colored",
+        autoClose: 3000,
+      });
+    } else {
+      const newData = {
+        letter_id: letterData._id,
+        to: commentState.to,
+        from: state.email,
+        plainText: commentState.plainText,
+        htmlText: commentState.htmlText,
+        date: new Date(),
+      };
+      const res = await addComment(newData);
+      if (res.error) {
+        toast.error(res.error, {
+          theme: "colored",
+          autoClose: 3000,
+        });
+      } else {
+        setLetterData(res);
+        handleCommentClose();
+      }
+    }
   };
 
   const handleRecommend = async () => {
@@ -87,10 +168,16 @@ const LetterViewCard = ({ data, loading }: any) => {
     }
   };
 
-  const handleComment = () => {};
+  const handleComment = () => {
+    setCommentShow(true);
+  };
 
   const handleEditClick = () => {
     router.push("/editletter/" + letterData._id);
+  };
+
+  const handleChange = (e: any) => {
+    setCommentState({ ...state, to: e.target.value });
   };
 
   // const handleReport = () => {};
@@ -116,7 +203,7 @@ const LetterViewCard = ({ data, loading }: any) => {
           {state.email === letterData.from && (
             <>
               <GrEdit onClick={handleEditClick} />
-              <RiDeleteBinLine onClick={handleDeleteClick} />
+              <RiDeleteBinLine onClick={() => handleDeleteClick("letter")} />
             </>
           )}
         </HeaderActions>
@@ -217,30 +304,45 @@ const LetterViewCard = ({ data, loading }: any) => {
       )}
 
       <CommentPart>
-        <CommentUserInfo>
-          <AvatarDiv>
-            <FiUser />
-          </AvatarDiv>
-          <div>
-            <Text fSize={24} fWeight={500}>
-              Lorem Ipsum
-            </Text>
-            <Text fSize={18} mt={5}>
-              @loremip
-            </Text>
-          </div>
-        </CommentUserInfo>
-        <Div mt={30}>
-          Sesame snaps pudding marshmallow chocolate cake toffee cookie ice
-          cream tiramisu cake. Liquorice croissant jelly lemon drops jelly beans
-          apple pie pudding caramels donut. Cotton candy jujubes danish cookie
-          chocolate bar apple pie. Wafer croissant topping jelly bear claw
-          liquorice. Shortbread soufflé marshmallow icing macaroon macaroon
-          dragée. Cookie halvah bear claw gummi bears croissant tiramisu donut
-          cookie. Marzipan bear claw lollipop ice cream icing candy candy canes.
-          Cake muffin powder jujubes gingerbread.Marzipan bear claw lollipop ice
-          cream icing candy candy canes. Cake muffin powder jujubes gingerbread.
-        </Div>
+        {letterData?.comments?.length > 0 ? (
+          letterData.comments.map((item: any, key: any) => (
+            <React.Fragment key={key}>
+              <Div mt={20} justifyContent="space-between">
+                <CommentUserInfo>
+                  <AvatarDiv>
+                    <FiUser />
+                  </AvatarDiv>
+                  <div>
+                    <Text fSize={24} fWeight={500}>
+                      {item.to}
+                    </Text>
+                    <Text fSize={18} mt={5}>
+                      {item.from}
+                    </Text>
+                  </div>
+                </CommentUserInfo>
+                <HeaderActions>
+                  {state.email === item.from && (
+                    <RiDeleteBinLine
+                      onClick={() => handleDeleteClick("comment")}
+                    />
+                  )}
+                </HeaderActions>
+              </Div>
+              <Div mt={20}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: item.htmlText,
+                  }}
+                ></div>
+              </Div>
+            </React.Fragment>
+          ))
+        ) : (
+          <Text mt={25} fSize={20} tAlign="center">
+            There is no comment yet.
+          </Text>
+        )}
       </CommentPart>
       <Modal
         show={show}
@@ -263,10 +365,70 @@ const LetterViewCard = ({ data, loading }: any) => {
           </BsButton>
         </Modal.Footer>
       </Modal>
+
+      <Modal
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={commentShow}
+        onHide={handleCommentClose}
+        backdrop="static"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Add Comment
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {" "}
+          <Input
+            type="text"
+            placeholder="Title"
+            value={commentState.to}
+            onChange={handleChange}
+          />
+          <Div mt={26} />
+          <Editor
+            editorState={editorState}
+            onEditorStateChange={setEditorState}
+            onContentStateChange={handleContentStateChange}
+            editorStyle={{
+              height: "300px",
+              border: "1px solid #F1F1F1",
+              padding: "0 5px ",
+            }}
+            toolbar={{
+              options: [
+                "inline",
+                "blockType",
+                "emoji",
+                "fontFamily",
+                "fontSize",
+                "list",
+                "textAlign",
+                "history",
+              ],
+              inline: { inDropdown: true },
+              list: { inDropdown: true },
+              textAlign: { inDropdown: true },
+              link: { inDropdown: true },
+              history: { inDropdown: true },
+            }}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <BsButton variant="secondary" onClick={handleCommentClose}>
+            Close
+          </BsButton>
+          <BsButton variant="danger" onClick={handleCommentSave}>
+            Save
+          </BsButton>
+        </Modal.Footer>
+      </Modal>
     </LetterViewDiv>
   ) : (
     <LetterListCardDiv style={{ textAlign: "center", fontSize: 20 }}>
-      Loading ...
+      <Loading />
     </LetterListCardDiv>
   );
 };

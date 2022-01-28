@@ -38,7 +38,7 @@ const EditLetter = ({ data }: any) => {
 
       setState(data);
     };
-    if (data) {
+    if (data.htmlText) {
       setImport();
     }
   }, [data]);

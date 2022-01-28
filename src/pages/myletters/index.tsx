@@ -1,5 +1,6 @@
 import { getMyLetters, removeLetter } from "actions/letterAction";
 import { LetterListCardDiv } from "components/letterlistcard/letterlistcard.styled";
+import Loading from "components/loading";
 import MyLetterCard from "components/mylettercard";
 import PlusButton from "components/plusbtn";
 import SearchBox from "components/SearchBox";
@@ -112,7 +113,7 @@ const MyLettersPage = () => {
                 <LetterListCardDiv
                   style={{ textAlign: "center", fontSize: 20 }}
                 >
-                  Loading ...
+                  <Loading />
                 </LetterListCardDiv>
               ) : (
                 <>

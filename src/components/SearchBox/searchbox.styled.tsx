@@ -16,7 +16,7 @@ export const CustomSelect = styled(Select)`
 `;
 
 export const SearchInput = styled.div`
-  width: 68%;
+  width: 100%;
   input {
     width: 100%;
     padding: 5px 10px;

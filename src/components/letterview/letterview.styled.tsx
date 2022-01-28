@@ -14,8 +14,6 @@ export const CommentPart = styled.div`
 export const CommentUserInfo = styled.div`
   display: flex;
   align-items: center;
-
-  margin: 20px 0;
 `;
 
 export const AvatarDiv = styled.div`
