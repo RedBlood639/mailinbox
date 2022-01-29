@@ -79,9 +79,9 @@ export const forgetPassword = async (email: any) => {
   return result;
 };
 
-export const resetPassword = async (password: any, token: any) => {
+export const resetPassword = async (data: any) => {
   const result = await axios
-    .post(AUTH_API.resetpass, { password, token })
+    .post(AUTH_API.resetpass, { data })
     .then((res) => {
       return res.data;
     })
