@@ -9,6 +9,8 @@ export const AUTH_API = {
   verify: path(BASE_URL, "user/verify/"),
   resend: path(BASE_URL, "user/resend/"),
   logout: path(BASE_URL, "user/logout"),
+  forget: path(BASE_URL, "user/forget/"),
+  resetpass: path(BASE_URL, "user/resetpass"),
 };
 
 export const LETTER_API = {

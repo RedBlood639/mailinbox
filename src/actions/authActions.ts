@@ -66,3 +66,27 @@ export const logout = async (email: any) => {
     });
   return result;
 };
+
+export const forgetPassword = async (email: any) => {
+  const result = await axios
+    .post(AUTH_API.forget + email)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
+};
+
+export const resetPassword = async (password: any, token: any) => {
+  const result = await axios
+    .post(AUTH_API.resetpass, { password, token })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return result;
+};

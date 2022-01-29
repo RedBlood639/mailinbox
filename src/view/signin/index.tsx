@@ -7,19 +7,22 @@ import { Div, Text } from "styles/globals.styled";
 import Checkbox from "components/checkbox";
 import GoogleLogin from "react-google-login";
 import { ToastContainer, toast } from "react-toastify";
-import { loginAction } from "actions/authActions";
+import { forgetPassword, loginAction } from "actions/authActions";
 import { useAuthContext } from "context/state";
-import { LoginValidation } from "utils/authValidation";
+import { isEmail, LoginValidation } from "utils/authValidation";
 import credentials from "config/credentials.json";
 import { isMobile } from "utils/isMobile";
+import { Modal, Button as BsButton } from "react-bootstrap";
 
 const SignInSection = () => {
   const router = useRouter();
   const [state, setState] = useState({
     email: "",
     password: "",
+    reset: "",
     rememberFlag: false,
   });
+  const [show, setShow] = useState(false);
 
   const [loading, setLoading] = useState<any>(false);
 
@@ -54,7 +57,9 @@ const SignInSection = () => {
     setState((prev) => ({ ...prev, rememberFlag: !prev.rememberFlag }));
   };
 
-  const handleForget = () => {};
+  const handleForget = () => {
+    setShow(true);
+  };
 
   const handleLogin = async () => {
     setLoading(true);
@@ -104,6 +109,33 @@ const SignInSection = () => {
       theme: "colored",
       autoClose: 3000,
     });
+  };
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleForgetClick = async () => {
+    if (!isEmail(state.reset)) {
+      toast.error("Email is not valid.", {
+        theme: "colored",
+        autoClose: 3000,
+      });
+    } else {
+      const res = await forgetPassword(state.reset);
+      if (res.error) {
+        toast.error(res.error, {
+          theme: "colored",
+          autoClose: 3000,
+        });
+      } else {
+        toast.success(res.success, {
+          theme: "colored",
+          autoClose: 3000,
+        });
+        setShow(false);
+      }
+    }
   };
 
   return (
@@ -204,6 +236,39 @@ const SignInSection = () => {
           Join free today
         </Text>
       </Div>
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Reset your password.</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Text mb={20}>
+            {
+              "Enter your madreply.com email address so we can reset your password."
+            }
+          </Text>
+          <Input
+            type="text"
+            name="reset"
+            placeholder="Enter your email"
+            onChange={handleChange}
+            value={state.reset}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <BsButton variant="secondary" onClick={handleClose}>
+            Close
+          </BsButton>
+          <BsButton variant="primary" onClick={handleForgetClick}>
+            Request
+          </BsButton>
+        </Modal.Footer>
+      </Modal>
     </Div>
   );
 };
