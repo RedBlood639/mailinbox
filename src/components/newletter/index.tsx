@@ -118,7 +118,7 @@ const NewLetterCard = () => {
         <div>
           <Button
             label="BACK"
-            onClick={router.back()}
+            onClick={() => router.back()}
             style={{
               fSize: 20,
               fWeight: 700,
