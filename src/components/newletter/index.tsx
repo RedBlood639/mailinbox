@@ -141,6 +141,7 @@ const NewLetterCard = () => {
               bgColor: "white",
               bColor: "#C4C4C4",
               radius: 10,
+              mr: 15,
             }}
           />
           <Button
