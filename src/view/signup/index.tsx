@@ -54,6 +54,7 @@ const SignUpSection = () => {
       };
 
       const res = await registerAction(data);
+      console.log(res);
       if (res.error) {
         toast.error(res.error, { theme: "colored", autoClose: 3000 });
       } else {
