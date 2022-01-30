@@ -13,6 +13,7 @@ import { isEmail, LoginValidation } from "utils/authValidation";
 import credentials from "config/credentials.json";
 import { isMobile } from "utils/isMobile";
 import { Modal, Button as BsButton } from "react-bootstrap";
+import { getMyInfo } from "utils/getMyInfo";
 
 const SignInSection = () => {
   const router = useRouter();
@@ -90,7 +91,11 @@ const SignInSection = () => {
       user: data.token,
     });
 
-    router.push("/myletters");
+    if (getMyInfo().isAllow) {
+      router.push("/myletters");
+    } else {
+      router.push("/unverified");
+    }
   };
 
   const googleAuthSuccess = async (res: any) => {

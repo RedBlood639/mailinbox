@@ -52,9 +52,8 @@ const SignUpSection = () => {
         password: state.pass1,
         isAllow: state.isAllow,
       };
-
+      console.log(data);
       const res = await registerAction(data);
-      console.log(res);
       if (res.error) {
         toast.error(res.error, { theme: "colored", autoClose: 3000 });
       } else {
