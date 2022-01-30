@@ -75,7 +75,7 @@ const ResetPassSection = () => {
       </Text>
       <Div mt={13} />
       <Input
-        type="text"
+        type="password"
         name="newPass"
         placeholder="New Password"
         onChange={handleChange}
