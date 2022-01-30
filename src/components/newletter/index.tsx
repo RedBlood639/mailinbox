@@ -114,32 +114,48 @@ const NewLetterCard = () => {
           history: { inDropdown: true },
         }}
       />
-      <Div justifyContent="flex-end" mt={40} gap={15}>
-        <Button
-          label="PRIVATE"
-          onClick={() => handleAddClick(1)}
-          style={{
-            fSize: 20,
-            fWeight: 700,
-            fColor: "#FB6F6F",
-            p: "7px 17px",
-            bgColor: "white",
-            bColor: "#C4C4C4",
-            radius: 10,
-          }}
-        />
-        <Button
-          label="PUBLISH"
-          onClick={() => handleAddClick(0)}
-          style={{
-            fSize: 20,
-            fWeight: 700,
-            fColor: "#fff",
-            p: "7px 17px",
-            bgColor: "#FB6F6F",
-            radius: 10,
-          }}
-        />
+      <Div justifyContent="space-between" mt={40} gap={15}>
+        <div>
+          <Button
+            label="BACK"
+            onClick={router.back()}
+            style={{
+              fSize: 20,
+              fWeight: 700,
+              fColor: "#fff",
+              p: "7px 17px",
+              bgColor: "#FB6F6F",
+              radius: 10,
+            }}
+          />
+        </div>
+        <div>
+          <Button
+            label="PRIVATE"
+            onClick={() => handleAddClick(1)}
+            style={{
+              fSize: 20,
+              fWeight: 700,
+              fColor: "#FB6F6F",
+              p: "7px 17px",
+              bgColor: "white",
+              bColor: "#C4C4C4",
+              radius: 10,
+            }}
+          />
+          <Button
+            label="PUBLISH"
+            onClick={() => handleAddClick(0)}
+            style={{
+              fSize: 20,
+              fWeight: 700,
+              fColor: "#fff",
+              p: "7px 17px",
+              bgColor: "#FB6F6F",
+              radius: 10,
+            }}
+          />
+        </div>
       </Div>
     </NewLetterCardDiv>
   );
