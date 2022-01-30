@@ -81,7 +81,7 @@ export const forgetPassword = async (email: any) => {
 
 export const resetPassword = async (data: any) => {
   const result = await axios
-    .post(AUTH_API.resetpass, { data })
+    .post(AUTH_API.resetpass, { ...data })
     .then((res) => {
       return res.data;
     })

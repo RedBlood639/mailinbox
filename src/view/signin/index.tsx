@@ -58,6 +58,7 @@ const SignInSection = () => {
   };
 
   const handleForget = () => {
+    setState((prev) => ({ ...prev, reset: "" }));
     setShow(true);
   };
 

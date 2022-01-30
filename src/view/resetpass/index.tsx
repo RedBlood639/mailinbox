@@ -44,11 +44,13 @@ const ResetPassSection = () => {
         autoClose: 3000,
       });
     } else {
+      setLoading(true);
       const newData = {
         password: state.newPass,
         token: router.query.token,
       };
       const res = await resetPassword(newData);
+      setLoading(false);
       if (res.error) {
         toast.error(res.error, {
           theme: "colored",
@@ -56,7 +58,7 @@ const ResetPassSection = () => {
         });
       } else {
         setState({ newPass: "", confirmPass: "" });
-        toast.success(res.error, {
+        toast.success("Your password is updated. Please sign in again.", {
           theme: "colored",
           autoClose: 3000,
         });
