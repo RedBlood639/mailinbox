@@ -5,7 +5,7 @@ import loading from "assets/Book.gif";
 const Loading = () => {
   return (
     <Text tAlign="center">
-      <img src={loading.src} />
+      <img src={loading.src} alt="loading" />
     </Text>
   );
 };
