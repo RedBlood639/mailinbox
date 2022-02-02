@@ -13,6 +13,7 @@ import { registerAction } from "actions/authActions";
 import credentials from "config/credentials.json";
 import { isMobile } from "utils/isMobile";
 import { CustomSelect } from "components/SearchBox/searchbox.styled";
+import Checkbox from "components/checkbox";
 
 const dayOption: any = [];
 const monthOption: any = [
@@ -65,7 +66,7 @@ const SignUpSection = () => {
   });
   const [flag, setFlag] = useState(true);
   const [loading, setLoading] = useState<any>(false);
-
+  const [policy, setPolicy] = useState<boolean>(false);
   const [mobile, setmobile] = useState<boolean>(false);
 
   useEffect(() => {
@@ -93,7 +94,7 @@ const SignUpSection = () => {
         fName: state.fName,
         lName: state.lName,
         birth: new Date(birth),
-        gender: gender,
+        gender,
         password: state.pass1,
         isAllow: state.isAllow,
       };
@@ -148,6 +149,10 @@ const SignUpSection = () => {
 
   const handleSelectChange = (e: any, d: any) => {
     setSelectedOption({ ...selectedOption, [d]: e });
+  };
+
+  const handleCheckbox = () => {
+    setPolicy((prev) => !prev);
   };
 
   return (
@@ -277,7 +282,25 @@ const SignUpSection = () => {
             />
           </>
         )}
-        <Div mt={26} />
+        <Div mt={20} />
+        {!flag && (
+          <Div justifyContent="space-between">
+            <Text style={{ cursor: "pointer" }} onClick={handleCheckbox}>
+              <Checkbox checked={policy} onChange={() => {}} />
+              <span style={{ marginLeft: 8 }}>
+                I confirm to agree with{" "}
+                <a href="#" style={{ textDecoration: "none" }}>
+                  <b> Terms and Conditions </b>
+                </a>
+                and
+                <a href="#" style={{ textDecoration: "none" }}>
+                  <b> Privacy Policy</b>
+                </a>
+              </span>
+            </Text>
+          </Div>
+        )}
+        <Div mt={20} />
         {flag ? (
           <Button
             label="Go to Create"
