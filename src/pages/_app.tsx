@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <AppWrapper>
-      <Script src="../assets/chatting.js"></Script>
+      {/* <Script src="../assets/chatting.js"></Script> */}
       <Component {...pageProps} />
       <ScrollTop />
     </AppWrapper>
