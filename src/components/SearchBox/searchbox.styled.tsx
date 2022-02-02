@@ -12,7 +12,7 @@ export const SearchBoxDiv = styled.div`
 `;
 
 export const CustomSelect = styled(Select)`
-  width: 30%;
+  width: 100%;
 `;
 
 export const SearchInput = styled.div`

@@ -8,7 +8,7 @@ export const InputDiv = styled.div`
 
   input {
     border: 1px solid #e8e8e8;
-    padding: 20px 25px;
+    padding: 15px 20px;
     border-radius: 5px;
     font-size: 14px;
     color: #2d3748;
