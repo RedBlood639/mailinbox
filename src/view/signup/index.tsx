@@ -35,8 +35,8 @@ const monthOption: any = [
 const yearOption: any = [];
 
 const genderOption: any = [
-  { value: "man", label: "Man" },
-  { value: "women", label: "Women" },
+  { value: 1, label: "Man" },
+  { value: 0, label: "Women" },
 ];
 
 for (let d = 1; d <= 31; d++) {
@@ -82,22 +82,18 @@ const SignUpSection = () => {
 
   const handleSignUp = async () => {
     setLoading(true);
-    const validation = passValidation(state);
+    const validation = passValidation(state, selectedOption);
     if (validation !== "success") {
       toast.error(validation, { theme: "colored", autoClose: 3000 });
-    } else if (!selectedOption.d || !selectedOption.m || !selectedOption.y) {
-      toast.error("Select the birthday correctly.", {
-        theme: "colored",
-        autoClose: 3000,
-      });
     } else {
-      const { d, m, y } = selectedOption;
+      const { d, m, y, gender } = selectedOption;
       const birth = d.value + "/" + m.value + "/" + y.value;
       const data = {
         email: state.email,
         fName: state.fName,
         lName: state.lName,
         birth: new Date(birth),
+        gender: gender,
         password: state.pass1,
         isAllow: state.isAllow,
       };
@@ -155,7 +151,7 @@ const SignUpSection = () => {
   };
 
   return (
-    <Div maxH="100vh" style={{ overflow: "auto" }}>
+    <Div maxH="100vh" style={{ overflow: "auto" }} p="30px 0">
       <Div mode="column" w={80} maxW={500} m={mobile ? "30px auto" : "auto"}>
         <ToastContainer />
         <Text fSize={36} fWeight={800} mb={32}>

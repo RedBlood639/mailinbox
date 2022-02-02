@@ -15,9 +15,13 @@ export const EmailValidation = (data: any) => {
   }
 };
 
-export const passValidation = (data: any) => {
+export const passValidation = (data: any, selectedOption: any) => {
   if (data.fName.trim() === "" || data.lName.trim() === "") {
     return "Name field is required.";
+  } else if (!selectedOption.d || !selectedOption.m || !selectedOption.y) {
+    return "Select the birthday correctly.";
+  } else if (!selectedOption.gender) {
+    return "Select the gender.";
   } else if (!data.pass1) {
     return "Password field is required.";
   } else if (!data.pass2) {
