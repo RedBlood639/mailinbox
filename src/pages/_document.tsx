@@ -36,6 +36,7 @@ export default class CustomDocument extends Document {
       sheet.seal();
     }
   }
+
   render() {
     return (
       <Html lang="en">
@@ -59,9 +60,11 @@ export default class CustomDocument extends Document {
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
           />
+          <script type="text/javascript" src="../assets/chatting.js"></script>
         </Head>
         <body>
           <Main />
+
           <noscript>Sorry, your browser does not support JavaScript!</noscript>
           <div id="modal-root" />
           <NextScript />
