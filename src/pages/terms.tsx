@@ -110,29 +110,27 @@ const Terms = () => {
           </li>
           <li>
             <p>
-              <strong>Third-party Social Media Service</strong> means any
-              services or content (including data, information, products or
-              services) provided by a third-party that may be displayed,
-              included or made available by the Service.
+              <strong>{"Third-party Social Media Service"}</strong>
+              {
+                " means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service."
+              }
             </p>
           </li>
           <li>
             <p>
-              <strong>Website</strong> refers to Madreply, accessible from{" "}
-              <a
-                href="httsp://madreply.com"
-                rel="external nofollow noopener"
-                target="_blank"
-              >
+              <strong>{"Website"}</strong>
+              {" refers to Madreply, accessible from"}
+              <a href="httsp://madreply.com" rel="noreferrer" target="_blank">
                 madreply.com
               </a>
             </p>
           </li>
           <li>
             <p>
-              <strong>You</strong> means the individual accessing or using the
-              Service, or the company, or other legal entity on behalf of which
-              such individual is accessing or using the Service, as applicable.
+              <strong>You</strong>
+              {
+                " means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable."
+              }
             </p>
           </li>
         </ul>
@@ -360,40 +358,36 @@ const Terms = () => {
         </p>
         <h4>Content Restrictions</h4>
         <p>
-          The Company is not responsible for the content of the Service's users.
-          You expressly understand and agree that You are solely responsible for
-          the Content and for all activity that occurs under your account,
-          whether done so by You or any third person using Your account.
+          {
+            "The Company is not responsible for the content of the Service's users. You expressly understand and agree that You are solely responsible for the Content and for all activity that occurs under your account, whether done so by You or any third person using Your account."
+          }
         </p>
         <p>
-          You may not transmit any Content that is unlawful, offensive,
-          upsetting, intended to disgust, threatening, libelous, defamatory,
-          obscene or otherwise objectionable. Examples of such objectionable
-          Content include, but are not limited to, the following:
+          {
+            "You may not transmit any Content that is unlawful, offensive, upsetting, intended to disgust, threatening, libelous, defamatory, obscene or otherwise objectionable. Examples of such objectionable Content include, but are not limited to, the following:"
+          }
         </p>
         <ul>
           <li>Unlawful or promoting unlawful activity.</li>
           <li>
-            Defamatory, discriminatory, or mean-spirited content, including
-            references or commentary about religion, race, sexual orientation,
-            gender, national/ethnic origin, or other targeted groups.
+            {
+              "Defamatory, discriminatory, or mean-spirited content, including references or commentary about religion, race, sexual orientation, gender, national/ethnic origin, or other targeted groups."
+            }
           </li>
           <li>
-            Spam, machine – or randomly – generated, constituting unauthorized
-            or unsolicited advertising, chain letters, any other form of
-            unauthorized solicitation, or any form of lottery or gambling.
+            {
+              "Spam, machine – or randomly – generated, constituting unauthorized or unsolicited advertising, chain letters, any other form of unauthorized solicitation, or any form of lottery or gambling."
+            }
           </li>
           <li>
-            Containing or installing any viruses, worms, malware, trojan horses,
-            or other content that is designed or intended to disrupt, damage, or
-            limit the functioning of any software, hardware or
-            telecommunications equipment or to damage or obtain unauthorized
-            access to any data or other information of a third person.
+            {
+              "Containing or installing any viruses, worms, malware, trojan horses, or other content that is designed or intended to disrupt, damage, or limit the functioning of any software, hardware or telecommunications equipment or to damage or obtain unauthorized access to any data or other information of a third person."
+            }
           </li>
           <li>
-            Infringing on any proprietary rights of any party, including patent,
-            trademark, trade secret, copyright, right of publicity or other
-            rights.
+            {
+              "Infringing on any proprietary rights of any party, including patent, trademark, trade secret, copyright, right of publicity or other rights."
+            }
           </li>
           <li>
             Impersonating any person or entity including the Company and its
@@ -456,23 +450,23 @@ const Terms = () => {
           Your notice a detailed description of the alleged infringement.
         </p>
         <p>
-          You may be held accountable for damages (including costs and
-          attorneys' fees) for misrepresenting that any Content is infringing
-          Your copyright.
+          {
+            "You may be held accountable for damages (including costs and attorneys' fees) for misrepresenting that any Content is infringing Your copyright."
+          }
         </p>
         <h4>
           DMCA Notice and DMCA Procedure for Copyright Infringement Claims
         </h4>
         <p>
-          You may submit a notification pursuant to the Digital Millennium
-          Copyright Act (DMCA) by providing our Copyright Agent with the
-          following information in writing (see 17 U.S.C 512(c)(3) for further
-          detail):
+          {
+            "You may submit a notification pursuant to the Digital Millennium Copyright Act (DMCA) by providing our Copyright Agent with the following information in writing (see 17 U.S.C 512(c)(3) for further detail):"
+          }
         </p>
         <ul>
           <li>
-            An electronic or physical signature of the person authorized to act
-            on behalf of the owner of the copyright's interest.
+            {
+              "An electronic or physical signature of the person authorized to act on behalf of the owner of the copyright's interest."
+            }
           </li>
           <li>
             A description of the copyrighted work that You claim has been
@@ -491,23 +485,21 @@ const Terms = () => {
             the law.
           </li>
           <li>
-            A statement by You, made under penalty of perjury, that the above
-            information in Your notice is accurate and that You are the
-            copyright owner or authorized to act on the copyright owner's
-            behalf.
+            {
+              "A statement by You, made under penalty of perjury, that the above information in Your notice is accurate and that You are the copyright owner or authorized to act on the copyright owner's behalf."
+            }
           </li>
         </ul>
         <p>
-          You can contact our copyright agent via email at admin@madreply.com.
-          Upon receipt of a notification, the Company will take whatever action,
-          in its sole discretion, it deems appropriate, including removal of the
-          challenged content from the Service.
+          {
+            "You can contact our copyright agent via email at admin@madreply.com. Upon receipt of a notification, the Company will take whatever action, in its sole discretion, it deems appropriate, including removal of the challenged content from the Service."
+          }
         </p>
         <h3>Intellectual Property</h3>
         <p>
-          The Service and its original content (excluding Content provided by
-          You or other users), features and functionality are and will remain
-          the exclusive property of the Company and its licensors.
+          {
+            "The Service and its original content (excluding Content provided by You or other users), features and functionality are and will remain the exclusive property of the Company and its licensors."
+          }
         </p>
         <p>
           The Service is protected by copyright, trademark, and other laws of
@@ -557,63 +549,30 @@ const Terms = () => {
         </p>
         <h3>Limitation of Liability</h3>
         <p>
-          Notwithstanding any damages that You might incur, the entire liability
-          of the Company and any of its suppliers under any provision of this
-          Terms and Your exclusive remedy for all of the foregoing shall be
-          limited to the amount actually paid by You through the Service or 100
-          USD if You haven't purchased anything through the Service.
+          {
+            "Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of this Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service or 100 USD if You haven't purchased anything through the Service."
+          }
         </p>
         <p>
-          To the maximum extent permitted by applicable law, in no event shall
-          the Company or its suppliers be liable for any special, incidental,
-          indirect, or consequential damages whatsoever (including, but not
-          limited to, damages for loss of profits, loss of data or other
-          information, for business interruption, for personal injury, loss of
-          privacy arising out of or in any way related to the use of or
-          inability to use the Service, third-party software and/or third-party
-          hardware used with the Service, or otherwise in connection with any
-          provision of this Terms), even if the Company or any supplier has been
-          advised of the possibility of such damages and even if the remedy
-          fails of its essential purpose.
+          {
+            "To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of this Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose."
+          }
         </p>
         <p>
-          Some states do not allow the exclusion of implied warranties or
-          limitation of liability for incidental or consequential damages, which
-          means that some of the above limitations may not apply. In these
-          states, each party's liability will be limited to the greatest extent
-          permitted by law.
+          {
+            "Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply. In these states, each party's liability will be limited to the greatest extent permitted by law."
+          }
         </p>
         <h3>&quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer</h3>
         <p>
-          The Service is provided to You &quot;AS IS&quot; and &quot;AS
-          AVAILABLE&quot; and with all faults and defects without warranty of
-          any kind. To the maximum extent permitted under applicable law, the
-          Company, on its own behalf and on behalf of its Affiliates and its and
-          their respective licensors and service providers, expressly disclaims
-          all warranties, whether express, implied, statutory or otherwise, with
-          respect to the Service, including all implied warranties of
-          merchantability, fitness for a particular purpose, title and
-          non-infringement, and warranties that may arise out of course of
-          dealing, course of performance, usage or trade practice. Without
-          limitation to the foregoing, the Company provides no warranty or
-          undertaking, and makes no representation of any kind that the Service
-          will meet Your requirements, achieve any intended results, be
-          compatible or work with any other software, applications, systems or
-          services, operate without interruption, meet any performance or
-          reliability standards or be error free or that any errors or defects
-          can or will be corrected.
+          {
+            'The Service is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and on behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory or otherwise, with respect to the Service, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, the Company provides no warranty or undertaking, and makes no representation of any kind that the Service will meet Your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free or that any errors or defects can or will be corrected.'
+          }
         </p>
         <p>
-          Without limiting the foregoing, neither the Company nor any of the
-          company's provider makes any representation or warranty of any kind,
-          express or implied: (i) as to the operation or availability of the
-          Service, or the information, content, and materials or products
-          included thereon; (ii) that the Service will be uninterrupted or
-          error-free; (iii) as to the accuracy, reliability, or currency of any
-          information or content provided through the Service; or (iv) that the
-          Service, its servers, the content, or e-mails sent from or on behalf
-          of the Company are free of viruses, scripts, trojan horses, worms,
-          malware, timebombs or other harmful components.
+          {
+            "Without limiting the foregoing, neither the Company nor any of the company's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components."
+          }
         </p>
         <p>
           Some jurisdictions do not allow the exclusion of certain types of
@@ -660,11 +619,9 @@ const Terms = () => {
         </p>
         <h4>Waiver</h4>
         <p>
-          Except as provided herein, the failure to exercise a right or to
-          require performance of an obligation under these Terms shall not
-          effect a party's ability to exercise such right or require such
-          performance at any time thereafter nor shall the waiver of a breach
-          constitute a waiver of any subsequent breach.
+          {
+            "Except as provided herein, the failure to exercise a right or torequire performance of an obligation under these Terms shall not effect a party's ability to exercise such right or require such performance at any time thereafter nor shall the waiver of a breach constitute a waiver of any subsequent breach."
+          }
         </p>
         <h3>Translation Interpretation</h3>
         <p>
@@ -674,11 +631,9 @@ const Terms = () => {
         </p>
         <h3>Changes to These Terms and Conditions</h3>
         <p>
-          We reserve the right, at Our sole discretion, to modify or replace
-          these Terms at any time. If a revision is material We will make
-          reasonable efforts to provide at least 30 days' notice prior to any
-          new terms taking effect. What constitutes a material change will be
-          determined at Our sole discretion.
+          {
+            "We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion."
+          }
         </p>
         <p>
           By continuing to access or use Our Service after those revisions
@@ -700,7 +655,7 @@ const Terms = () => {
               By visiting this page on our website:{" "}
               <a
                 href="https://madreply.com/terms"
-                rel="external nofollow noopener"
+                rel="noreferrer"
                 target="_blank"
               >
                 madreply.com/terms
