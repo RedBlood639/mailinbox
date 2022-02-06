@@ -1,4 +1,4 @@
-const unauthUrl = ["/signin", "/signup", "/getstarted", "/resetpass"];
+const unauthUrl = ["/signin", "/signup", "/getstarted", "/resetpass", "/terms"];
 
 export const isPrivateUrl = (path: string, isAuth: boolean) => {
   if (isAuth) {

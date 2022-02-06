@@ -289,11 +289,13 @@ const SignUpSection = () => {
               <Checkbox checked={policy} onChange={() => {}} />
               <span style={{ marginLeft: 8 }}>
                 I confirm to agree with{" "}
-                <a href="#" style={{ textDecoration: "none" }}>
+                <a
+                  href="https://madreply.com/terms"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
+                >
                   <b> Terms and Conditions </b>
-                </a>
-                and
-                <a href="#" style={{ textDecoration: "none" }}>
+                  and
                   <b> Privacy Policy</b>
                 </a>
               </span>
